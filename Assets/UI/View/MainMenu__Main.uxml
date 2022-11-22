@@ -4,9 +4,9 @@
     <ui:VisualElement name="Content" class="main">
         <ui:VisualElement name="MainButtons" class="main__buttons">
             <ui:Button text="NEW GAME" display-tooltip-when-elided="true" name="NewGameButton" class="btn btn--primary" />
-            <ui:Button text="SETTINGS" display-tooltip-when-elided="true" name="NewGameButton" class="btn btn--primary" />
-            <ui:Button text="CREDITS" display-tooltip-when-elided="true" name="NewGameButton" class="btn btn--primary" />
-            <ui:Button text="EXIT" display-tooltip-when-elided="true" name="NewGameButton" class="btn btn--primary" />
+            <ui:Button text="SETTINGS" display-tooltip-when-elided="true" name="SettingsButton" class="btn btn--primary" />
+            <ui:Button text="CREDITS" display-tooltip-when-elided="true" name="CreditsButton" class="btn btn--primary" />
+            <ui:Button text="EXIT" display-tooltip-when-elided="true" name="ExitButton" class="btn btn--primary" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
