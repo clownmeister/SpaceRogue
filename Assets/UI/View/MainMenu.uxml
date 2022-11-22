@@ -1,0 +1,22 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="MainMenu__Main" src="project://database/Assets/UI/View/MainMenu__Main.uxml?fileID=9197481963319205126&amp;guid=7f96f52e632501943bba7e326ab95b38&amp;type=3#MainMenu__Main" />
+    <ui:Template name="MainMenu__About" src="project://database/Assets/UI/View/MainMenu__About.uxml?fileID=9197481963319205126&amp;guid=b79b63d943abba14f9acefc562a493a0&amp;type=3#MainMenu__About" />
+    <Style src="project://database/Assets/UI/Styles/MainMenu.uss?fileID=7433441132597879392&amp;guid=e3ac5a37ffb62274794dbc63293d31c9&amp;type=3#MainMenu" />
+    <Style src="project://database/Assets/UI/Styles/Global.uss?fileID=7433441132597879392&amp;guid=15f4deaa2706437585eefad59655a9e6&amp;type=3#Global" />
+    <ui:VisualElement name="Page" class="page">
+        <ui:VisualElement name="Page__Background" class="main-menu__background page__background" />
+        <ui:VisualElement name="Page__Content" class="page__content">
+            <ui:VisualElement name="MainMenu" class="main-menu">
+                <ui:VisualElement name="MainMenu__Header" class="main-menu__header">
+                    <ui:Label text="SPEED OF LIGHT" display-tooltip-when-elided="true" enable-rich-text="true" class="main-menu__logo" />
+                </ui:VisualElement>
+                <ui:Instance template="MainMenu__Main" name="MainMenu__Main" class="main-menu__section" style="-unity-font-style: bold; visibility: visible; display: flex;" />
+                <ui:Instance template="MainMenu__About" name="MainMenu__About" focusable="false" class="main-menu__section" style="overflow: visible; display: none;" />
+                <ui:VisualElement name="MainMenu__Footer" class="main-menu__footer">
+                    <ui:Label text="Version: xxx" display-tooltip-when-elided="true" name="Version" class="text text--italic" />
+                    <ui:Label text="By Lucián Blažek" display-tooltip-when-elided="true" name="Author" class="text text--italic" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
