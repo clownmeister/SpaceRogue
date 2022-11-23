@@ -1,0 +1,7 @@
+﻿* {
+  --font-heading: #{$font-heading};
+  --font-text: #{$font-text};
+
+  -unity-font-definition: var(--font-text);
+  font-size: $base-font-size;
+}

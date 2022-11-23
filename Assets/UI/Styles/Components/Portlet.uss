@@ -1,9 +1,0 @@
-﻿.portlet {
-    padding: 30px 15px;
-    background-color: rgba(0,36,57,.7);
-    border-radius: 7px;
-}
-
-.portlet__header {}
-.portlet__body {}
-.portlet__footer {}

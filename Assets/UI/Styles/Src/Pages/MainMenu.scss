@@ -1,0 +1,43 @@
+.main-menu {
+  flex: 1 1 auto;
+
+  &__background {
+    background-image: resource('Images/space_02');
+  }
+
+  &__section {
+    flex: 1 1 auto;
+    padding: 5px 15px;
+    font-size: 24px;
+    color: rgb(238, 238, 238);
+    align-items: center;
+    align-content: center;
+    -unity-text-align: middle-center;
+    white-space: normal;
+  }
+
+  &__footer {
+    padding: 5px;
+    flex-direction: row;
+    font-size: 24px;
+    flex: 0 0 auto;
+    color: rgb(162, 162, 162);
+    -unity-text-align: lower-center;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__header {
+    flex: 0 0 auto;
+    padding: 60px 15px 45px;
+  }
+
+  &__logo {
+    -unity-font-definition: var(--font-heading);
+    font-size: 64px;
+    color: rgb(255, 255, 255);
+    -unity-font-style: bold;
+    -unity-text-align: middle-center;
+  }
+}

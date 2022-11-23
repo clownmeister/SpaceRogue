@@ -1,34 +1,16 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/UI/Styles/MainMenuAbout.uss?fileID=7433441132597879392&amp;guid=8775e63d315d42b6aa422ea64ae27d1a&amp;type=3#MainMenuAbout" />
-    <Style src="project://database/Assets/UI/Styles/Global.uss?fileID=7433441132597879392&amp;guid=15f4deaa2706437585eefad59655a9e6&amp;type=3#Global" />
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance"
+         engine="UnityEngine.UIElements" editor="UnityEditor.UIElements"
+         noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:VisualElement name="Content" class="about">
         <ui:VisualElement name="AboutMain" class="about__main">
             <ui:ScrollView name="AboutCredits" class="portlet about__credits">
                 <ui:Label text="THANK YOU FOR PLAYING!" display-tooltip-when-elided="true" name="AboutHeading" class="h2 mb6" />
                 <ui:Label text="This means alot to me since this is my first published game. My dream was always to develop games with main focus on staying true to the fanbase and avoiding any toxic payment options or any kind of pay to win. Support the game by leaving honest reviews or by purchasing full game." display-tooltip-when-elided="true" name="AboutText" class="text" />
                 <ui:Label text="Created by:" display-tooltip-when-elided="true" name="AboutHeading" class="h3 mt6 mb3" />
-                <ui:Label text="Lucián Blažek" display-tooltip-when-elided="true" name="AboutText" class="text" />
+                <ui:Label text="Lucian Blazek" display-tooltip-when-elided="true" name="AboutText" class="text"/>
                 <ui:Label text="Music:" display-tooltip-when-elided="true" name="AboutHeading" class="h3 mt6 mb3" />
                 <ui:Label text="www.pixabay.com" display-tooltip-when-elided="true" name="AboutText" class="text" />
                 <ui:Label text="Pictures:" display-tooltip-when-elided="true" name="AboutHeading" class="h3 mt6 mb3" />
-                <ui:Label text="www.hubblesite.org" display-tooltip-when-elided="true" name="AboutText" class="text" />
-                <ui:Label text="www.nasa.gov" display-tooltip-when-elided="true" name="AboutText" class="text" />
-                <ui:Label text="www.hubblesite.org" display-tooltip-when-elided="true" name="AboutText" class="text" />
-                <ui:Label text="www.nasa.gov" display-tooltip-when-elided="true" name="AboutText" class="text" />
-                <ui:Label text="www.hubblesite.org" display-tooltip-when-elided="true" name="AboutText" class="text" />
-                <ui:Label text="www.nasa.gov" display-tooltip-when-elided="true" name="AboutText" class="text" />
-                <ui:Label text="www.hubblesite.org" display-tooltip-when-elided="true" name="AboutText" class="text" />
-                <ui:Label text="www.nasa.gov" display-tooltip-when-elided="true" name="AboutText" class="text" />
-                <ui:Label text="www.hubblesite.org" display-tooltip-when-elided="true" name="AboutText" class="text" />
-                <ui:Label text="www.nasa.gov" display-tooltip-when-elided="true" name="AboutText" class="text" />
-                <ui:Label text="www.hubblesite.org" display-tooltip-when-elided="true" name="AboutText" class="text" />
-                <ui:Label text="www.nasa.gov" display-tooltip-when-elided="true" name="AboutText" class="text" />
-                <ui:Label text="www.hubblesite.org" display-tooltip-when-elided="true" name="AboutText" class="text" />
-                <ui:Label text="www.nasa.gov" display-tooltip-when-elided="true" name="AboutText" class="text" />
-                <ui:Label text="www.hubblesite.org" display-tooltip-when-elided="true" name="AboutText" class="text" />
-                <ui:Label text="www.nasa.gov" display-tooltip-when-elided="true" name="AboutText" class="text" />
-                <ui:Label text="www.hubblesite.org" display-tooltip-when-elided="true" name="AboutText" class="text" />
-                <ui:Label text="www.nasa.gov" display-tooltip-when-elided="true" name="AboutText" class="text" />
                 <ui:Label text="www.hubblesite.org" display-tooltip-when-elided="true" name="AboutText" class="text" />
                 <ui:Label text="www.nasa.gov" display-tooltip-when-elided="true" name="AboutText" class="text" />
             </ui:ScrollView>

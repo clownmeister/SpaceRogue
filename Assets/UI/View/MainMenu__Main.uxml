@@ -1,6 +1,6 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/UI/Styles/MainMenuMain.uss?fileID=7433441132597879392&amp;guid=3defeafe67724d13a805dce8b7b1ae35&amp;type=3#MainMenuMain" />
-    <Style src="project://database/Assets/UI/Styles/Global.uss?fileID=7433441132597879392&amp;guid=15f4deaa2706437585eefad59655a9e6&amp;type=3#Global" />
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance"
+         engine="UnityEngine.UIElements" editor="UnityEditor.UIElements"
+         noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:VisualElement name="Content" class="main">
         <ui:VisualElement name="MainButtons" class="main__buttons">
             <ui:Button text="NEW GAME" display-tooltip-when-elided="true" name="NewGameButton" class="btn btn--primary" />
