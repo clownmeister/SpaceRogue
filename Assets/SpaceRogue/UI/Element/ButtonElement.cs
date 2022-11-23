@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.UIElements;
 
-namespace SpaceRogue.UIElement
+namespace SpaceRogue.UI.Element
 {
     public class ButtonElement : Button
     {
@@ -23,9 +23,7 @@ namespace SpaceRogue.UIElement
             {
                 base.Init(ve, bag, cc);
 
-                if (ve is not ButtonElement button) {
-                    throw new Exception("Invalid element type provided");
-                }
+                if (ve is not ButtonElement button) throw new Exception("Invalid element type provided");
 
                 button.data = this.data.GetValueFromBag(bag, cc);
                 focusable.defaultValue = true;

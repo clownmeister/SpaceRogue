@@ -28,8 +28,8 @@
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="AboutFooter" class="about__footer">
-            <ui:Button text="BACK" display-tooltip-when-elided="true" name="BackButton"
-                       class="btn btn--primary-textured"/>
+            <SpaceRogue.UI.Element.ButtonElement text="Back" name="BackButton" data="main"
+                                                 class="btn btn--primary-textured -btn-target-page-open"/>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

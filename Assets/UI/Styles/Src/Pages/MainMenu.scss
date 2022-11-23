@@ -3,6 +3,9 @@
 
   &__background {
     background-image: resource('Images/space_02');
+    transition-property: translate;
+    transition-duration: 10s;
+    transition-timing-function: ease-in-out;
   }
 
   &__section {

@@ -16,10 +16,12 @@
                               class="main-menu__logo"/>
                 </ui:VisualElement>
                 <ui:VisualElement name="MainMenu__Content" class="main-menu__content">
-                    <ui:Instance template="MainMenu__Main" name="MainMenu__Main" class="main-menu__section"
+                    <ui:Instance template="MainMenu__Main" name="MainMenu__Main"
+                                 class="main-menu__section -page-target -page-target-main"
                                  style="visibility: visible; display: flex; overflow: visible;"/>
                     <ui:Instance template="MainMenu__About" name="MainMenu__About" focusable="false"
-                                 class="main-menu__section" style="overflow: visible; display: none;"/>
+                                 class="main-menu__section -page-target -page-target-credits"
+                                 style="overflow: visible; display: none;"/>
                 </ui:VisualElement>
                 <ui:VisualElement name="MainMenu__Footer" class="main-menu__footer">
                     <ui:Label text="By Lucian Blazek" display-tooltip-when-elided="true" name="Author"
