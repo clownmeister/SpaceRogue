@@ -1,8 +1,25 @@
 ﻿.portlet {
-    padding: 30px 15px;
-    background-color: rgba(0,36,57,.7);
+    flex: 1 1 auto;
+    padding: rem(30px) rem(15px);
+    background-color: #fff;
+    color: #000;
     border-radius: 7px;
     &__header {}
     &__body {}
     &__footer {}
+    
+    &--primary {
+        background-color: rgba(0,36,57,.7);
+        color: $text-primary;
+    }
+
+    &--primary-textured {
+        //second number is scrollbar width
+        padding: rem(20px) rem(8px) rem(10px) rem(15px);
+        background-image: resource("Sprites/UI/wenrexaassetsui_scifi/PNG/MainPanel03");
+        //stretch-to-fill | scale-and-crop | scale-to-fit
+        -unity-background-scale-mode: stretch-to-fill;
+        background-color: transparent;
+        color: $text-primary;
+    }
 }

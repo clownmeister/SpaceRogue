@@ -2,8 +2,13 @@
     flex: 1 1 auto;
     width: 100%;
     justify-content: center;
+    align-content: center;
+    align-items: center;
     &__buttons {
-        padding: 15px 30px;
+        max-width: 1000px;
+        width: 100%;
+        min-width: 200px;
+        padding: rem(15px) rem(30px);
         & > .btn {
             margin-top: 10px;
         }

@@ -4,10 +4,16 @@
     overflow: hidden;
     justify-content: center;
     align-items: center;
-    
     &__content {
-        width: 100%;
+        width: 50%;
         height: 100%;
+        max-width: 1500px;
+        @media only screen and (min-device-width: 1000px) {
+            width: 100%;
+        }
+    }
+    &__footer {
+        flex: 0 0 auto;
     }
     
     &__background {

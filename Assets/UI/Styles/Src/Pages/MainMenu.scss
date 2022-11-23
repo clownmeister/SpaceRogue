@@ -27,6 +27,10 @@
     align-items: center;
     justify-content: center;
   }
+  
+  &__content {
+    flex: 1 1 auto;
+  }
 
   &__header {
     flex: 0 0 auto;
@@ -35,9 +39,8 @@
 
   &__logo {
     -unity-font-definition: var(--font-heading);
-    font-size: 64px;
+    font-size: 150px;
     color: rgb(255, 255, 255);
-    -unity-font-style: bold;
     -unity-text-align: middle-center;
   }
 }

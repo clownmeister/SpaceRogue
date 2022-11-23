@@ -1,8 +1,10 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance"
-         engine="UnityEngine.UIElements" editor="UnityEditor.UIElements"
+<ui:UXML xmlns:ui="UnityEngine.UIElements"
+         xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements"
          noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:Template name="MainMenu__Main" src="project://database/Assets/UI/View/MainMenu__Main.uxml?fileID=9197481963319205126&amp;guid=7f96f52e632501943bba7e326ab95b38&amp;type=3#MainMenu__Main" />
-    <ui:Template name="MainMenu__About" src="project://database/Assets/UI/View/MainMenu__About.uxml?fileID=9197481963319205126&amp;guid=b79b63d943abba14f9acefc562a493a0&amp;type=3#MainMenu__About" />
+    <ui:Template name="MainMenu__Main"
+                 src="project://database/Assets/UI/View/MainMenu__Main.uxml?fileID=9197481963319205126&amp;guid=7f96f52e632501943bba7e326ab95b38&amp;type=3#MainMenu__Main"/>
+    <ui:Template name="MainMenu__About"
+                 src="project://database/Assets/UI/View/MainMenu__About.uxml?fileID=9197481963319205126&amp;guid=b79b63d943abba14f9acefc562a493a0&amp;type=3#MainMenu__About"/>
     <Style src="project://database/Assets/UI/Styles/Dist/Main.uss?fileID=7433441132597879392&amp;guid=c02a89fdb5ad97d4a89a3a9622974b47&amp;type=3#Main"/>
     <ui:VisualElement name="Page" class="page">
         <ui:VisualElement name="Page__Background" class="main-menu__background page__background"
@@ -13,10 +15,12 @@
                     <ui:Label text="SPEED OF LIGHT" display-tooltip-when-elided="true" enable-rich-text="true"
                               class="main-menu__logo"/>
                 </ui:VisualElement>
-                <ui:Instance template="MainMenu__Main" name="MainMenu__Main" class="main-menu__section"
-                             style="visibility: visible; display: none; overflow: visible;"/>
-                <ui:Instance template="MainMenu__About" name="MainMenu__About" focusable="false"
-                             class="main-menu__section" style="overflow: visible; display: flex;"/>
+                <ui:VisualElement name="MainMenu__Content" class="main-menu__content">
+                    <ui:Instance template="MainMenu__Main" name="MainMenu__Main" class="main-menu__section"
+                                 style="visibility: visible; display: flex; overflow: visible;"/>
+                    <ui:Instance template="MainMenu__About" name="MainMenu__About" focusable="false"
+                                 class="main-menu__section" style="overflow: visible; display: none;"/>
+                </ui:VisualElement>
                 <ui:VisualElement name="MainMenu__Footer" class="main-menu__footer">
                     <ui:Label text="By Lucian Blazek" display-tooltip-when-elided="true" name="Author"
                               class="text text--italic mr3"/>

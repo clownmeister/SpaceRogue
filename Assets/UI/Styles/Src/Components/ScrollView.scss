@@ -1,0 +1,59 @@
+﻿$scroller-width: rem(7px);
+$scroller-border-radius: $scroller-width * .5;
+
+.unity-base-slider {
+  &__dragger {
+    width: 100%;
+    height: $scroller-width;
+    padding-left: 0;
+    padding-right: 0;
+    left: 0;
+    right: 0;
+    margin-left: 0;
+    margin-right: 0;
+    border-radius: $scroller-border-radius;
+    border-width: 0;
+    background-color: $bg-secondary;
+    &-border {
+      display: none;
+      border-width: 0;
+    }
+  }
+  &--vertical {
+    margin: 0;
+    width: $scroller-width;
+    max-width: $scroller-width;
+    min-width: $scroller-width;
+    padding-left: 0;
+    padding-right: 0;
+    border-width: 0;
+  }
+  &__tracker {
+    width: 100%;
+    background-color: $bg-primary-hover;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
+    border-radius: $scroller-border-radius;
+    border-width: 0;
+  }
+}
+
+.unity-scroller {
+  &--vertical {
+    width: $scroller-width;
+    max-width: $scroller-width;
+    min-width: $scroller-width;
+    padding-left: 0;
+    padding-right: 0;
+    margin: 0;
+    border-width: 0;
+    align-items: center;
+    align-content: center;
+    background-color: transparent;
+    & > .unity-scroller__low-button, > .unity-scroller__high-button {
+      display: none;
+    }
+  }
+}

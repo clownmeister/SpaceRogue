@@ -1,7 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Linq;
 using UnityEditor;
-using Debug = UnityEngine.Debug;
 
 namespace UssSass.Editor
 {
@@ -19,10 +18,9 @@ namespace UssSass.Editor
         private static void OnPostprocessAllAssets(string[] importedAssets, string[] deletedAssets, string[] movedAssets, string[] movedFromAssetPaths)
         {
             var files = importedAssets
-                .Where(filePath => TargetExtensions.Contains(filePath.Split(".")[1]?.ToLower() ?? string.Empty));
+                .Where(filePath => filePath.Split('.').Length > 1 && TargetExtensions.Contains(filePath.Split(".")[1].ToLower()));
 
             foreach (string filePath in files) {
-                Debug.Log(GetSassArguments(Mode, filePath));
                 Process process = new()
                 {
                     StartInfo = new ProcessStartInfo

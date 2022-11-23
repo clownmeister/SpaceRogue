@@ -1,17 +1,28 @@
 ﻿.btn {
   -unity-font-definition: var(--font-heading);
   flex: 0 1 auto;
-  min-width: 300px;
+  min-width: rem(300px);
   width: auto;
-  padding: 15px 30px;
-  font-size: 24px;
-  -unity-font-style: bold;
+  padding: rem(15px) rem(30px);
   border-radius: 0;
+  border-width: 0;
+  background-color: transparent;
+  font-size: rem(32px);
+
   &--primary {
     background-color: $bg-primary;
     color: $text-primary;
     border-width: 0;
-    border-radius: 10px;
+    border-radius: rem(10px);
+    &:hover{
+      background-color: $bg-primary-hover;
+      color: $text-primary-hover;
+    }
+  }
+  
+  &--primary-textured {
+    background-image: resource("Sprites/UI/wenrexaassetsui_scifi/PNG/Button11");
+    color: $text-primary;
     &:hover{
       background-color: $bg-primary-hover;
       color: $text-primary-hover;

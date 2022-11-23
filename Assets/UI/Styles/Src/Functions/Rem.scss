@@ -1,0 +1,7 @@
+﻿@function rem($initial-size) {
+  @return $initial-size * ($base-font-size / $initial-font-size);
+}
+
+@function em($initial-size, $reference: $base-font-size) {
+  @return $initial-size * ($reference / $initial-font-size);
+}
