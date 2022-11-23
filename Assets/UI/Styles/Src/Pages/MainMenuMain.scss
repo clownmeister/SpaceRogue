@@ -9,8 +9,8 @@
         width: 100%;
         min-width: 200px;
         padding: rem(15px) rem(30px);
-        & > .btn {
-            margin-top: 10px;
-        }
+    }
+    &__button {
+        margin-top: 10px;
     }
 }

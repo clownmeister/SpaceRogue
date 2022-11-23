@@ -160,24 +160,20 @@
     background-color: transparent;
     font-size: 64px;
 }
-
 .btn--primary {
     background-color: #122128;
     color: #e4eff0;
     border-width: 0;
     border-radius: 20px;
 }
-
 .btn--primary:hover {
     background-color: #0d191e;
     color: #fff;
 }
-
 .btn--primary-textured {
     background-image: resource("Sprites/UI/wenrexaassetsui_scifi/PNG/Button11");
     color: #e4eff0;
 }
-
 .btn--primary-textured:hover {
     background-color: #0d191e;
     color: #fff;
@@ -190,7 +186,6 @@
     justify-content: center;
     align-items: center;
 }
-
 .page__content {
     width: 50%;
     height: 100%;
@@ -202,11 +197,9 @@
         width: 100%;
     }
 }
-
 .page__footer {
     flex: 0 0 auto;
 }
-
 .page__background {
     position: absolute;
     width: 450%;
@@ -224,12 +217,10 @@
     color: #000;
     border-radius: 7px;
 }
-
 .portlet--primary {
     background-color: rgba(0, 36, 57, 0.7);
     color: #e4eff0;
 }
-
 .portlet--primary-textured {
     padding: 40px 16px 20px 30px;
     background-image: resource("Sprites/UI/wenrexaassetsui_scifi/PNG/MainPanel03");
@@ -251,12 +242,10 @@
     border-width: 0;
     background-color: #33aa99;
 }
-
 .unity-base-slider__dragger-border {
     display: none;
     border-width: 0;
 }
-
 .unity-base-slider--vertical {
     margin: 0;
     width: 14px;
@@ -266,7 +255,6 @@
     padding-right: 0;
     border-width: 0;
 }
-
 .unity-base-slider__tracker {
     width: 100%;
     background-color: #0d191e;
@@ -290,7 +278,6 @@
     align-content: center;
     background-color: transparent;
 }
-
 .unity-scroller--vertical > .unity-scroller__low-button, .unity-scroller--vertical > .unity-scroller__high-button {
     display: none;
 }
@@ -298,20 +285,18 @@
 .main-menu {
     flex: 1 1 auto;
 }
-
 .main-menu__background {
     background-image: resource("Images/space_02");
 }
-
 .main-menu__section {
     flex: 1 1 auto;
-  padding: 5px 15px;
-  font-size: 24px;
-  color: rgb(238, 238, 238);
-  align-items: center;
-  align-content: center;
-  -unity-text-align: middle-center;
-  white-space: normal;
+    padding: 5px 15px;
+    font-size: 24px;
+    color: rgb(238, 238, 238);
+    align-items: center;
+    align-content: center;
+    -unity-text-align: middle-center;
+    white-space: normal;
 }
 .main-menu__footer {
     padding: 5px;
@@ -324,11 +309,9 @@
     align-items: center;
     justify-content: center;
 }
-
 .main-menu__content {
     flex: 1 1 auto;
 }
-
 .main-menu__header {
     flex: 0 0 auto;
     padding: 60px 15px 45px;
@@ -347,14 +330,16 @@
     align-content: center;
     align-items: center;
 }
+
 .main__buttons {
     max-width: 1000px;
     width: 100%;
     min-width: 200px;
     padding: 30px 60px;
 }
-.main__buttons > .btn {
-  margin-top: 10px;
+
+.main__button {
+    margin-top: 10px;
 }
 
 .about {
