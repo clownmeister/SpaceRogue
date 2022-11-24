@@ -4,14 +4,14 @@
     <Style src="project://database/Assets/UI/Styles/Dist/Main.uss?fileID=7433441132597879392&amp;guid=c02a89fdb5ad97d4a89a3a9622974b47&amp;type=3#Main"/>
     <ui:VisualElement name="Content" class="main">
         <ui:VisualElement name="MainButtons" class="main__buttons">
-            <SpaceRogue.UI.Element.ButtonElement text="New Game" name="NewGame" data="new_game"
-                                                 class="btn btn--primary-textured main__button"/>
+            <SpaceRogue.UI.Element.ButtonElement text="New Game" name="NewGame" data="new-game"
+                                                 class="btn btn--primary-textured main__button -btn-target-new-game"/>
             <SpaceRogue.UI.Element.ButtonElement text="Settings" name="Settings" data="settings"
                                                  class="btn btn--primary-textured main__button -btn-target-page-open"/>
             <SpaceRogue.UI.Element.ButtonElement text="Credits" name="Credits" data="credits"
                                                  class="btn btn--primary-textured main__button -btn-target-page-open"/>
             <SpaceRogue.UI.Element.ButtonElement text="Exit" name="Exit" data="exit"
-                                                 class="btn btn--primary-textured main__button"/>
+                                                 class="btn btn--primary-textured main__button -btn-target-exit"/>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

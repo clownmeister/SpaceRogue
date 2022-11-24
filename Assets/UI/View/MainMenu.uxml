@@ -3,6 +3,10 @@
          noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="MainMenu__Main"
                  src="project://database/Assets/UI/View/MainMenu__Main.uxml?fileID=9197481963319205126&amp;guid=7f96f52e632501943bba7e326ab95b38&amp;type=3#MainMenu__Main"/>
+    <ui:Template name="MainMenu__NewGame"
+                 src="project://database/Assets/UI/View/MainMenu__NewGame.uxml?fileID=9197481963319205126&amp;guid=ef379bfbc9e530941aa8575ce0242a57&amp;type=3#MainMenu__NewGame"/>
+    <ui:Template name="MainMenu__Settings"
+                 src="project://database/Assets/UI/View/MainMenu__Settings.uxml?fileID=9197481963319205126&amp;guid=4aaa42777270e27448e4523b1fab30bb&amp;type=3#MainMenu__Settings"/>
     <ui:Template name="MainMenu__About"
                  src="project://database/Assets/UI/View/MainMenu__About.uxml?fileID=9197481963319205126&amp;guid=b79b63d943abba14f9acefc562a493a0&amp;type=3#MainMenu__About"/>
     <Style src="project://database/Assets/UI/Styles/Dist/Main.uss?fileID=7433441132597879392&amp;guid=c02a89fdb5ad97d4a89a3a9622974b47&amp;type=3#Main"/>
@@ -19,6 +23,10 @@
                     <ui:Instance template="MainMenu__Main" name="MainMenu__Main"
                                  class="main-menu__section -page-target -page-target-main"
                                  style="visibility: visible; display: flex; overflow: visible;"/>
+                    <ui:Instance template="MainMenu__NewGame" name="MainMenu__NewGame"
+                                 class="main-menu__section -page-target -page-target-new-game" style="display: none;"/>
+                    <ui:Instance template="MainMenu__Settings" name="MainMenu__Settings"
+                                 class="main-menu__section -page-target -page-target-settings" style="display: none;"/>
                     <ui:Instance template="MainMenu__About" name="MainMenu__About" focusable="false"
                                  class="main-menu__section -page-target -page-target-credits"
                                  style="overflow: visible; display: none;"/>
