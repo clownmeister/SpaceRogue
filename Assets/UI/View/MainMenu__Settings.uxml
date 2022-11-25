@@ -1,9 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?>
-<engine:UXML
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:engine="UnityEngine.UIElements"
-    xmlns:editor="UnityEditor.UIElements"
-    xsi:noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd"
->
-    
-</engine:UXML>
+<ui:UXML xmlns:ui="UnityEngine.UIElements"
+         xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements"
+         noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Styles/Dist/Main.uss?fileID=7433441132597879392&amp;guid=c02a89fdb5ad97d4a89a3a9622974b47&amp;type=3#Main"/>
+    <ui:VisualElement name="Content" class="settings">
+        <ui:VisualElement name="SettingsMain" class="settings__main">
+            <ui:VisualElement name="Portlet" class="portlet portlet--primary-textured">
+                <ui:ScrollView name="SettingsPortletContent">
+                    <ui:Label text="Settings" display-tooltip-when-elided="true" name="SettingsHeading" class="h2 mb6"/>
+                    <ui:Label text="TBA" display-tooltip-when-elided="true" name="Text" class="text"/>
+                </ui:ScrollView>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="Footer" class="settings__footer">
+            <SpaceRogue.UI.Element.ButtonElement text="Back" name="BackButton" data="main"
+                                                 class="btn btn--primary-textured -btn-target-page-open"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

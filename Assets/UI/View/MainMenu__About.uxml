@@ -1,6 +1,7 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements"
          xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements"
          noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Styles/Dist/Main.uss?fileID=7433441132597879392&amp;guid=c02a89fdb5ad97d4a89a3a9622974b47&amp;type=3#Main"/>
     <ui:VisualElement name="Content" class="about">
         <ui:VisualElement name="AboutMain" class="about__main">
             <ui:VisualElement name="AboutCredits" class="about__credits portlet portlet--primary-textured">

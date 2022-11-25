@@ -47,13 +47,12 @@ namespace SpaceRogue.UI.Handler
                 if (target == null) throw new NullReferenceException("Page is not properly set up. Missing class.");
 
                 this.menuPages.Add(target, page);
-                Debug.Log(target);
-                Debug.Log(page);
             });
         }
 
         private void OnClickPageButton(ClickEvent clickEvent)
         {
+            Debug.Log("click");
             if (clickEvent.currentTarget is not ButtonElement button) throw new NullReferenceException("Could not find button in event");
             this.pageVisibilityHandler.HandleState(button.data);
         }

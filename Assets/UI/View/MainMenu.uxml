@@ -12,7 +12,7 @@
     <Style src="project://database/Assets/UI/Styles/Dist/Main.uss?fileID=7433441132597879392&amp;guid=c02a89fdb5ad97d4a89a3a9622974b47&amp;type=3#Main"/>
     <ui:VisualElement name="Page" class="page">
         <ui:VisualElement name="Page__Background" class="main-menu__background page__background"
-                          style="display: flex;"/>
+                          style="display: none;"/>
         <ui:VisualElement name="Page__Content" class="page__content">
             <ui:VisualElement name="MainMenu" class="main-menu">
                 <ui:VisualElement name="MainMenu__Header" class="main-menu__header">

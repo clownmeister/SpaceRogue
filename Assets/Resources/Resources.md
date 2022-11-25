@@ -24,3 +24,6 @@ https://opengameart.org/users/wenrexa
 
 Free vectors
 https://www.freepik.com/vectors/sci-fi-button
+
+Inspiration ships
+https://www.deviantart.com/ariochiv/art/Stars-in-Shadow-Outposts-497862634

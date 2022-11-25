@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="531017af-cbc6-4629-baff-94207076d88b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Images/bg_space_01_transparent.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Images/bg_space_01_transparent.jpg.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Images/bg_stars.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Images/bg_stars.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Sound.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Sound/space shield sounds.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Sound/space shield sounds/space shield sounds - 1.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Sound/space shield sounds/space shield sounds - 1.wav.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Sound/space shield sounds/space shield sounds - 2.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Sound/space shield sounds/space shield sounds - 2.wav.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Sound/space shield sounds/space shield sounds - 3.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Sound/space shield sounds/space shield sounds - 3.wav.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Sound/space shield sounds/space shield sounds - 4.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Sound/space shield sounds/space shield sounds - 4.wav.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Sound/space shield sounds/space shield sounds - 5.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Sound/space shield sounds/space shield sounds - 5.wav.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Sound/space shield sounds/space shield sounds - 6.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Sound/space shield sounds/space shield sounds - 6.wav.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Sound/space shield sounds/space shield sounds - 7.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Sound/space shield sounds/space shield sounds - 7.wav.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Sound/space shield sounds/space shield sounds - 8.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Sound/space shield sounds/space shield sounds - 8.wav.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Sound/space shield sounds/space shield sounds - 9.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Sound/space shield sounds/space shield sounds - 9.wav.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Sound/space shield sounds/space shield sounds.flp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Sound/space shield sounds/space shield sounds.flp.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Sprites/Shield.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Sprites/Shield/shieldGreen_Edit.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Sprites/Shield/shieldGreen_Edit.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Sprites/Shield/shieldWhite_Edit.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Sprites/Shield/shieldWhite_Edit.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Sprites/Shield/shield_Edit.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Sprites/Shield/shield_Edit.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Sprites/UI 1.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Sprites/UI 1/arrow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Sprites/UI 1/arrow.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/a_BurstDebugInformation_DoNotShip/tempburstlibs/armeabi-v7a/lib_burst_generated.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Images/space_01.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Images/space_01.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Images/space_02.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Images/space_02.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sprites/Ships/Resources.md" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Resources.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sprites/Ships/Resources.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Resources.md.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SpaceRogue/UI/Animator/MainMenuBackgroundAnimator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SpaceRogue/UI/Animator/MainMenuBackgroundAnimator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SpaceRogue/UI/Handler/MenuHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SpaceRogue/UI/Handler/MenuHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Styles/Dist/Main.uss" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/Styles/Dist/Main.uss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/View/MainMenu.uxml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/View/MainMenu.uxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/AndroidLogcatSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/AndroidLogcatSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2022.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2022.dwlt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2I0osiyp5WYVARQSgFJ8bKFshN5" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="531017af-cbc6-4629-baff-94207076d88b" name="Changes" comment="" />
+      <created>1669328071437</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1669328071437</updated>
+      <workItem from="1669328074003" duration="1000" />
+      <workItem from="1669365419861" duration="148000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

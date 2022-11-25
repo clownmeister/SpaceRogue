@@ -1,13 +1,20 @@
 {
     "m_SelectedDeviceId": "60466ee7",
     "m_SelectedPackage": {
-        "deviceId": "",
-        "name": "",
-        "processId": 0,
+        "deviceId": "60466ee7",
+        "name": "com.DefaultCompany.com.unity.template.mobile2D",
+        "processId": 20797,
         "exited": false
     },
     "m_SelectedPriority": 0,
-    "m_KnownPackagesForSerialization": [],
+    "m_KnownPackagesForSerialization": [
+        {
+            "deviceId": "60466ee7",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 20797,
+            "exited": false
+        }
+    ],
     "m_Tags": {
         "m_Entries": [
             {
