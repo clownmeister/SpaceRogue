@@ -421,7 +421,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 891128294}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15fc5b20c314464da9fca3d27c91c893, type: 3}
+  m_Script: {fileID: 11500000, guid: 3652b32a310414543876b7c14d836b22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   positionClamps: {x: 75, y: 75}
@@ -704,10 +704,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1399789510}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15fc5b20c314464da9fca3d27c91c893, type: 3}
+  m_Script: {fileID: 11500000, guid: 3652b32a310414543876b7c14d836b22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  positionClamps: {x: 30, y: 30}
+  positionClamps: {x: 50, y: 50}
   stepSize: 0.03
   spherical: 1
 --- !u!114 &1399789513
@@ -830,7 +830,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1806854919}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15fc5b20c314464da9fca3d27c91c893, type: 3}
+  m_Script: {fileID: 11500000, guid: 3652b32a310414543876b7c14d836b22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   positionClamps: {x: 100, y: 100}

@@ -16,7 +16,7 @@
     &--primary-textured {
         //second number is scrollbar width
         padding: rem(20px) rem(8px) rem(10px) rem(15px);
-        background-image: resource("Sprites/UI/wenrexaassetsui_scifi/PNG/MainPanel03");
+        background-image: resource("Sprites/UI/MainPanel03");
         //stretch-to-fill | scale-and-crop | scale-to-fit
         -unity-background-scale-mode: stretch-to-fill;
         background-color: transparent;

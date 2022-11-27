@@ -159,7 +159,21 @@
   border-width: 0;
   background-color: transparent;
   font-size: 64px;
+  display: flex;
+  align-content: center;
+  align-items: center;
 }
+
+.btn > .i {
+  flex: 1 0 auto;
+  width: 100%;
+  min-width: 100%;
+  height: 100%;
+  min-height: 100%;
+  align-self: center;
+  -unity-background-scale-mode: scale-to-fit;
+}
+
 .btn--primary {
   background-color: #122128;
   color: #e4eff0;
@@ -170,13 +184,41 @@
   background-color: #0d191e;
   color: #fff;
 }
+
 .btn--primary-textured {
-  background-image: resource("Sprites/UI/wenrexaassetsui_scifi/PNG/Button11");
+  background-image: resource("Sprites/UI/Button11");
   color: #e4eff0;
 }
+
 .btn--primary-textured:hover {
   background-color: #0d191e;
   color: #fff;
+}
+
+.btn--primary-textured.btn--squared {
+  background-image: resource("Sprites/UI/Button03");
+}
+
+.btn--squared {
+  padding: 30px;
+  width: 150px;
+  min-width: 150px;
+  max-width: 150px;
+  height: 150px;
+  min-height: 150px;
+  max-height: 150px;
+}
+
+.btn--attack > .i {
+  background-image: resource("Sprites/Icons/sword");
+}
+
+.btn--defend > .i {
+  background-image: resource("Sprites/Icons/shield");
+}
+
+.btn--clock > .i {
+  background-image: resource("Sprites/Icons/clock");
 }
 
 .page {
@@ -186,12 +228,12 @@
   justify-content: center;
   align-items: center;
 }
+
 .page__content {
   width: 50%;
   height: 100%;
   max-width: 1500px;
 }
-
 @media only screen and (min-device-width: 1000px) {
   .page__content {
     width: 100%;
@@ -223,7 +265,7 @@
 }
 .portlet--primary-textured {
   padding: 40px 16px 20px 30px;
-  background-image: resource("Sprites/UI/wenrexaassetsui_scifi/PNG/MainPanel03");
+  background-image: resource("Sprites/UI/MainPanel03");
   -unity-background-scale-mode: stretch-to-fill;
   background-color: transparent;
   color: #e4eff0;
@@ -352,9 +394,44 @@
   flex: 1 1 auto;
   width: 100%;
 }
+
 .about__footer {
   width: 100%;
   flex-direction: row;
   justify-content: center;
   margin-top: 15px;
+}
+
+.game {
+  padding: 30px;
+}
+
+.game__header {
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+.game__content {
+  width: 100%;
+  flex: 1 1 auto;
+}
+
+.game__footer {
+  width: 100%;
+  flex-direction: row;
+  flex: 0 0 auto;
+}
+
+.game__footer-content {
+  flex: 1 1 auto;
+}
+
+.game__turn-controls {
+  flex: 0 0 auto;
+  align-self: flex-end;
+  flex-direction: row;
+}
+
+.game__turn-controls > .btn, .game__turn-controls > .btn > .i {
+  margin-left: 20px;
 }

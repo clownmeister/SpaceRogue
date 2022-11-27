@@ -8,6 +8,19 @@
   border-width: 0;
   background-color: transparent;
   font-size: rem(32px);
+  display: flex;
+  align-content: center;
+  align-items: center;
+
+  & > .i {
+    flex: 1 0 auto;
+    width: 100%;
+    min-width: 100%;
+    height: 100%;
+    min-height: 100%;
+    align-self: center;
+    -unity-background-scale-mode: scale-to-fit;
+  }
 
   &--primary {
     background-color: $bg-primary;
@@ -19,13 +32,37 @@
       color: $text-primary-hover;
     }
   }
-  
+
   &--primary-textured {
-    background-image: resource("Sprites/UI/wenrexaassetsui_scifi/PNG/Button11");
+    background-image: resource("Sprites/UI/Button11");
     color: $text-primary;
     &:hover{
       background-color: $bg-primary-hover;
       color: $text-primary-hover;
     }
+    &.btn--squared {
+      background-image: resource("Sprites/UI/Button03");
+    }
+  }
+
+  &--squared {
+    $size: rem(75px);
+    padding: rem(15px);
+    width: $size;
+    min-width: $size;
+    max-width: $size;
+    height: $size;
+    min-height: $size;
+    max-height: $size;
+  }
+
+  &--attack > .i {
+    background-image: resource("Sprites/Icons/sword");
+  }
+  &--defend > .i {
+    background-image: resource("Sprites/Icons/shield");
+  }
+  &--clock > .i {
+    background-image: resource("Sprites/Icons/clock");
   }
 }
