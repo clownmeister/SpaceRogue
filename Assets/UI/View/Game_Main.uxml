@@ -22,7 +22,7 @@
                 </SpaceRogue.UI.Element.ButtonElement>
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="ModalWrapper" class="modal__wrapper">
+        <ui:VisualElement name="ModalWrapper" class="modal__wrapper" style="display: none;">
             <ui:Instance template="Game_PauseMenu" name="Game_PauseMenu" style="display: none;"/>
             <ui:Instance template="MainMenu__Settings" name="MainMenu__Settings"/>
         </ui:VisualElement>
