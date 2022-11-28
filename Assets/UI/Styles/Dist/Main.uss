@@ -6,99 +6,165 @@
 }
 
 .mt1 {
-  margin-top: 5px;
-}
-
-.mt2 {
-  margin-top: 10px;
-}
-
-.mt3 {
-  margin-top: 15px;
-}
-
-.mt4 {
   margin-top: 20px;
 }
 
-.mt5 {
-  margin-top: 25px;
-}
-
-.mt6 {
-  margin-top: 30px;
-}
-
-.mb1 {
-  margin-bottom: 5px;
-}
-
-.mb2 {
-  margin-bottom: 10px;
-}
-
-.mb3 {
-  margin-bottom: 15px;
-}
-
-.mb4 {
-  margin-bottom: 20px;
-}
-
-.mb5 {
-  margin-bottom: 25px;
-}
-
-.mb6 {
-  margin-bottom: 30px;
-}
-
-.ml1 {
-  margin-left: 5px;
-}
-
-.ml2 {
-  margin-left: 10px;
-}
-
-.ml3 {
-  margin-left: 15px;
-}
-
-.ml4 {
-  margin-left: 20px;
-}
-
-.ml5 {
-  margin-left: 25px;
-}
-
-.ml6 {
-  margin-left: 30px;
-}
-
 .mr1 {
-  margin-right: 5px;
-}
-
-.mr2 {
-  margin-right: 10px;
-}
-
-.mr3 {
-  margin-right: 15px;
-}
-
-.mr4 {
   margin-right: 20px;
 }
 
+.mb1 {
+  margin-bottom: 20px;
+}
+
+.ml1 {
+  margin-left: 20px;
+}
+
+.mx1 {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.my1 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.mt2 {
+  margin-top: 40px;
+}
+
+.mr2 {
+  margin-right: 40px;
+}
+
+.mb2 {
+  margin-bottom: 40px;
+}
+
+.ml2 {
+  margin-left: 40px;
+}
+
+.mx2 {
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+.my2 {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.mt3 {
+  margin-top: 60px;
+}
+
+.mr3 {
+  margin-right: 60px;
+}
+
+.mb3 {
+  margin-bottom: 60px;
+}
+
+.ml3 {
+  margin-left: 60px;
+}
+
+.mx3 {
+  margin-left: 60px;
+  margin-right: 60px;
+}
+
+.my3 {
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+.mt4 {
+  margin-top: 80px;
+}
+
+.mr4 {
+  margin-right: 80px;
+}
+
+.mb4 {
+  margin-bottom: 80px;
+}
+
+.ml4 {
+  margin-left: 80px;
+}
+
+.mx4 {
+  margin-left: 80px;
+  margin-right: 80px;
+}
+
+.my4 {
+  margin-top: 80px;
+  margin-bottom: 80px;
+}
+
+.mt5 {
+  margin-top: 100px;
+}
+
 .mr5 {
-  margin-right: 25px;
+  margin-right: 100px;
+}
+
+.mb5 {
+  margin-bottom: 100px;
+}
+
+.ml5 {
+  margin-left: 100px;
+}
+
+.mx5 {
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+.my5 {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.mt6 {
+  margin-top: 120px;
 }
 
 .mr6 {
-  margin-right: 30px;
+  margin-right: 120px;
+}
+
+.mb6 {
+  margin-bottom: 120px;
+}
+
+.ml6 {
+  margin-left: 120px;
+}
+
+.mx6 {
+  margin-left: 120px;
+  margin-right: 120px;
+}
+
+.my6 {
+  margin-top: 120px;
+  margin-bottom: 120px;
+}
+
+.centered {
+  align-content: center;
+  align-items: center;
+  justify-content: center;
 }
 
 .text {
@@ -111,6 +177,10 @@
 
 .text--italic {
   -unity-font-style: italic;
+}
+
+.text--center {
+  -unity-text-align: middle-center;
 }
 
 .h1 {
@@ -163,7 +233,6 @@
   align-content: center;
   align-items: center;
 }
-
 .btn > .i {
   flex: 1 0 auto;
   width: 100%;
@@ -173,7 +242,6 @@
   align-self: center;
   -unity-background-scale-mode: scale-to-fit;
 }
-
 .btn--primary {
   background-color: #122128;
   color: #e4eff0;
@@ -184,21 +252,17 @@
   background-color: #0d191e;
   color: #fff;
 }
-
 .btn--primary-textured {
   background-image: resource("Sprites/UI/Button11");
   color: #e4eff0;
 }
-
 .btn--primary-textured:hover {
   background-color: #0d191e;
   color: #fff;
 }
-
 .btn--primary-textured.btn--squared {
   background-image: resource("Sprites/UI/Button03");
 }
-
 .btn--squared {
   padding: 30px;
   width: 150px;
@@ -208,15 +272,12 @@
   min-height: 150px;
   max-height: 150px;
 }
-
 .btn--attack > .i {
   background-image: resource("Sprites/Icons/sword");
 }
-
 .btn--defend > .i {
   background-image: resource("Sprites/Icons/shield");
 }
-
 .btn--clock > .i {
   background-image: resource("Sprites/Icons/clock");
 }
@@ -228,7 +289,6 @@
   justify-content: center;
   align-items: center;
 }
-
 .page__content {
   width: 50%;
   height: 100%;
@@ -320,13 +380,29 @@
   align-content: center;
   background-color: transparent;
 }
+
 .unity-scroller--vertical > .unity-scroller__low-button, .unity-scroller--vertical > .unity-scroller__high-button {
   display: none;
+}
+
+.modal__wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  align-items: center;
+  justify-content: center;
+  align-content: center;
 }
 
 .main-menu {
   flex: 1 1 auto;
 }
+
 .main-menu__background {
   background-image: resource("Images/bg_space_02");
   transition-property: translate;
@@ -394,7 +470,6 @@
   flex: 1 1 auto;
   width: 100%;
 }
-
 .about__footer {
   width: 100%;
   flex-direction: row;
@@ -405,23 +480,19 @@
 .game {
   padding: 30px;
 }
-
 .game__header {
   width: 100%;
   flex: 0 0 auto;
 }
-
 .game__content {
   width: 100%;
   flex: 1 1 auto;
 }
-
 .game__footer {
   width: 100%;
   flex-direction: row;
   flex: 0 0 auto;
 }
-
 .game__footer-content {
   flex: 1 1 auto;
 }
@@ -434,4 +505,20 @@
 
 .game__turn-controls > .btn, .game__turn-controls > .btn > .i {
   margin-left: 20px;
+}
+
+.pause__main {
+  flex: 1 1 auto;
+  padding: 60px;
+  align-items: center;
+  justify-content: center;
+}
+
+.pause__main > .btn {
+  margin-top: 20px;
+}
+
+.pause__label {
+  margin-bottom: 40px;
+  -unity-text-align: middle-center;
 }

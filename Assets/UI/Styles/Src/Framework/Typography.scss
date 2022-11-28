@@ -10,6 +10,10 @@
   -unity-font-style: italic;
 }
 
+.text--center {
+  -unity-text-align: middle-center;
+}
+
 .h1 {
   -unity-font-definition: var(--font-heading);
   white-space: normal;

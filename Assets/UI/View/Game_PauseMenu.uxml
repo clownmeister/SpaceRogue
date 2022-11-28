@@ -1,0 +1,15 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements"
+         xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements"
+         noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Styles/Dist/Main.uss?fileID=7433441132597879392&amp;guid=c02a89fdb5ad97d4a89a3a9622974b47&amp;type=3#Main"/>
+    <ui:VisualElement name="Pause" class="pause">
+        <ui:VisualElement name="Main" class="pause__main portlet portlet--primary-textured">
+            <ui:Label tabindex="-1" text="Paused" display-tooltip-when-elided="true" name="Paused"
+                      class="h1 pause__label"/>
+            <SpaceRogue.UI.Element.ButtonElement name="Resume" text="Resume Game" class="btn btn--primary-textured"/>
+            <SpaceRogue.UI.Element.ButtonElement name="Settings" text="Settings" class="btn--primary-textured btn"/>
+            <SpaceRogue.UI.Element.ButtonElement name="ExitMenu" text="Main Menu" class="btn btn--primary-textured"/>
+            <SpaceRogue.UI.Element.ButtonElement name="ExitApp" text="Exit" class="btn btn--primary-textured"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

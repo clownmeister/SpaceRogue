@@ -3,26 +3,26 @@
          noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/Styles/Dist/Main.uss?fileID=7433441132597879392&amp;guid=c02a89fdb5ad97d4a89a3a9622974b47&amp;type=3#Main"/>
     <ui:VisualElement name="Content" class="about">
-        <ui:VisualElement name="AboutMain" class="about__main">
+        <ui:VisualElement name="AboutMain" class="about__main text--center centered">
             <ui:VisualElement name="AboutCredits" class="about__credits portlet portlet--primary-textured">
                 <ui:ScrollView name="ScrollView">
                     <ui:Label text="THANK YOU FOR PLAYING!" display-tooltip-when-elided="true" name="AboutHeading"
-                              class="h2 mb6"/>
+                              class="h2 mb3"/>
                     <ui:Label
                             text="This means alot to me since this is my first published game. My dream was always to develop games with main focus on staying true to the fanbase and avoiding any toxic payment options or any kind of pay to win. Support the game by leaving honest reviews or by purchasing full game."
                             display-tooltip-when-elided="true" name="AboutText" class="text"/>
                     <ui:Label text="Created by:" display-tooltip-when-elided="true" name="AboutHeading"
-                              class="h3 mt6 mb3"/>
+                              class="h3 mt3 mb1"/>
                     <ui:Label text="Lucian Blazek" display-tooltip-when-elided="true" name="AboutText" class="text"/>
-                    <ui:Label text="Music:" display-tooltip-when-elided="true" name="AboutHeading" class="h3 mt6 mb3"/>
+                    <ui:Label text="Music:" display-tooltip-when-elided="true" name="AboutHeading" class="h3 mt3 mb1"/>
                     <ui:Label text="www.pixabay.com" display-tooltip-when-elided="true" name="AboutText" class="text"/>
                     <ui:Label text="Space images:" display-tooltip-when-elided="true" name="AboutHeading"
-                              class="h3 mt6 mb3"/>
+                              class="h3 mt3 mb1"/>
                     <ui:Label text="www.hubblesite.org" display-tooltip-when-elided="true" name="AboutText"
                               class="text"/>
                     <ui:Label text="www.nasa.gov" display-tooltip-when-elided="true" name="AboutText" class="text"/>
                     <ui:Label text="Spaceships:" display-tooltip-when-elided="true" name="AboutHeading"
-                              class="h3 mt6 mb3"/>
+                              class="h3 mt3 mb1"/>
                     <ui:Label text="Wubitog and Scorpio (opengameart.org)" display-tooltip-when-elided="true"
                               name="AboutText" class="text"/>
                 </ui:ScrollView>
@@ -30,7 +30,7 @@
         </ui:VisualElement>
         <ui:VisualElement name="AboutFooter" class="about__footer">
             <SpaceRogue.UI.Element.ButtonElement text="Back" name="BackButton" data="main"
-                                                 class="btn btn--primary-textured -btn-target-page-open"/>
+                                                 class="btn btn--primary-textured -btn-target-page-open mt1"/>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

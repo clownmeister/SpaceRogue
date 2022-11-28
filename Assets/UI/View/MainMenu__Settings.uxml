@@ -4,16 +4,30 @@
     <Style src="project://database/Assets/UI/Styles/Dist/Main.uss?fileID=7433441132597879392&amp;guid=c02a89fdb5ad97d4a89a3a9622974b47&amp;type=3#Main"/>
     <ui:VisualElement name="Content" class="settings">
         <ui:VisualElement name="SettingsMain" class="settings__main">
-            <ui:VisualElement name="Portlet" class="portlet portlet--primary-textured">
+            <ui:VisualElement name="Portlet" class="portlet portlet--primary-textured centered text--center">
                 <ui:ScrollView name="SettingsPortletContent">
-                    <ui:Label text="Settings" display-tooltip-when-elided="true" name="SettingsHeading" class="h2 mb6"/>
-                    <ui:Label text="TBA" display-tooltip-when-elided="true" name="Text" class="text"/>
+                    <ui:Label text="Settings" display-tooltip-when-elided="true" name="SettingsHeading" class="mb3 h1"/>
+                    <ui:Label text="Audio" display-tooltip-when-elided="true" name="Audio" class="h2 mb1"/>
+                    <ui:Slider picking-mode="Ignore" label="Master Volume" value="50" high-value="100" name="Master"/>
+                    <ui:Slider picking-mode="Ignore" label="Music Volume" value="50" high-value="100" name="Music"
+                               class="mt2"/>
+                    <ui:Toggle label="Music Enabled" name="MuteMusic"/>
+                    <ui:Slider picking-mode="Ignore" label="Sounds Volume" value="50" high-value="100" name="Sounds"
+                               class="mt2"/>
+                    <ui:Toggle label="Souds Enabled" name="MuteSounds"/>
+                    <ui:Label text="Other" display-tooltip-when-elided="true" name="Other" class="h2 mb1 mt2"/>
+                    <ui:Toggle label="Battery friendly mode" name="BatterySaverMode"/>
+                    <ui:Label text="Account and data" display-tooltip-when-elided="true" name="Account"
+                              class="h2 mb1 mt2"/>
+                    <ui:Label text="Login and sync your data" display-tooltip-when-elided="true" name="AccountDesc"/>
+                    <SpaceRogue.UI.Element.ButtonElement name="GoogleGamesBtn"
+                                                         class="btn btn--primary-textured btn--squared"/>
                 </ui:ScrollView>
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="Footer" class="settings__footer">
             <SpaceRogue.UI.Element.ButtonElement text="Back" name="BackButton" data="main"
-                                                 class="btn btn--primary-textured -btn-target-page-open"/>
+                                                 class="btn btn--primary-textured -btn-target-page-open mt2"/>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

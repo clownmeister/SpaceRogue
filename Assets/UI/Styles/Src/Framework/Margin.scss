@@ -1,99 +1,25 @@
 ﻿$margin-sizes: 6;
-$margin-step: rem(5px);
+$margin-step: rem(10px);
 
-
-.mt1 {
-  margin-top: 5px;
-}
-
-.mt2 {
-  margin-top: 10px;
-}
-
-.mt3 {
-  margin-top: 15px;
-}
-
-.mt4 {
-  margin-top: 20px;
-}
-
-.mt5 {
-  margin-top: 25px;
-}
-
-.mt6 {
-  margin-top: 30px;
-}
-
-.mb1 {
-  margin-bottom: 5px;
-}
-
-.mb2 {
-  margin-bottom: 10px;
-}
-
-.mb3 {
-  margin-bottom: 15px;
-}
-
-.mb4 {
-  margin-bottom: 20px;
-}
-
-.mb5 {
-  margin-bottom: 25px;
-}
-
-.mb6 {
-  margin-bottom: 30px;
-}
-
-.ml1 {
-  margin-left: 5px;
-}
-
-.ml2 {
-  margin-left: 10px;
-}
-
-.ml3 {
-  margin-left: 15px;
-}
-
-.ml4 {
-  margin-left: 20px;
-}
-
-.ml5 {
-  margin-left: 25px;
-}
-
-.ml6 {
-  margin-left: 30px;
-}
-
-.mr1 {
-  margin-right: 5px;
-}
-
-.mr2 {
-  margin-right: 10px;
-}
-
-.mr3 {
-  margin-right: 15px;
-}
-
-.mr4 {
-  margin-right: 20px;
-}
-
-.mr5 {
-  margin-right: 25px;
-}
-
-.mr6 {
-  margin-right: 30px;
+@for $i from 1 through $margin-sizes {
+  .mt#{$i} {
+    margin-top: $margin-step * $i;
+  }
+  .mr#{$i} {
+    margin-right: $margin-step * $i;
+  }
+  .mb#{$i} {
+    margin-bottom: $margin-step * $i;
+  }
+  .ml#{$i} {
+    margin-left: $margin-step * $i;
+  }
+  .mx#{$i} {
+    margin-left: $margin-step * $i;
+    margin-right: $margin-step * $i;
+  }
+  .my#{$i} {
+    margin-top: $margin-step * $i;
+    margin-bottom: $margin-step * $i;
+  }
 }
