@@ -1,16 +1,18 @@
+using SpaceRogue.Map.Settings;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace SpaceRogue.Map.Controller
 {
     public class MapController : MonoBehaviour
     {
-        private MapGenerator mapGenerator;
+        public int seed;
+        public SystemMapSettings systemMapSettings;
 
+        private SystemMap systemMap;
         void Start()
         {
-            this.mapGenerator = new MapGenerator();
+            this.systemMap = new SystemMap(this.systemMapSettings, this.seed);
         }
-
-        void Update() { }
     }
 }
