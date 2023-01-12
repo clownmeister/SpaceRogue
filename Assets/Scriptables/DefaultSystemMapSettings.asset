@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: DefaultSystemMapSettings
   m_EditorClassIdentifier: 
   <MapName>k__BackingField: System Map
-  mapSize: {x: 1000, y: 1000}
+  mapSize: {x: 1000, y: 500}
+  mapPadding: {x: 50, y: 50}
   nodeAmount: 20
   nodeAmountVariation: 3
   minNodeDistance: 100
   shopChance: 0
   minNodeConnections: 0
   maxNodeConnection: 0
+  nodePrefab: {fileID: 452607897702432400, guid: d65b78b20a5ef7a4f8cc432b50974743, type: 3}
