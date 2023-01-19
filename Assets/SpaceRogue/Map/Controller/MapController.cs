@@ -1,8 +1,6 @@
 using System.Collections.Generic;
 using SpaceRogue.Map.Node;
 using SpaceRogue.Map.Settings;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 
 namespace SpaceRogue.Map.Controller
@@ -60,14 +58,14 @@ namespace SpaceRogue.Map.Controller
         {
             foreach (KeyValuePair<Vector2, MapNode> node in this.systemMap.Nodes)
             {
-                Vector2 position = TranslatePointOnMapToScreenSize(node.Key, this.mapCanvas.renderingDisplaySize, this.systemMapSettings.mapSize);
+                Vector2 position = TranslatePointOnMapToScreenSize(node.Key);
                 Instantiate(this.systemMapSettings.nodePrefab, new Vector3(position.x, position.y, 0), Quaternion.identity, this.systemMapParent);
             }
         }
         
-        private Vector2 TranslatePointOnMapToScreenSize(Vector2 point, Vector2 screenSize, Vector2 mapSize)
+        private Vector2 TranslatePointOnMapToScreenSize(Vector2 point)
         {
-            return screenSize / mapSize * point;
+            return new Vector2(Screen.width, Screen.height) / this.systemMapSettings.mapSize * point;
         }
     }
 }
