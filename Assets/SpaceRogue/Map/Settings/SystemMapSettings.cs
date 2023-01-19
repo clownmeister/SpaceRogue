@@ -9,11 +9,12 @@ namespace SpaceRogue.Map.Settings
         public Vector2 mapSize;
         public Vector2 mapPadding;
         [Range(1, 100)]
-        public int nodeAmount;
-        [Description("Randomnes limit to NodeAmount should result as same for each seed.")]
-        public int nodeAmountVariation;
+        public int nodeAmount = 18;
+        [Description("Randomness limit to NodeAmount should result as same for each seed.")]
+        public int nodeAmountVariation = 4;
+        public int maxAttemptsNodePlacement = 100;
 
-        public float minNodeDistance;
+        public float minNodeDistance = 100;
 
         public int shopChance;
         public int minNodeConnections;

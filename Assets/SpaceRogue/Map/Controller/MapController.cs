@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using SpaceRogue.Map.Node;
 using SpaceRogue.Map.Settings;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 namespace SpaceRogue.Map.Controller
@@ -16,21 +18,22 @@ namespace SpaceRogue.Map.Controller
         void Start()
         {
             this.systemMap = new SystemMap(this.systemMapSettings);
-
+            RegenerateMap(this.seed);
         }
 
         private void RegenerateMap(int seed)
         {
+            this.seed = seed;
             DestroyAllChildren(this.systemMapParent);
             this.systemMap.Generate(this.seed);
             DrawSystemMap();
         }
 
-        private static void DestroyAllChildren(Component transform)
+        private static void DestroyAllChildren(Component component)
         {
-            foreach (GameObject child in transform.GetComponentsInChildren<GameObject>())
+            foreach (Transform child in component.transform)
             {
-                Destroy(child);
+                Destroy(child.gameObject);
             }
         }
         
@@ -39,15 +42,20 @@ namespace SpaceRogue.Map.Controller
             //TODO: DEBUG
             if (Input.GetKeyDown(KeyCode.M))
             {
-                this.mapCanvas.enabled = !this.mapCanvas.isActiveAndEnabled;
+                ShowMap(!this.mapCanvas.isActiveAndEnabled);
             }
             
             if (Input.GetKeyDown(KeyCode.G))
             {
-                
+                RegenerateMap(Random.Range(0, 999_999));
             }
         }
 
+        private void ShowMap(bool show = true)
+        {
+            this.mapCanvas.enabled = show;
+        }
+        
         private void DrawSystemMap()
         {
             foreach (KeyValuePair<Vector2, MapNode> node in this.systemMap.Nodes)

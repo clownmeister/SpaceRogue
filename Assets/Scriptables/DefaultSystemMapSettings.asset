@@ -15,8 +15,9 @@ MonoBehaviour:
   <MapName>k__BackingField: System Map
   mapSize: {x: 1000, y: 500}
   mapPadding: {x: 50, y: 50}
-  nodeAmount: 20
-  nodeAmountVariation: 3
+  nodeAmount: 18
+  nodeAmountVariation: 4
+  maxAttemptsNodePlacement: 100
   minNodeDistance: 100
   shopChance: 0
   minNodeConnections: 0

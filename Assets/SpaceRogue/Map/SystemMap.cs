@@ -32,7 +32,7 @@ namespace SpaceRogue.Map
             Dictionary<Vector2, MapNode> result = new();
 
             this.finalAmount = settings.nodeAmount + Random.Range(-settings.nodeAmountVariation, settings.nodeAmountVariation + 1);
-
+            int attempts = 0;
             for (int i = 0; i < this.finalAmount; i++)
             {
                 Vector2 boundaryX = GetMapAxisBoundaries(settings.mapSize.x, settings.mapPadding.x);
@@ -40,11 +40,19 @@ namespace SpaceRogue.Map
                 Vector2 position = new(Random.Range(boundaryX.x, boundaryX.y), Random.Range(boundaryY.x, boundaryY.y));
                 if (!ValidPosition(result, settings, position))
                 {
+                    attempts++;
+                    if (attempts > this.settings.maxAttemptsNodePlacement)
+                    {
+                        Debug.LogWarning("Not enough free positions. Skipping additional node creation!");
+                        return result;
+                    }
+                    
                     i--;
-                    Debug.Log("Invalid position resetting");
+                    Debug.Log("Not enough space for node placement. Invalid position resetting");
                     continue;
                 }
 
+                attempts = 0;
                 result.Add(position, new MapNode());
                 Debug.Log(position);
             }
