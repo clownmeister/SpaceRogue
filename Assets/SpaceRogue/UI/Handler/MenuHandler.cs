@@ -1,6 +1,6 @@
-﻿using System;
+﻿using SpaceRogue.UI.Element;
+using System;
 using System.Collections.Generic;
-using SpaceRogue.UI.Element;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -54,7 +54,7 @@ namespace SpaceRogue.UI.Handler
         {
             Debug.Log("click");
             if (clickEvent.currentTarget is not ButtonElement button) throw new NullReferenceException("Could not find button in event");
-            this.pageVisibilityHandler.HandleState(button.data);
+            this.pageVisibilityHandler.HandleState(button.Data);
         }
     }
 }

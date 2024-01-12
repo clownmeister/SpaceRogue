@@ -6,13 +6,13 @@ namespace SpaceRogue.UI.Element
 {
     public class ButtonElement : Button
     {
-        public string data { get; set; }
+        public string Data { get; set; }
 
         public new class UxmlFactory : UxmlFactory<ButtonElement, UxmlTraits> { }
 
         public new class UxmlTraits : Button.UxmlTraits
         {
-            private readonly UxmlStringAttributeDescription data = new() { name = "data", defaultValue = "" };
+            private readonly UxmlStringAttributeDescription _data = new() { name = "data", defaultValue = "" };
 
             public override IEnumerable<UxmlChildElementDescription> uxmlChildElementsDescription
             {
@@ -25,7 +25,7 @@ namespace SpaceRogue.UI.Element
 
                 if (ve is not ButtonElement button) throw new Exception("Invalid element type provided");
 
-                button.data = this.data.GetValueFromBag(bag, cc);
+                button.Data = this._data.GetValueFromBag(bag, cc);
                 focusable.defaultValue = true;
             }
         }

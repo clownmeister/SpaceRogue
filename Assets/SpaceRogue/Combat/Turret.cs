@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace SpaceRogue
+namespace SpaceRogue.Combat
 {
     public class Turret : MonoBehaviour
     {
@@ -12,19 +12,21 @@ namespace SpaceRogue
         public float accuracy = 1f; // Accuracy between 0 and 1
         public float accuracySpread = 5f; // Accuracy between 0 and 1
         public float fireRate = 1f; // Number of shots per second
-        private float nextFireTime = 0f;
+        private float _nextFireTime = 0f;
 
-        private Quaternion targetRotation;
+        private Quaternion _targetRotation;
 
         void Update()
         {
-            if (Input.GetMouseButton(0)) {
+            if (Input.GetMouseButton(0))
+            {
                 SetTargetRotation();
                 RotateTurret();
 
-                if (Quaternion.Angle(transform.rotation, targetRotation) < 0.1f && Time.time >= nextFireTime) {
+                if (Quaternion.Angle(transform.rotation, _targetRotation) < 0.1f && Time.time >= _nextFireTime)
+                {
                     Shoot();
-                    nextFireTime = Time.time + 1f / fireRate;
+                    _nextFireTime = Time.time + 1f / fireRate;
                 }
             }
         }
@@ -37,12 +39,12 @@ namespace SpaceRogue
             aimDirection.z = 0;
 
             float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
-            targetRotation = Quaternion.Euler(new Vector3(0, 0, angle));
+            _targetRotation = Quaternion.Euler(new Vector3(0, 0, angle));
         }
 
         void RotateTurret()
         {
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, _targetRotation, rotationSpeed * Time.deltaTime);
         }
 
         void Shoot()

@@ -1,11 +1,12 @@
-﻿using System;
-using SpaceRogue.Utility;
+﻿using SpaceRogue.Utility;
+using System;
 using UnityEngine;
 
-namespace SpaceRogue
+namespace SpaceRogue.Navigation
 {
     [RequireComponent(typeof(Rigidbody2D))]
-    public class FleetNavigatorCantabrian : MonoBehaviour
+    [RequireComponent(typeof(ShipNavigationAgent))]
+    public class CantabrianNavigator : MonoBehaviour
     {
         public enum State
         {
@@ -16,38 +17,36 @@ namespace SpaceRogue
 
         public State currentState;
 
-        [Header("Movement Settings")] public float maxSpeed = 5f;
-
-        public float acceleration = 2f;
-        public float rotationSpeed = 2f;
-
         [Header("Orbit Settings")] public GameObject targetShip;
-
         public float radius = 5f;
         public float orbitDistanceTolerance = 1f;
-        public float nextWaypointAngle = 10f;
+        public float nextWaypointAngle = 30f;
 
         [Header("Gizmos")] public bool drawGizmos = true;
 
+        [SerializeField]
         private float currentSpeed = 0f;
+        private readonly Color _orbitColor = Color.red;
+        private readonly Color _tangentColor = Color.yellow;
+        private readonly Color _toleranceColor = new Color(1, 0, 0, 0.3f);
+        private readonly Color _waypointColor = Color.green;
 
-        private Vector2? navigationPoint = null; // Nullable for initial state
-        private Color orbitColor = Color.red;
-        private Rigidbody2D rigidBody;
-        private Color tangentColor = Color.yellow;
-        private Color toleranceColor = new Color(1, 0, 0, 0.3f);
-        private Color waypointColor = Color.green;
+        private Vector2? _navigationPoint = null;
+        private Rigidbody2D _rigidBody;
+        private ShipNavigationAgent _shipNavigationAgent;
 
         private void Start()
         {
-            rigidBody = GetComponent<Rigidbody2D>();
+            _shipNavigationAgent = GetComponent<ShipNavigationAgent>();
+            _rigidBody = GetComponent<Rigidbody2D>();
             currentState = State.Idle;
         }
 
         private void Update()
         {
             HandleStateSwitch();
-            switch (currentState) {
+            switch (currentState)
+            {
                 case State.Idle:
                     HandleIdle();
                     break;
@@ -66,91 +65,75 @@ namespace SpaceRogue
         {
             if (targetShip == null) return;
 
-            if (drawGizmos) {
-                // Draw orbit circle
-                Gizmo.DrawCircle(targetShip.transform.position, radius, orbitColor);
+            if (!this.drawGizmos) return;
+            // Draw orbit circle
+            Gizmo.DrawCircle(this.targetShip.transform.position, this.radius, this._orbitColor);
 
-                // Draw tolerance circles
-                Gizmo.DrawCircle(targetShip.transform.position, radius - orbitDistanceTolerance, toleranceColor);
-                Gizmo.DrawCircle(targetShip.transform.position, radius + orbitDistanceTolerance, toleranceColor);
+            // Draw tolerance circles
+            Gizmo.DrawCircle(this.targetShip.transform.position, this.radius - this.orbitDistanceTolerance, this._toleranceColor);
+            Gizmo.DrawCircle(this.targetShip.transform.position, this.radius + this.orbitDistanceTolerance, this._toleranceColor);
 
-                if (navigationPoint.HasValue) {
-                    // Draw navigation point
-                    Gizmos.color = waypointColor;
-                    Gizmos.DrawSphere(navigationPoint.Value, 0.2f);
-                }
-            }
+            if (!this._navigationPoint.HasValue) return;
+            // Draw navigation point
+            Gizmos.color = this._waypointColor;
+            Gizmos.DrawSphere(this._navigationPoint.Value, 0.2f);
+            if (this.currentState != State.Approach) return;
+            Gizmos.color = this._tangentColor;
+            Gizmos.DrawLine(transform.position, this._navigationPoint.Value);
         }
 
         private void HandleStateSwitch()
         {
-            // If we have a target and we are not already approaching or orbiting, then start approaching
-            if (targetShip != null && currentState == State.Idle) {
+            if (targetShip != null && currentState == State.Idle)
+            {
                 currentState = State.Approach;
-                navigationPoint = null; // Reset navigation point when we start approaching
+                _navigationPoint = null;
             }
         }
 
         private void HandleIdle()
         {
-            Decelerate();
+            _shipNavigationAgent.Stop();
         }
 
         private void HandleApproach()
         {
             if (targetShip == null) return;
-            if (!navigationPoint.HasValue) {
-                navigationPoint = CalculateApproachPoint();
-            }
+            _navigationPoint ??= CalculateApproachPoint();
 
-            MoveTowards(navigationPoint.Value);
-            if (Vector2.Distance(transform.position, navigationPoint.Value) <= orbitDistanceTolerance) {
-                currentState = State.Orbit;
-                navigationPoint = null; // Reset navigation point when transitioning to orbit
-            }
+            if (!_navigationPoint.HasValue) return;
+            _shipNavigationAgent.SetTarget(_navigationPoint.Value, OnNavigationFinished);
+
         }
 
         private void HandleOrbit()
         {
             if (targetShip == null) return;
-            if (!navigationPoint.HasValue) {
-                navigationPoint = CalculateNextWaypoint();
-            }
+            _navigationPoint ??= CalculateNextWaypoint();
 
-            MoveTowards(navigationPoint.Value);
-            if (Vector2.Distance(transform.position, navigationPoint.Value) <= orbitDistanceTolerance) {
-                navigationPoint = CalculateNextWaypoint(); // Calculate new waypoint after reaching the current one
-            }
+            if (!_navigationPoint.HasValue) return;
+            _shipNavigationAgent.SetTarget(_navigationPoint.Value, OnNavigationFinished);
         }
 
-        private void MoveTowards(Vector2 point)
+        private void OnNavigationFinished(bool success)
         {
-            Vector2 direction = (point - this.rigidBody.position).normalized;
-            float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            float angle = Mathf.LerpAngle(this.rigidBody.rotation, targetAngle, rotationSpeed * Time.deltaTime);
-            this.rigidBody.rotation = angle;
-            Accelerate();
-        }
-
-        private void Accelerate()
-        {
-            if (currentSpeed < maxSpeed) {
-                currentSpeed += acceleration * Time.deltaTime;
+            if (targetShip == null)
+            {
+                currentState = State.Idle;
+                return;
             }
 
-            this.rigidBody.velocity = transform.right * currentSpeed;
-        }
-
-        private void Decelerate()
-        {
-            if (currentSpeed > 0) {
-                currentSpeed -= acceleration * Time.deltaTime;
+            float distanceToTargetShip = Vector2.Distance(transform.position, targetShip.transform.position);
+            if (distanceToTargetShip > radius + orbitDistanceTolerance)
+            {
+                currentState = State.Approach;
             }
-            else {
-                currentSpeed = 0;
+            else
+            {
+                currentState = success ? State.Orbit : State.Approach;
             }
 
-            this.rigidBody.velocity = transform.right * currentSpeed;
+            _navigationPoint = null;
         }
 
         private Vector2 CalculateApproachPoint()
@@ -181,7 +164,7 @@ namespace SpaceRogue
             float currentAngle = Mathf.Atan2(toNavigator.y, toNavigator.x) * Mathf.Rad2Deg;
 
             // Determine the direction of the agent's movement relative to the orbit's center
-            Vector2 orbitMovementDirection = rigidBody.velocity.normalized;
+            Vector2 orbitMovementDirection = _rigidBody.velocity.normalized;
             Vector2 toRight = new Vector2(toNavigator.y, -toNavigator.x).normalized; // Right-hand perpendicular to the toNavigator
 
             // Determine if the movement is more clockwise or counter-clockwise

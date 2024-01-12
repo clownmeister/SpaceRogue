@@ -7,19 +7,19 @@ namespace SpaceRogue.UI.Controller
 {
     public class MainMenuController : MonoBehaviour
     {
-        private const string ExitButtonClassName = "-btn-target-exit";
-        private const string NewGameButtonClassName = "-btn-target-new-game";
+        private const string EXIT_BUTTON_CLASS_NAME = "-btn-target-exit";
+        private const string NEW_GAME_BUTTON_CLASS_NAME = "-btn-target-new-game";
 
         public UIDocument document;
         public string initialPageState = "main";
 
-        private MenuHandler menuHandler;
+        private MenuHandler _menuHandler;
 
         private void OnEnable()
         {
             VisualElement root = this.document.rootVisualElement;
 
-            this.menuHandler = new MenuHandler(root, this.initialPageState);
+            this._menuHandler = new MenuHandler(root, this.initialPageState);
 
             RegisterExitButton(root);
             RegisterNewGameButton(root);
@@ -27,7 +27,7 @@ namespace SpaceRogue.UI.Controller
 
         private void RegisterExitButton(VisualElement root)
         {
-            root.Q(className: ExitButtonClassName).RegisterCallback<ClickEvent>(clickEvent =>
+            root.Q(className: EXIT_BUTTON_CLASS_NAME).RegisterCallback<ClickEvent>(clickEvent =>
             {
                 // if (clickEvent.currentTarget is not ButtonElement button) throw new NullReferenceException("Could not find button in event");
                 Application.Quit();
@@ -36,7 +36,7 @@ namespace SpaceRogue.UI.Controller
 
         private void RegisterNewGameButton(VisualElement root)
         {
-            root.Q(className: NewGameButtonClassName).RegisterCallback<ClickEvent>(clickEvent => { SceneManager.LoadScene("Game"); });
+            root.Q(className: NEW_GAME_BUTTON_CLASS_NAME).RegisterCallback<ClickEvent>(clickEvent => { SceneManager.LoadScene("Game"); });
         }
     }
 }
