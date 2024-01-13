@@ -8,9 +8,10 @@ namespace SpaceRogue.Combat.Projectiles
         public float energyDamage;
         public bool canPenetrateShields;
 
-        private void OnCollisionEnter(Collision collision)
+        private void OnTriggerEnter2D(Collider2D other)
         {
-            IDamageable damageable = collision.collider.GetComponent<IDamageable>();
+            Debug.Log("HIT");
+            IDamageable damageable = other.GetComponent<IDamageable>();
             switch (damageable)
             {
                 case null:
@@ -34,7 +35,7 @@ namespace SpaceRogue.Combat.Projectiles
         private void Die()
         {
             //TODO: death animation, IDeathAnimator
-            Destroy(gameObject);
+            Destroy(this.transform.gameObject);
         }
     }
 }

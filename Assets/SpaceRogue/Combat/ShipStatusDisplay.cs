@@ -6,10 +6,13 @@ namespace SpaceRogue.Combat
     [RequireComponent(typeof(Hull))]
     public class ShipStatusDisplay : MonoBehaviour
     {
-        public Color shieldBarColor;
-        public Color hullBarColor;
-        public float yOffset;
+        public float yOffset = -1;
         public Canvas canvas; // World Space Canvas
+        private readonly Color _hullBarColor = Color.green;
+        //TODO: fix
+        // private Color shieldBarColor = new Color(0,150,255,1);
+        // private Color hullBarColor = new Color(0,171, 8,1);
+        private readonly Color _shieldBarColor = Color.blue;
         private bool _hasShield;
         private Slider _hullBar;
         private Slider _shieldBar;
@@ -23,12 +26,12 @@ namespace SpaceRogue.Combat
             _shipShield = GetComponent<Shield>();
             _hasShield = _shipShield != null;
 
-            _hullBar = CreateStatusBar("HullBar", hullBarColor);
+            _hullBar = CreateStatusBar("HullBar", _hullBarColor);
             _hullBar.maxValue = _shipHull.hullIntegrity;
 
             if (_hasShield)
             {
-                _shieldBar = CreateStatusBar("ShieldBar", shieldBarColor);
+                _shieldBar = CreateStatusBar("ShieldBar", _shieldBarColor);
                 _shieldBar.maxValue = _shipShield.shieldStrength;
             }
 
@@ -37,10 +40,6 @@ namespace SpaceRogue.Combat
 
         private void Update()
         {
-            // Debug logs to check if the components are null
-            Debug.Log("_shipHull: " + (_shipHull != null));
-            Debug.Log("_hullBar: " + (_hullBar != null));
-
             // Check if the Shield component exists and update its status
             if (_hasShield && _shipShield != null)
             {
@@ -78,14 +77,13 @@ namespace SpaceRogue.Combat
             fillAreaRect.anchorMin = new Vector2(0, 0.5f);
             fillAreaRect.anchorMax = new Vector2(1, 0.5f);
             fillAreaRect.pivot = new Vector2(0.5f, 0.5f);
-            fillAreaRect.sizeDelta = new Vector2(0, 10); // Height of the fill area
+            fillAreaRect.sizeDelta = new Vector2(0, 3); // Height of the fill area
 
             // Create the Fill
             GameObject fill = new GameObject("Fill", typeof(Image));
             fill.transform.SetParent(fillArea.transform, false);
 
             Image fillImage = fill.GetComponent<Image>();
-            color.a = 1f; // Ensure alpha is fully opaque
             fillImage.color = color;
             fillImage.type = Image.Type.Filled;
             fillImage.fillMethod = Image.FillMethod.Horizontal;
@@ -94,7 +92,7 @@ namespace SpaceRogue.Combat
             fillRect.anchorMin = new Vector2(0, 0.5f);
             fillRect.anchorMax = new Vector2(1, 0.5f);
             fillRect.pivot = new Vector2(0, 0.5f);
-            fillRect.sizeDelta = new Vector2(100, 10); // Initial size of the fill
+            fillRect.sizeDelta = new Vector2(0, 0); // Initial size of the fill
 
             // Configure slider properties
             slider.fillRect = fillRect;
@@ -102,7 +100,7 @@ namespace SpaceRogue.Combat
 
             // Configure the main slider RectTransform
             RectTransform statusBarRect = statusBar.GetComponent<RectTransform>();
-            statusBarRect.sizeDelta = new Vector2(100, 10); // Default size, adjust as needed
+            statusBarRect.sizeDelta = new Vector2(50, 3); // Default size, adjust as needed
             statusBarRect.anchorMin = statusBarRect.anchorMax = statusBarRect.pivot = new Vector2(0.5f, 0.5f);
 
             return slider;
@@ -115,8 +113,9 @@ namespace SpaceRogue.Combat
 
             if (_hasShield && _shieldBar != null)
             {
-                _shieldBar.GetComponent<RectTransform>().position = shipPosition;
-                shipPosition.y -= _shieldBar.GetComponent<RectTransform>().rect.height;
+                RectTransform shieldBarRect = _shieldBar.GetComponent<RectTransform>();
+                shieldBarRect.position = shipPosition;
+                shipPosition.y -= .1f; // Assuming 5 is the desired offset in world units
             }
 
             if (_hullBar != null)
