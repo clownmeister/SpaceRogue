@@ -9,30 +9,23 @@ namespace SpaceRogue.Combat
         public float yOffset = -1;
         public Canvas canvas; // World Space Canvas
         private readonly Color _hullBarColor = Color.green;
-        //TODO: fix
-        // private Color shieldBarColor = new Color(0,150,255,1);
-        // private Color hullBarColor = new Color(0,171, 8,1);
         private readonly Color _shieldBarColor = Color.blue;
         private bool _hasShield;
-        private Slider _hullBar;
-        private Slider _shieldBar;
+        private Image _hullBar;
+        private Image _shieldBar;
         private Hull _shipHull;
-
         private Shield _shipShield;
 
         private void Start()
         {
             _shipHull = GetComponent<Hull>();
-            _shipShield = GetComponent<Shield>();
+            _shipShield = GetComponentInChildren<Shield>();
             _hasShield = _shipShield != null;
 
             _hullBar = CreateStatusBar("HullBar", _hullBarColor);
-            _hullBar.maxValue = _shipHull.hullIntegrity;
-
             if (_hasShield)
             {
                 _shieldBar = CreateStatusBar("ShieldBar", _shieldBarColor);
-                _shieldBar.maxValue = _shipShield.shieldStrength;
             }
 
             UpdatePosition();
@@ -40,70 +33,44 @@ namespace SpaceRogue.Combat
 
         private void Update()
         {
-            // Check if the Shield component exists and update its status
             if (_hasShield && _shipShield != null)
             {
-                _shieldBar.value = _shipShield.CurrentHitPoints;
+                UpdateBarSize(_shieldBar, _shipShield.CurrentHitPoints, _shipShield.MaxHitPoints);
             }
 
-            // Update the Hull status, checking if _hullBar and _shipHull are not null
             if (_hullBar != null && _shipHull != null)
             {
-                _hullBar.value = _shipHull.CurrentHitPoints;
-            }
-            else
-            {
-                Debug.LogError("HullBar or ShipHull is null!");
+                UpdateBarSize(_hullBar, _shipHull.CurrentHitPoints, _shipHull.MaxHitPoints);
             }
 
             UpdatePosition();
         }
 
-        private Slider CreateStatusBar(string name, Color color)
+        public void OnDestroy()
         {
-            // Create the main slider object
+            Destroy(this._hullBar);
+            Destroy(this._shieldBar);
+        }
+
+        private Image CreateStatusBar(string name, Color color)
+        {
             GameObject statusBar = new GameObject(name, typeof(Image));
-            statusBar.transform.SetParent(canvas.transform, false); // Set as child of the canvas
+            statusBar.transform.SetParent(canvas.transform, false);
 
-            // Add the Slider component
-            Slider slider = statusBar.AddComponent<Slider>();
-            slider.interactable = false; // Make the slider non-interactive
+            Image image = statusBar.GetComponent<Image>();
+            image.color = color;
 
-            // Create the Fill Area
-            GameObject fillArea = new GameObject("Fill Area", typeof(RectTransform));
-            fillArea.transform.SetParent(statusBar.transform, false);
+            RectTransform rect = statusBar.GetComponent<RectTransform>();
+            rect.sizeDelta = new Vector2(50, 3); // Default full size, adjust as needed
+            rect.anchorMin = rect.anchorMax = rect.pivot = new Vector2(0.5f, 0.5f);
 
-            RectTransform fillAreaRect = fillArea.GetComponent<RectTransform>();
-            fillAreaRect.anchorMin = new Vector2(0, 0.5f);
-            fillAreaRect.anchorMax = new Vector2(1, 0.5f);
-            fillAreaRect.pivot = new Vector2(0.5f, 0.5f);
-            fillAreaRect.sizeDelta = new Vector2(0, 3); // Height of the fill area
+            return image;
+        }
 
-            // Create the Fill
-            GameObject fill = new GameObject("Fill", typeof(Image));
-            fill.transform.SetParent(fillArea.transform, false);
-
-            Image fillImage = fill.GetComponent<Image>();
-            fillImage.color = color;
-            fillImage.type = Image.Type.Filled;
-            fillImage.fillMethod = Image.FillMethod.Horizontal;
-
-            RectTransform fillRect = fill.GetComponent<RectTransform>();
-            fillRect.anchorMin = new Vector2(0, 0.5f);
-            fillRect.anchorMax = new Vector2(1, 0.5f);
-            fillRect.pivot = new Vector2(0, 0.5f);
-            fillRect.sizeDelta = new Vector2(0, 0); // Initial size of the fill
-
-            // Configure slider properties
-            slider.fillRect = fillRect;
-            slider.direction = Slider.Direction.LeftToRight;
-
-            // Configure the main slider RectTransform
-            RectTransform statusBarRect = statusBar.GetComponent<RectTransform>();
-            statusBarRect.sizeDelta = new Vector2(50, 3); // Default size, adjust as needed
-            statusBarRect.anchorMin = statusBarRect.anchorMax = statusBarRect.pivot = new Vector2(0.5f, 0.5f);
-
-            return slider;
+        private void UpdateBarSize(Image bar, float current, float max)
+        {
+            RectTransform rect = bar.GetComponent<RectTransform>();
+            rect.sizeDelta = new Vector2(current / max * 50, rect.sizeDelta.y);
         }
 
         private void UpdatePosition()
@@ -115,7 +82,7 @@ namespace SpaceRogue.Combat
             {
                 RectTransform shieldBarRect = _shieldBar.GetComponent<RectTransform>();
                 shieldBarRect.position = shipPosition;
-                shipPosition.y -= .1f; // Assuming 5 is the desired offset in world units
+                shipPosition.y -= .1f; // Adjust as needed
             }
 
             if (_hullBar != null)

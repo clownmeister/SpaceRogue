@@ -44,7 +44,7 @@ namespace SpaceRogue
         private Action<bool> _onFinishCallback;
 
         private Rigidbody2D _shipRigidbody;
-        private Transform _target;
+        private Vector2? _target = null;
         private float _targetAngle;
 
         private void Start()
@@ -66,13 +66,12 @@ namespace SpaceRogue
 
         public void SetTarget(Vector3 position, Action<bool> onFinish = null)
         {
-            CreateOrMoveTarget(position);
+            _target = (Vector2)position;
             _onFinishCallback = onFinish;
         }
 
         public void Stop()
         {
-            Destroy(_target.gameObject);
             _target = null;
             OnPathFinished(false);
         }
@@ -106,22 +105,18 @@ namespace SpaceRogue
                 return;
             }
 
-            Vector2 targetDirection = _target.position - transform.position;
+            Vector2 targetDirection = _target.Value - (Vector2)transform.position;
             float distanceToTarget = targetDirection.magnitude;
             _targetAngle = Vector2.SignedAngle(transform.right, targetDirection);
 
             // Check if the target is hit
             if (IsTargetHit(distanceToTarget))
             {
-                // _currentSpeed = 0;
-                // _currentRotationSpeed = 0;
-
-                Destroy(_target.gameObject); // Assuming you want to destroy the target
                 _target = null;
                 currentMode = ShipMode.Idle;
                 accelerationState = AccelerationState.Idle;
                 OnPathFinished();
-                return; // Exit the method as the target is hit
+                return;
             }
 
             // Update mode based on position and angle
@@ -153,11 +148,9 @@ namespace SpaceRogue
             }
             else
             {
-                // Within tolerance, reduce or reset rotation speed
                 _currentRotationSpeed = 0;
             }
 
-            // Apply the velocity
             _shipRigidbody.velocity = transform.right * _currentSpeed;
         }
 
@@ -214,30 +207,11 @@ namespace SpaceRogue
             return distanceToTarget <= stoppingDistanceTolerance;
         }
 
-        private void CreateOrMoveTarget(Vector3 position)
-        {
-            if (_target == null)
-            {
-                CreateTargetAtPosition(position);
-            }
-            else
-            {
-                _target.position = position;
-            }
-        }
-
         private void OnPathFinished(bool success = true)
         {
             if (_onFinishCallback == null) return;
             _onFinishCallback(success);
             _onFinishCallback = null;
-        }
-
-        private void CreateTargetAtPosition(Vector3 position)
-        {
-            GameObject targetObj = new GameObject("Target");
-            _target = targetObj.transform;
-            _target.position = position;
         }
     }
 }

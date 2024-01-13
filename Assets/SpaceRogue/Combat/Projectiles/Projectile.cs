@@ -10,7 +10,6 @@ namespace SpaceRogue.Combat.Projectiles
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            Debug.Log("HIT");
             IDamageable damageable = other.GetComponent<IDamageable>();
             switch (damageable)
             {
@@ -18,6 +17,7 @@ namespace SpaceRogue.Combat.Projectiles
                     return;
                 case Shield:
                     {
+                        if (damageable.CurrentHitPoints <= 0) break;
                         damageable.TakeDamage(energyDamage);
                         if (!canPenetrateShields)
                         {
@@ -27,6 +27,16 @@ namespace SpaceRogue.Combat.Projectiles
                         break;
                     }
                 case Hull:
+                    if (!canPenetrateShields)
+                    {
+                        Shield shield = other.GetComponentInChildren<Shield>();
+                        if (shield != null && shield.CurrentHitPoints > 0)
+                        {
+                            shield.TakeDamage(energyDamage);
+                            Die();
+                        }
+                    }
+
                     damageable.TakeDamage(physicalDamage);
                     break;
             }

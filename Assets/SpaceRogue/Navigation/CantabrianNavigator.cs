@@ -22,15 +22,15 @@ namespace SpaceRogue.Navigation
         public float orbitDistanceTolerance = 1f;
         public float nextWaypointAngle = 30f;
 
-        [Header("Gizmos")] public bool drawGizmos = true;
-
         [SerializeField]
         private float currentSpeed = 0f;
+
+        [Header("Gizmos")] public bool drawGizmos = false;
+
         private readonly Color _orbitColor = Color.red;
         private readonly Color _tangentColor = Color.yellow;
         private readonly Color _toleranceColor = new Color(1, 0, 0, 0.3f);
         private readonly Color _waypointColor = Color.green;
-
         private Vector2? _navigationPoint = null;
         private Rigidbody2D _rigidBody;
         private ShipNavigationAgent _shipNavigationAgent;
@@ -77,7 +77,7 @@ namespace SpaceRogue.Navigation
             // Draw navigation point
             Gizmos.color = this._waypointColor;
             Gizmos.DrawSphere(this._navigationPoint.Value, 0.2f);
-            if (this.currentState != State.Approach) return;
+            if (this.currentState == State.Idle) return;
             Gizmos.color = this._tangentColor;
             Gizmos.DrawLine(transform.position, this._navigationPoint.Value);
         }

@@ -26,7 +26,7 @@ namespace SpaceRogue.Combat
             get { return maxHullIntegrity; }
         }
 
-        public void Die()
+        private void Die()
         {
             Destroy(gameObject);
         }
