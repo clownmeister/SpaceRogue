@@ -5,17 +5,10 @@ namespace SpaceRogue
     public class CameraController : MonoBehaviour
     {
         public Vector2 panLimit;
-        public float zoomSpeed = 20000f;
         public float minZoom = 5f;
         public float maxZoom = 20f;
 
-        // Mobile specific settings
-        public float mobileMinPanSpeed = 0.3f;
-        public float mobileMaxPanSpeed = 1f;
-        public float mobileZoomSpeed = .5f;
-
-        // PC specific settings
-        public float pcPanModifier = 10f;
+        public CameraSettings cameraSettings;
 
         private Camera _cam;
 
@@ -27,7 +20,7 @@ namespace SpaceRogue
             _cam = GetComponent<Camera>();
         }
 
-        void Update()
+        private void Update()
         {
             Vector3 pos = transform.position;
 
@@ -35,11 +28,11 @@ namespace SpaceRogue
             if (Application.isMobilePlatform)
             {
                 float zoomFactor = (_cam.orthographicSize - minZoom) / (maxZoom - minZoom);
-                _currentMoveSpeed = Mathf.Lerp(mobileMinPanSpeed, mobileMaxPanSpeed, zoomFactor);
+                _currentMoveSpeed = Mathf.Lerp(cameraSettings.mobileMinPanSpeed, cameraSettings.mobileMaxPanSpeed, zoomFactor);
             }
             else
             {
-                _currentMoveSpeed = pcPanModifier;
+                _currentMoveSpeed = cameraSettings.pcPanModifier;
             }
 
             HandleKeyboardMovement(ref pos);
@@ -51,9 +44,9 @@ namespace SpaceRogue
             transform.position = pos;
         }
 
-        void HandleKeyboardMovement(ref Vector3 pos)
+        private void HandleKeyboardMovement(ref Vector3 pos)
         {
-            float speed = Application.isMobilePlatform ? _currentMoveSpeed : pcPanModifier;
+            float speed = Application.isMobilePlatform ? _currentMoveSpeed : cameraSettings.pcPanModifier;
 
             if (Input.GetKey("w"))
             {
@@ -76,14 +69,14 @@ namespace SpaceRogue
             }
         }
 
-        void HandleZoom(ref Vector3 pos)
+        private void HandleZoom(ref Vector3 pos)
         {
             float zoom = Input.GetAxis("Mouse ScrollWheel");
-            _cam.orthographicSize -= zoom * zoomSpeed * Time.deltaTime;
+            _cam.orthographicSize -= zoom * cameraSettings.zoomSpeed * Time.deltaTime;
             _cam.orthographicSize = Mathf.Clamp(_cam.orthographicSize, minZoom, maxZoom);
         }
 
-        void HandleMobileControls(ref Vector3 pos)
+        private void HandleMobileControls(ref Vector3 pos)
         {
             if (Input.touchCount == 1)
             {
@@ -104,7 +97,7 @@ namespace SpaceRogue
 
                 float difference = currentMagnitude - prevMagnitude;
 
-                _cam.orthographicSize -= difference * mobileZoomSpeed * Time.deltaTime;
+                _cam.orthographicSize -= difference * cameraSettings.mobileZoomSpeed * Time.deltaTime;
                 _cam.orthographicSize = Mathf.Clamp(_cam.orthographicSize, minZoom, maxZoom);
             }
         }
