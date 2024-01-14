@@ -2,20 +2,24 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
-  serializedVersion: 6
+  serializedVersion: 8
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Ramp Texture Shader
   m_Shader: {fileID: 4800000, guid: 860dc89437a89694a8943f26e8a9e016, type: 3}
-  m_ShaderKeywords: 
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -31,6 +35,7 @@ Material:
         m_Texture: {fileID: 2800000, guid: 77300c2c13b30504c83a932cbc1c1228, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
     - _BumpStrength: 0.1
     - _CloudScale: 2
@@ -47,3 +52,4 @@ Material:
     - _MountainColor: {r: 0.86, g: 0.68, b: 0.41, a: 1}
     - _RimColor: {r: 0.05, g: 0.11, b: 0.2, a: 1}
     - _SeaColor: {r: 0, g: 0.15707555, b: 0.4716981, a: 1}
+  m_BuildTextureStacks: []
