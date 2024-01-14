@@ -5,7 +5,7 @@ namespace SpaceRogue.Navigation
 {
     public interface INavigationAgent
     {
-        void SetTarget(Vector3 position, Action<bool> onFinish);
+        void SetTarget(Vector2 position, Action<bool> onFinish);
         void Stop();
     }
 }

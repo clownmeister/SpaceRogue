@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace SpaceRogue.Combat
@@ -35,7 +34,8 @@ namespace SpaceRogue.Combat
 
             _currentAlpha = _initialAlpha * (shieldStrength / maxShieldStrength);
             if (_isFading) return;
-            shieldSprite.color = shieldSprite.color.WithAlpha(_currentAlpha);
+            Color color = shieldSprite.color;
+            shieldSprite.color = new Color(color.r, color.g, color.b, _currentAlpha);
         }
 
         public void TakeDamage(float damageAmount)
@@ -51,7 +51,8 @@ namespace SpaceRogue.Combat
             }
 
             float increasedAlpha = Mathf.Min(_currentAlpha + 0.2f, 1.0f);
-            shieldSprite.color = shieldSprite.color.WithAlpha(increasedAlpha);
+            Color color = shieldSprite.color;
+            shieldSprite.color = new Color(color.r, color.g, color.b, increasedAlpha);
             _fadeRoutine = StartCoroutine(FadeToCurrentAlpha());
             _isFading = false;
         }
@@ -82,13 +83,15 @@ namespace SpaceRogue.Combat
             while (timeElapsed < fadeTime)
             {
                 float newAlpha = Mathf.Lerp(Mathf.Min(_currentAlpha + 0.2f, 1.0f), _currentAlpha, timeElapsed / fadeTime);
-                shieldSprite.color = shieldSprite.color.WithAlpha(newAlpha);
+                Color color = shieldSprite.color;
+                shieldSprite.color = new Color(color.r, color.g, color.b, newAlpha);
 
                 timeElapsed += Time.deltaTime;
                 yield return null;
             }
 
-            shieldSprite.color = shieldSprite.color.WithAlpha(_currentAlpha);
+            Color shieldColor = shieldSprite.color;
+            shieldSprite.color = new Color(shieldColor.r, shieldColor.g, shieldColor.b, _currentAlpha);
         }
     }
 }

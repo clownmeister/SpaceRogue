@@ -1,5 +1,4 @@
 ﻿using SpaceRogue.Utility;
-using System;
 using UnityEngine;
 
 namespace SpaceRogue.Navigation
@@ -56,8 +55,6 @@ namespace SpaceRogue.Navigation
                 case State.Orbit:
                     HandleOrbit();
                     break;
-                default:
-                    throw new ArgumentOutOfRangeException();
             }
         }
 
@@ -73,13 +70,13 @@ namespace SpaceRogue.Navigation
             Gizmo.DrawCircle(this.targetShip.transform.position, this.radius - this.orbitDistanceTolerance, this._toleranceColor);
             Gizmo.DrawCircle(this.targetShip.transform.position, this.radius + this.orbitDistanceTolerance, this._toleranceColor);
 
-            if (!this._navigationPoint.HasValue) return;
+            if (_navigationPoint == null) return;
             // Draw navigation point
             Gizmos.color = this._waypointColor;
-            Gizmos.DrawSphere(this._navigationPoint.Value, 0.2f);
+            Gizmos.DrawSphere((Vector3)_navigationPoint, 0.2f);
             if (this.currentState == State.Idle) return;
             Gizmos.color = this._tangentColor;
-            Gizmos.DrawLine(transform.position, this._navigationPoint.Value);
+            Gizmos.DrawLine(transform.position, (Vector3)_navigationPoint);
         }
 
         private void HandleStateSwitch()
@@ -101,8 +98,8 @@ namespace SpaceRogue.Navigation
             if (targetShip == null) return;
             _navigationPoint ??= CalculateApproachPoint();
 
-            if (!_navigationPoint.HasValue) return;
-            _shipNavigationAgent.SetTarget(_navigationPoint.Value, OnNavigationFinished);
+            if (_navigationPoint == null) return;
+            _shipNavigationAgent.SetTarget((Vector3)_navigationPoint, OnNavigationFinished);
 
         }
 
@@ -111,8 +108,8 @@ namespace SpaceRogue.Navigation
             if (targetShip == null) return;
             _navigationPoint ??= CalculateNextWaypoint();
 
-            if (!_navigationPoint.HasValue) return;
-            _shipNavigationAgent.SetTarget(_navigationPoint.Value, OnNavigationFinished);
+            if (_navigationPoint == null) return;
+            _shipNavigationAgent.SetTarget((Vector3)_navigationPoint, OnNavigationFinished);
         }
 
         private void OnNavigationFinished(bool success)

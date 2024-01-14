@@ -1,8 +1,7 @@
-using SpaceRogue.Navigation;
 using System;
 using UnityEngine;
 
-namespace SpaceRogue
+namespace SpaceRogue.Navigation
 {
     public enum ShipMode
     {
@@ -64,9 +63,9 @@ namespace SpaceRogue
             }
         }
 
-        public void SetTarget(Vector3 position, Action<bool> onFinish = null)
+        public void SetTarget(Vector2 position, Action<bool> onFinish = null)
         {
-            _target = (Vector2)position;
+            _target = position;
             _onFinishCallback = onFinish;
         }
 
@@ -105,7 +104,7 @@ namespace SpaceRogue
                 return;
             }
 
-            Vector2 targetDirection = _target.Value - (Vector2)transform.position;
+            Vector2 targetDirection = (Vector2)_target - (Vector2)transform.position;
             float distanceToTarget = targetDirection.magnitude;
             _targetAngle = Vector2.SignedAngle(transform.right, targetDirection);
 

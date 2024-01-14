@@ -7,6 +7,7 @@ namespace SpaceRogue.Combat
     public class ShipStatusDisplay : MonoBehaviour
     {
         public float yOffset = -1;
+        public float ySpacing = .12f;
         public Canvas canvas; // World Space Canvas
         private readonly Color _hullBarColor = Color.green;
         private readonly Color _shieldBarColor = Color.blue;
@@ -82,7 +83,7 @@ namespace SpaceRogue.Combat
             {
                 RectTransform shieldBarRect = _shieldBar.GetComponent<RectTransform>();
                 shieldBarRect.position = shipPosition;
-                shipPosition.y -= .1f; // Adjust as needed
+                shipPosition.y -= ySpacing;
             }
 
             if (_hullBar != null)
