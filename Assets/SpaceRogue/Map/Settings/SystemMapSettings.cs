@@ -13,6 +13,7 @@ namespace SpaceRogue.Map.Settings
         [Description("Randomness limit to NodeAmount should result as same for each seed.")]
         public int nodeAmountVariation = 4;
         public int maxAttemptsNodePlacement = 100;
+        public int maxNeighbours = 3;
 
         public float minNodeDistance = 100;
 
