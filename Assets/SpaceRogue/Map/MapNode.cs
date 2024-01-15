@@ -9,9 +9,9 @@ namespace SpaceRogue.Map
     {
         Empty,
         Planet,
-        Station,
-        System,
-        Galaxy
+        Storm,
+        Asteroids,
+        BlackHole,
     }
 
     public class MapNode
@@ -20,6 +20,8 @@ namespace SpaceRogue.Map
         public MapNodeType Type;
         public NodeEvent Event;
         public MapNode[] Neighbours;
+        public bool IsStart;
+        public bool IsEnd;
 
         public MapNode(Vector2 position, MapNodeType nodeType = MapNodeType.Empty, NodeEventType eventType = NodeEventType.Nothing)
         {

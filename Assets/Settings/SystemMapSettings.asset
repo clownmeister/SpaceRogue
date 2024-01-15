@@ -19,8 +19,10 @@ MonoBehaviour:
   nodeAmountVariation: 4
   maxAttemptsNodePlacement: 100
   minNodeDistance: 3
-  minNodeConnections: 2
-  maxNodeConnection: 4
-  maxNodeConnectionDistance: 6
-  nodePrefab: {fileID: 4446239489586240477, guid: 3af6805d849552743b9d1b3011862289, type: 3}
+  minNodeConnections: 1
+  maxNodeConnection: 3
+  maxNodeConnectionDistance: 7
   shopChance: 0
+  emptyNodePrefab: {fileID: 4446239489586240477, guid: 3af6805d849552743b9d1b3011862289, type: 3}
+  startNodePrefab: {fileID: 8920119718655793386, guid: 7284d0e628d732d489e6104c96f27006, type: 3}
+  endNodePrefab: {fileID: 2252485039420345113, guid: f2fa67f3c9d75b041a5d5bc66d814c5f, type: 3}

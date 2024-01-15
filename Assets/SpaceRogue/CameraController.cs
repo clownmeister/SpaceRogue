@@ -14,6 +14,9 @@ namespace SpaceRogue
 
         // Current movement speed based on zoom
         private float _currentMoveSpeed;
+        private Vector2 _lastTouchDelta;
+        private Vector2 _inertiaVelocity;
+        private float _inertiaDuration = 0.5f;
 
         private void Awake()
         {

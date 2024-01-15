@@ -18,7 +18,11 @@ namespace SpaceRogue.Map.Settings
         public int minNodeConnections = 1;
         public int maxNodeConnection = 3;
         public int maxNodeConnectionDistance = 5;
-        public GameObject nodePrefab;
         public int shopChance;
+
+        [Header("Prefabs")]
+        public GameObject emptyNodePrefab;
+        public GameObject startNodePrefab;
+        public GameObject endNodePrefab;
     }
 }

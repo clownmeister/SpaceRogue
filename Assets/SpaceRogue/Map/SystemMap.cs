@@ -28,6 +28,25 @@ namespace SpaceRogue.Map
             EnsureNoIsolatedNodes();
             ConnectIsolatedGroups();
             FinalConnectivityCheck();
+            SetStartAndEndNodes();
+        }
+
+        private void SetStartAndEndNodes()
+        {
+            // We are cheating since BFS was a pain
+            // Find the leftmost 5 and rightmost 5 nodes
+            List<MapNode> leftMostNodes = Nodes.OrderBy(node => node.Key.x).Take(5).Select(node => node.Value).ToList();
+            List<MapNode> rightMostNodes = Nodes.OrderByDescending(node => node.Key.x).Take(5).Select(node => node.Value).ToList();
+
+            // Randomly pick one from each
+            MapNode startNode = leftMostNodes[Random.Range(0, leftMostNodes.Count)];
+            MapNode endNode = rightMostNodes[Random.Range(0, rightMostNodes.Count)];
+
+            // Set start and end nodes
+            startNode.IsStart = true;
+            endNode.IsEnd = true;
+
+            Debug.Log($"Start Node: {startNode.Position}, End Node: {endNode.Position}");
         }
 
         private void FinalConnectivityCheck()
@@ -68,18 +87,16 @@ namespace SpaceRogue.Map
 
         private void ConnectIsolatedGroups()
         {
-            var visited = new HashSet<MapNode>();
-            var groups = new List<List<MapNode>>();
+            HashSet<MapNode> visited = new HashSet<MapNode>();
+            List<List<MapNode>> groups = new List<List<MapNode>>();
 
             // Identify disconnected groups
-            foreach (var node in Nodes.Values)
+            foreach (MapNode node in Nodes.Values)
             {
-                if (!visited.Contains(node))
-                {
-                    var group = new List<MapNode>();
-                    Traverse(node, visited, group);
-                    groups.Add(group);
-                }
+                if (visited.Contains(node)) continue;
+                List<MapNode> group = new List<MapNode>();
+                Traverse(node, visited, group);
+                groups.Add(group);
             }
 
             // Connect the closest groups
@@ -93,13 +110,11 @@ namespace SpaceRogue.Map
                 {
                     for (int j = i + 1; j < groups.Count; j++)
                     {
-                        var currentClosestPair = FindClosestNodes(groups[i], groups[j]);
-                        if (currentClosestPair.Item3 < minDistance)
-                        {
-                            minDistance = currentClosestPair.Item3;
-                            closestNodesPair = new Tuple<MapNode, MapNode>(currentClosestPair.Item1, currentClosestPair.Item2);
-                            closestGroupIndex = j;
-                        }
+                        Tuple<MapNode, MapNode, float> currentClosestPair = FindClosestNodes(groups[i], groups[j]);
+                        if (!(currentClosestPair.Item3 < minDistance)) continue;
+                        minDistance = currentClosestPair.Item3;
+                        closestNodesPair = new Tuple<MapNode, MapNode>(currentClosestPair.Item1, currentClosestPair.Item2);
+                        closestGroupIndex = j;
                     }
                 }
 
@@ -128,12 +143,10 @@ namespace SpaceRogue.Map
                 foreach (MapNode nodeB in groupB)
                 {
                     float distance = Vector2.Distance(nodeA.Position, nodeB.Position);
-                    if (distance < minDistance)
-                    {
-                        minDistance = distance;
-                        closestNodeA = nodeA;
-                        closestNodeB = nodeB;
-                    }
+                    if (!(distance < minDistance)) continue;
+                    minDistance = distance;
+                    closestNodeA = nodeA;
+                    closestNodeB = nodeB;
                 }
             }
 
@@ -194,7 +207,7 @@ namespace SpaceRogue.Map
                     }
 
                     i--;
-                    Debug.Log("Not enough space for node placement. Invalid position resetting");
+                    // Debug.Log("Not enough space for node placement. Invalid position resetting");
                     continue;
                 }
 

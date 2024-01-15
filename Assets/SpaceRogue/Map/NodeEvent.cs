@@ -4,6 +4,8 @@
     {
         Nothing,
         Ambush,
+        Surprise,
+        Distress,
         Shop,
     }
 

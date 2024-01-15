@@ -1,6 +1,8 @@
 using SpaceRogue.Map.Settings;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace SpaceRogue.Map
 {
@@ -72,12 +74,37 @@ namespace SpaceRogue.Map
 
         private void DrawSystemMap()
         {
-            foreach (KeyValuePair<Vector2, MapNode> node in this._systemMap.Nodes)
+            foreach (KeyValuePair<Vector2, MapNode> item in this._systemMap.Nodes)
             {
+                MapNode node = item.Value;
+                Vector2 position = item.Key;
+                // TODO: Do we need translation?
                 // Vector2 position = TranslatePointOnMapToScreenSize(node.Key);
-                Vector2 position = node.Key;
-                Instantiate(this.systemMapSettings.nodePrefab, new Vector3(position.x, position.y, nodeZ), Quaternion.identity, this._systemMapParent);
-                DrawConnections(position, node.Value);
+
+                GameObject prefab = null;
+                // If end or start node, take priority
+                if (node.IsStart || node.IsEnd)
+                {
+                    prefab = node.IsStart ? systemMapSettings.startNodePrefab : systemMapSettings.endNodePrefab;
+                }
+                else
+                {
+                    switch (node.Type)
+                    {
+                        case MapNodeType.Empty:
+                        case MapNodeType.Planet:
+                        case MapNodeType.Storm:
+                        case MapNodeType.Asteroids:
+                        case MapNodeType.BlackHole:
+                            prefab = this.systemMapSettings.emptyNodePrefab;
+                            break;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                }
+
+                Instantiate(prefab, new Vector3(position.x, position.y, nodeZ), Quaternion.identity, this._systemMapParent);
+                DrawConnections(position, node);
             }
         }
 
