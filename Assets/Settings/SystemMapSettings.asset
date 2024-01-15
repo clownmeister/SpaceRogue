@@ -10,16 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e93ff96ab8ec4b56839183a7e696dfe8, type: 3}
-  m_Name: DefaultSystemMapSettings
+  m_Name: SystemMapSettings
   m_EditorClassIdentifier: 
-  <MapName>k__BackingField: System Map
+  <MapName>k__BackingField: SystemMap
   mapSize: {x: 30, y: 20}
   mapPadding: {x: 5, y: 5}
-  nodeAmount: 18
+  nodeAmount: 28
   nodeAmountVariation: 4
   maxAttemptsNodePlacement: 100
-  minNodeDistance: 5
-  shopChance: 0
-  minNodeConnections: 0
-  maxNodeConnection: 0
+  minNodeDistance: 3
+  minNodeConnections: 2
+  maxNodeConnection: 4
+  maxNodeConnectionDistance: 6
   nodePrefab: {fileID: 4446239489586240477, guid: 3af6805d849552743b9d1b3011862289, type: 3}
+  shopChance: 0

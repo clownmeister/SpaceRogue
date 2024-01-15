@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 
 namespace SpaceRogue.Map
 {
@@ -23,11 +26,16 @@ namespace SpaceRogue.Map
             Position = position;
             Type = nodeType;
             Event = new NodeEvent(eventType);
+            this.Neighbours = Array.Empty<MapNode>();
         }
 
-        public void SetNeighbours(MapNode[] neighbours)
+
+        public void AddNeighbour(MapNode neighbour)
         {
-            this.Neighbours = neighbours;
+            List<MapNode> neighboursList = Neighbours.ToList();
+            if (neighboursList.Contains(neighbour)) return;
+            neighboursList.Add(neighbour);
+            Neighbours = neighboursList.ToArray();
         }
     }
 }

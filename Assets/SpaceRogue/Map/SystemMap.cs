@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using SpaceRogue.Map.Settings;
+using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace SpaceRogue.Map
 {
@@ -23,8 +25,152 @@ namespace SpaceRogue.Map
             this._currentSeed = seed;
             Nodes = GenerateNodes(this._currentSeed);
             DetermineNeighbours();
+            EnsureNoIsolatedNodes();
+            ConnectIsolatedGroups();
+            FinalConnectivityCheck();
         }
-        
+
+        private void FinalConnectivityCheck()
+        {
+            HashSet<MapNode> visited = new HashSet<MapNode>();
+            List<List<MapNode>> groups = new List<List<MapNode>>();
+
+            // Re-identify groups after initial connections
+            foreach (MapNode node in Nodes.Values)
+            {
+                if (!visited.Contains(node))
+                {
+                    List<MapNode> group = new List<MapNode>();
+                    Traverse(node, visited, group);
+                    groups.Add(group);
+                }
+            }
+
+            // If more than one group exists, connect them
+            while (groups.Count > 1)
+            {
+                List<MapNode> groupA = groups[0];
+                List<MapNode> groupB = groups[1];
+
+                Tuple<MapNode, MapNode, float> closestNodesPair = FindClosestNodes(groupA, groupB);
+
+                if (closestNodesPair.Item1 != null && closestNodesPair.Item2 != null)
+                {
+                    closestNodesPair.Item1.AddNeighbour(closestNodesPair.Item2);
+                    closestNodesPair.Item2.AddNeighbour(closestNodesPair.Item1);
+                }
+
+                // Merge the groups and continue
+                groupA.AddRange(groupB);
+                groups.RemoveAt(1);
+            }
+        }
+
+        private void ConnectIsolatedGroups()
+        {
+            var visited = new HashSet<MapNode>();
+            var groups = new List<List<MapNode>>();
+
+            // Identify disconnected groups
+            foreach (var node in Nodes.Values)
+            {
+                if (!visited.Contains(node))
+                {
+                    var group = new List<MapNode>();
+                    Traverse(node, visited, group);
+                    groups.Add(group);
+                }
+            }
+
+            // Connect the closest groups
+            while (groups.Count > 1)
+            {
+                int closestGroupIndex = -1;
+                Tuple<MapNode, MapNode> closestNodesPair = null;
+                float minDistance = float.MaxValue;
+
+                for (int i = 0; i < groups.Count; i++)
+                {
+                    for (int j = i + 1; j < groups.Count; j++)
+                    {
+                        var currentClosestPair = FindClosestNodes(groups[i], groups[j]);
+                        if (currentClosestPair.Item3 < minDistance)
+                        {
+                            minDistance = currentClosestPair.Item3;
+                            closestNodesPair = new Tuple<MapNode, MapNode>(currentClosestPair.Item1, currentClosestPair.Item2);
+                            closestGroupIndex = j;
+                        }
+                    }
+                }
+
+                if (closestNodesPair != null)
+                {
+                    closestNodesPair.Item1.AddNeighbour(closestNodesPair.Item2);
+                    closestNodesPair.Item2.AddNeighbour(closestNodesPair.Item1);
+                    groups[0].AddRange(groups[closestGroupIndex]);
+                    groups.RemoveAt(closestGroupIndex);
+                }
+                else
+                {
+                    break; // No more connections possible
+                }
+            }
+        }
+
+        private Tuple<MapNode, MapNode, float> FindClosestNodes(List<MapNode> groupA, List<MapNode> groupB)
+        {
+            MapNode closestNodeA = null;
+            MapNode closestNodeB = null;
+            float minDistance = float.MaxValue;
+
+            foreach (MapNode nodeA in groupA)
+            {
+                foreach (MapNode nodeB in groupB)
+                {
+                    float distance = Vector2.Distance(nodeA.Position, nodeB.Position);
+                    if (distance < minDistance)
+                    {
+                        minDistance = distance;
+                        closestNodeA = nodeA;
+                        closestNodeB = nodeB;
+                    }
+                }
+            }
+
+            return new Tuple<MapNode, MapNode, float>(closestNodeA, closestNodeB, minDistance);
+        }
+
+        private static void Traverse(MapNode node, HashSet<MapNode> visited, List<MapNode> group)
+        {
+            visited.Add(node);
+            group.Add(node);
+
+            foreach (MapNode neighbour in node.Neighbours)
+            {
+                if (!visited.Contains(neighbour))
+                {
+                    Traverse(neighbour, visited, group);
+                }
+            }
+        }
+
+        private void EnsureNoIsolatedNodes()
+        {
+            List<KeyValuePair<Vector2, MapNode>> isolatedNodes = Nodes.Where(node => node.Value.Neighbours.Length == 0).ToList();
+
+            foreach (KeyValuePair<Vector2, MapNode> isolatedNode in isolatedNodes)
+            {
+                MapNode closestNode = Nodes
+                    .Where(node => node.Key != isolatedNode.Key)
+                    .OrderBy(node => Vector2.Distance(node.Key, isolatedNode.Key))
+                    .First().Value;
+
+                // Connect the isolated node with the closest node
+                isolatedNode.Value.AddNeighbour(closestNode);
+                closestNode.AddNeighbour(isolatedNode.Value);
+            }
+        }
+
         private Dictionary<Vector2, MapNode> GenerateNodes(int seed)
         {
             Debug.Log("Generating map");
@@ -43,10 +189,10 @@ namespace SpaceRogue.Map
                     attempts++;
                     if (attempts > this._settings.maxAttemptsNodePlacement)
                     {
-                        Debug.LogWarning("Not enough free positions. Skipping additional node creation!");
+                        Debug.LogWarning($"Exceeded max attempts on node placement. Not enough space! Created {result.Count} out of {this._finalAmount} desired nodes.");
                         return result;
                     }
-                    
+
                     i--;
                     Debug.Log("Not enough space for node placement. Invalid position resetting");
                     continue;
@@ -64,23 +210,29 @@ namespace SpaceRogue.Map
         {
             foreach (KeyValuePair<Vector2, MapNode> item in this.Nodes)
             {
-                MapNode[] neighbours = Nodes
-                    .Where(n => n.Key != item.Key)
-                    .OrderBy(n => Vector2.Distance(n.Key, item.Key))
-                    .Take(_settings.maxNeighbours)
-                    .Select(n => n.Value)
-                    .ToArray();
+                // Determine random number of neighbours (between 1 and maxNodeConnection)
+                int numOfNeighbours = Random.Range(_settings.minNodeConnections, _settings.maxNodeConnection + 1);
 
-                item.Value.SetNeighbours(neighbours);
+                List<MapNode> potentialNeighbours = Nodes
+                    .Where(n => n.Key != item.Key && Vector2.Distance(n.Key, item.Key) <= _settings.maxNodeConnectionDistance)
+                    .OrderBy(n => Vector2.Distance(n.Key, item.Key))
+                    .Take(numOfNeighbours)
+                    .Select(n => n.Value)
+                    .ToList();
+
+                foreach (MapNode neighbour in potentialNeighbours.Where(neighbour => neighbour.Neighbours.Length < _settings.maxNodeConnection && !neighbour.Neighbours.Contains(item.Value)))
+                {
+                    item.Value.AddNeighbour(neighbour);
+                }
             }
         }
 
-        private bool ValidPosition(Dictionary<Vector2, MapNode> nodes, SystemMapSettings settings, Vector2 position)
+        private static bool ValidPosition(Dictionary<Vector2, MapNode> nodes, SystemMapSettings settings, Vector2 position)
         {
             return nodes.All(node => Vector2.Distance(node.Key, position) >= settings.minNodeDistance);
         }
-        
-        private Vector2 GetMapAxisBoundaries(float axisMax, float axisPadding)
+
+        private static Vector2 GetMapAxisBoundaries(float axisMax, float axisPadding)
         {
             return new Vector2(-axisMax + axisPadding, axisMax - axisPadding);
         }

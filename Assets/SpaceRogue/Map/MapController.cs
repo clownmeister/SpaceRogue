@@ -63,6 +63,11 @@ namespace SpaceRogue.Map
             {
                 RegenerateMap(Random.Range(0, 999_999));
             }
+
+            if (Input.GetKeyDown(KeyCode.H))
+            {
+                RegenerateMap(this.seed);
+            }
         }
 
         private void DrawSystemMap()
