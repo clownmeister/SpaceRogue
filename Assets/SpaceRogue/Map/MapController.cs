@@ -20,6 +20,11 @@ namespace SpaceRogue.Map
         private Transform _systemMapParent;
         private SystemMap _systemMap;
         private HashSet<NodePair> _drawnConnections = new HashSet<NodePair>();
+
+        // Double tap
+        private float _lastTapTime = 0f;
+        private const float DOUBLE_TAP_INTERVAL = 0.3f;
+
         private void OnDrawGizmos()
         {
             if (!this.drawGizmos) return;
@@ -69,6 +74,21 @@ namespace SpaceRogue.Map
             if (Input.GetKeyDown(KeyCode.H))
             {
                 RegenerateMap(this.seed);
+            }
+
+            // Detect double-tap on mobile
+            if (Input.touchCount == 1 && Input.touches[0].phase == TouchPhase.Ended)
+            {
+                if (Time.time - _lastTapTime < DOUBLE_TAP_INTERVAL)
+                {
+                    // Double tap detected, regenerate the map
+                    RegenerateMap(Random.Range(0, 999_999));
+                    _lastTapTime = 0f; // Reset the last tap time
+                }
+                else
+                {
+                    _lastTapTime = Time.time;
+                }
             }
         }
 

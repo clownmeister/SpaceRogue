@@ -27,3 +27,14 @@ https://www.freepik.com/vectors/sci-fi-button
 
 Inspiration ships
 https://www.deviantart.com/ariochiv/art/Stars-in-Shadow-Outposts-497862634
+
+<a href="https://www.flaticon.com/free-icons/asteroid" title="Asteroid icons">Asteroid icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/miscellaneous" title="miscellaneous icons">Miscellaneous icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/global" title="global icons">Global icons created by srip - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/black-hole" title="black hole icons">Black hole icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/black-hole" title="black hole icons">Black hole icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/space" title="space icons">Space icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/circle" title="circle icons">Circle icons created by kornkun - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/instagram-stories" title="instagram stories icons">Instagram stories icons created by iconsax - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/record-circle" title="record circle icons">Record circle icons created by kerismaker - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/circle" title="circle icons">Circle icons created by DinosoftLabs - Flaticon</a>

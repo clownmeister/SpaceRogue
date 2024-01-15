@@ -15,14 +15,14 @@ MonoBehaviour:
   <MapName>k__BackingField: SystemMap
   mapSize: {x: 30, y: 20}
   mapPadding: {x: 5, y: 5}
-  nodeAmount: 28
+  nodeAmount: 35
   nodeAmountVariation: 4
   maxAttemptsNodePlacement: 100
-  minNodeDistance: 3
+  minNodeDistance: 4
   minNodeConnections: 1
   maxNodeConnection: 3
-  maxNodeConnectionDistance: 7
+  maxNodeConnectionDistance: 8
   shopChance: 0
   emptyNodePrefab: {fileID: 4446239489586240477, guid: 3af6805d849552743b9d1b3011862289, type: 3}
-  startNodePrefab: {fileID: 8920119718655793386, guid: 7284d0e628d732d489e6104c96f27006, type: 3}
-  endNodePrefab: {fileID: 2252485039420345113, guid: f2fa67f3c9d75b041a5d5bc66d814c5f, type: 3}
+  startNodePrefab: {fileID: 4446239489586240477, guid: c42ab36d424359e498741c58bcc9a10f, type: 3}
+  endNodePrefab: {fileID: 4446239489586240477, guid: 6f91ad3dadd535541bb6185fc4384222, type: 3}

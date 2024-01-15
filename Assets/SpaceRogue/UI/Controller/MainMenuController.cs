@@ -36,7 +36,7 @@ namespace SpaceRogue.UI.Controller
 
         private void RegisterNewGameButton(VisualElement root)
         {
-            root.Q(className: NEW_GAME_BUTTON_CLASS_NAME).RegisterCallback<ClickEvent>(clickEvent => { SceneManager.LoadScene("Game"); });
+            root.Q(className: NEW_GAME_BUTTON_CLASS_NAME).RegisterCallback<ClickEvent>(clickEvent => { SceneManager.LoadScene("Map"); });
         }
     }
 }
