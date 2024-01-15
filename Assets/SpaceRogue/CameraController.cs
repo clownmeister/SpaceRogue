@@ -16,7 +16,6 @@ namespace SpaceRogue
         private float _currentMoveSpeed;
         private Vector2 _lastTouchDelta;
         private Vector2 _inertiaVelocity;
-        private float _inertiaDuration = 0.5f;
 
         private void Awake()
         {
@@ -76,7 +75,18 @@ namespace SpaceRogue
         {
             float zoom = Input.GetAxis("Mouse ScrollWheel");
             _cam.orthographicSize -= zoom * cameraSettings.zoomSpeed * Time.deltaTime;
-            _cam.orthographicSize = Mathf.Clamp(_cam.orthographicSize, minZoom, maxZoom);
+
+            // Smooth zooming for mobile
+            if (Application.isMobilePlatform)
+            {
+                float targetZoom = Mathf.Clamp(_cam.orthographicSize, minZoom, maxZoom);
+                _cam.orthographicSize = Mathf.Lerp(_cam.orthographicSize, targetZoom, Time.deltaTime * cameraSettings.mobileZoomSpeed);
+            }
+            else
+            {
+                // Clamp zoom for non-mobile platforms
+                _cam.orthographicSize = Mathf.Clamp(_cam.orthographicSize, minZoom, maxZoom);
+            }
         }
 
         private void HandleMobileControls(ref Vector3 pos)
@@ -84,11 +94,17 @@ namespace SpaceRogue
             if (Input.touchCount == 1)
             {
                 Touch touch = Input.GetTouch(0);
-                pos.x -= touch.deltaPosition.x * _currentMoveSpeed * Time.deltaTime;
-                pos.y -= touch.deltaPosition.y * _currentMoveSpeed * Time.deltaTime;
+                Vector2 touchDelta = touch.deltaPosition;
+                pos.x -= touchDelta.x * _currentMoveSpeed * Time.deltaTime;
+                pos.y -= touchDelta.y * _currentMoveSpeed * Time.deltaTime;
+
+                // Update inertia velocity using new settings
+                _inertiaVelocity = Vector2.ClampMagnitude(-touchDelta / (Time.deltaTime * cameraSettings.inertiaDuration) * cameraSettings.inertiaVelocityModifier, cameraSettings.inertiaLimit);
+                Debug.Log("velocity: " + _inertiaVelocity.magnitude);
             }
             else if (Input.touchCount == 2)
             {
+                // Existing pinch-to-zoom functionality
                 Touch touchZero = Input.GetTouch(0);
                 Touch touchOne = Input.GetTouch(1);
 
@@ -102,6 +118,16 @@ namespace SpaceRogue
 
                 _cam.orthographicSize -= difference * cameraSettings.mobileZoomSpeed * Time.deltaTime;
                 _cam.orthographicSize = Mathf.Clamp(_cam.orthographicSize, minZoom, maxZoom);
+            }
+            else
+            {
+                // Apply inertia using new settings
+                if (_inertiaVelocity.magnitude > cameraSettings.minInertiaSpeed)
+                {
+                    pos.x += _inertiaVelocity.x * Time.deltaTime;
+                    pos.y += _inertiaVelocity.y * Time.deltaTime;
+                    _inertiaVelocity = Vector2.Lerp(_inertiaVelocity, Vector2.zero, Time.deltaTime / cameraSettings.inertiaDuration);
+                }
             }
         }
     }

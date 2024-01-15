@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "60466ee7",
         "name": "com.DefaultCompany.com.unity.template.mobile2D",
-        "processId": 11820,
+        "processId": 22239,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -90,6 +90,66 @@
             "deviceId": "60466ee7",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
             "processId": 11820,
+            "exited": false
+        },
+        {
+            "deviceId": "60466ee7",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 18758,
+            "exited": false
+        },
+        {
+            "deviceId": "60466ee7",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 19285,
+            "exited": false
+        },
+        {
+            "deviceId": "60466ee7",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 19754,
+            "exited": false
+        },
+        {
+            "deviceId": "60466ee7",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 20178,
+            "exited": false
+        },
+        {
+            "deviceId": "60466ee7",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 20522,
+            "exited": false
+        },
+        {
+            "deviceId": "60466ee7",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 20867,
+            "exited": false
+        },
+        {
+            "deviceId": "60466ee7",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 21135,
+            "exited": false
+        },
+        {
+            "deviceId": "60466ee7",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 21507,
+            "exited": false
+        },
+        {
+            "deviceId": "60466ee7",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 21914,
+            "exited": false
+        },
+        {
+            "deviceId": "60466ee7",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 22239,
             "exited": false
         }
     ],

@@ -16,4 +16,8 @@ MonoBehaviour:
   pcPanModifier: 15
   mobileMinPanSpeed: 0.3
   mobileMaxPanSpeed: 1.2
-  mobileZoomSpeed: 1
+  mobileZoomSpeed: 0.8
+  inertiaDuration: 0.5
+  minInertiaSpeed: 5
+  inertiaVelocityModifier: 0.005
+  inertiaLimit: 20
