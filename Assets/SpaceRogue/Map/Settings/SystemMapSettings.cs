@@ -22,7 +22,12 @@ namespace SpaceRogue.Map.Settings
 
         [Header("Prefabs")]
         public GameObject emptyNodePrefab;
-        public GameObject startNodePrefab;
-        public GameObject endNodePrefab;
+
+        [Header("Colors")]
+        public Color emptyNodeColor;
+        public Color enemyNodeColor;
+        public Color friendlyNodeColor;
+        public Color selectedNodeColor;
+        public Color currentNodeColor;
     }
 }

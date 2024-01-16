@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using SpaceRogue.Map.Settings;
+﻿using SpaceRogue.Map.Settings;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -10,6 +10,9 @@ namespace SpaceRogue.Map
     public class SystemMap
     {
         public Dictionary<Vector2, MapNode> Nodes { get; private set; }
+
+        public MapNode StartNode { get; set; }
+        public MapNode EndNode { get; set; }
 
         private int _finalAmount;
         private int _currentSeed;
@@ -39,14 +42,14 @@ namespace SpaceRogue.Map
             List<MapNode> rightMostNodes = Nodes.OrderByDescending(node => node.Key.x).Take(5).Select(node => node.Value).ToList();
 
             // Randomly pick one from each
-            MapNode startNode = leftMostNodes[Random.Range(0, leftMostNodes.Count)];
-            MapNode endNode = rightMostNodes[Random.Range(0, rightMostNodes.Count)];
+            StartNode = leftMostNodes[Random.Range(0, leftMostNodes.Count)];
+            EndNode = rightMostNodes[Random.Range(0, rightMostNodes.Count)];
 
             // Set start and end nodes
-            startNode.IsStart = true;
-            endNode.IsEnd = true;
+            StartNode.Variant = MapNodeVariant.Start;
+            EndNode.Variant = MapNodeVariant.End;
 
-            Debug.Log($"Start Node: {startNode.Position}, End Node: {endNode.Position}");
+            Debug.Log($"Start Node: {StartNode.Position}, End Node: {EndNode.Position}");
         }
 
         private void FinalConnectivityCheck()
@@ -57,12 +60,10 @@ namespace SpaceRogue.Map
             // Re-identify groups after initial connections
             foreach (MapNode node in Nodes.Values)
             {
-                if (!visited.Contains(node))
-                {
-                    List<MapNode> group = new List<MapNode>();
-                    Traverse(node, visited, group);
-                    groups.Add(group);
-                }
+                if (visited.Contains(node)) continue;
+                List<MapNode> group = new List<MapNode>();
+                Traverse(node, visited, group);
+                groups.Add(group);
             }
 
             // If more than one group exists, connect them

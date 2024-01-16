@@ -14,14 +14,22 @@ namespace SpaceRogue.Map
         BlackHole,
     }
 
+    public enum MapNodeVariant
+    {
+        Normal,
+        Start,
+        End
+    }
+
     public class MapNode
     {
         public Vector2 Position;
         public MapNodeType Type;
+        public MapNodeVariant Variant;
         public NodeEvent Event;
         public MapNode[] Neighbours;
-        public bool IsStart;
-        public bool IsEnd;
+
+        public GameObject GameObject { get; set; }
 
         public MapNode(Vector2 position, MapNodeType nodeType = MapNodeType.Empty, NodeEventType eventType = NodeEventType.Nothing)
         {

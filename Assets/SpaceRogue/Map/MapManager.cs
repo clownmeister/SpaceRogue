@@ -6,13 +6,21 @@ using Random = UnityEngine.Random;
 
 namespace SpaceRogue.Map
 {
-    public class MapController : MonoBehaviour
+    public class MapManager : MonoBehaviour
     {
+        public static MapManager Instance;
+
+        public MapNode CurrentNode { get; set; }
+
+        private MapNode _selectedNode;
+
         public int seed;
         public GameObject lineRendererPrefab;
         public SystemMapSettings systemMapSettings;
         public float nodeZ = -2f;
         public float lineZ = -1.5f;
+        public LayerMask clickLayerMask;
+
         [Header("Gizmo settings")]
         public bool drawGizmos;
         public Color boundariesColor = Color.cyan;
@@ -32,7 +40,19 @@ namespace SpaceRogue.Map
             Gizmos.DrawWireCube(Vector3.zero, new Vector3(systemMapSettings.mapSize.x * 2, systemMapSettings.mapSize.y * 2, 0));
         }
 
-        void Start()
+        private void Awake()
+        {
+            if (Instance != null)
+            {
+                Destroy(gameObject);
+                return;
+            }
+
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+
+        private void Start()
         {
             GameObject mapNodes = new GameObject("MapNodes");
             _systemMapParent = mapNodes.transform;
@@ -47,7 +67,14 @@ namespace SpaceRogue.Map
 
             this.seed = seed;
             this._systemMap.Generate(this.seed);
+            InitCurrentNode();
+
             DrawSystemMap();
+        }
+
+        private void InitCurrentNode()
+        {
+            CurrentNode = _systemMap.StartNode;
         }
 
         private void ClearMap()
@@ -63,7 +90,7 @@ namespace SpaceRogue.Map
                 Destroy(child.gameObject);
             }
         }
-        
+
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.G))
@@ -90,6 +117,48 @@ namespace SpaceRogue.Map
                     _lastTapTime = Time.time;
                 }
             }
+
+            // if (Input.GetMouseButtonDown(0))
+            // {
+            //     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            //     RaycastHit hit;
+            //     if (!Physics.Raycast(ray, out hit, Mathf.Infinity,clickLayerMask)) return;
+            //     NodeClickHandler clickHandler = hit.collider.GetComponent<NodeClickHandler>();
+            //     if (clickHandler != null)
+            //     {
+            //         //TODO: fix? and add mobile click
+            //         Debug.Log("Click from ray found");
+            //         HandleNodeSelection(clickHandler.MapNodeData);
+            //     }
+            // }
+        }
+
+        public void HandleNodeSelection(MapNode selectedNode)
+        {
+            if (selectedNode == _selectedNode) return;
+            if (_selectedNode != null)
+            {
+                MapNode oldNode = _selectedNode;
+                _selectedNode = null;
+                SetNodeColor(oldNode, GetNodeColor(oldNode));
+            }
+
+            _selectedNode = selectedNode;
+            SetNodeColor(selectedNode, GetNodeColor(selectedNode));
+        }
+
+        private static void SetNodeColor(GameObject nodeGameObject, Color color)
+        {
+            SpriteRenderer[] renderers = nodeGameObject.GetComponentsInChildren<SpriteRenderer>();
+            foreach (SpriteRenderer spriteRenderer in renderers)
+            {
+                spriteRenderer.color = color;
+            }
+        }
+
+        private static void SetNodeColor(MapNode node, Color color)
+        {
+            SetNodeColor(node.GameObject, color);
         }
 
         private void DrawSystemMap()
@@ -100,32 +169,65 @@ namespace SpaceRogue.Map
                 Vector2 position = item.Key;
                 // TODO: Do we need translation?
                 // Vector2 position = TranslatePointOnMapToScreenSize(node.Key);
-
-                GameObject prefab = null;
-                // If end or start node, take priority
-                if (node.IsStart || node.IsEnd)
-                {
-                    prefab = node.IsStart ? systemMapSettings.startNodePrefab : systemMapSettings.endNodePrefab;
-                }
-                else
-                {
-                    switch (node.Type)
-                    {
-                        case MapNodeType.Empty:
-                        case MapNodeType.Planet:
-                        case MapNodeType.Storm:
-                        case MapNodeType.Asteroids:
-                        case MapNodeType.BlackHole:
-                            prefab = this.systemMapSettings.emptyNodePrefab;
-                            break;
-                        default:
-                            throw new ArgumentOutOfRangeException();
-                    }
-                }
-
-                Instantiate(prefab, new Vector3(position.x, position.y, nodeZ), Quaternion.identity, this._systemMapParent);
+                CreateNodeGameObject(node, position);
                 DrawConnections(position, node);
             }
+        }
+
+        private void CreateNodeGameObject(MapNode node, Vector2 position)
+        {
+            // Create node + apply color
+            GameObject nodeGameObject = Instantiate(GetNodePrefab(node), new Vector3(position.x, position.y, nodeZ), Quaternion.identity, this._systemMapParent);
+            SetNodeColor(nodeGameObject, GetNodeColor(node));
+
+            //Link
+            NodeClickHandler handler = nodeGameObject.AddComponent<NodeClickHandler>();
+            handler.MapNodeData = node;
+            node.GameObject = nodeGameObject;
+        }
+
+        private GameObject GetNodePrefab(MapNode node)
+        {
+            GameObject prefab;
+
+            //Get correct prefab
+            switch (node.Type)
+            {
+                case MapNodeType.Empty:
+                case MapNodeType.Planet:
+                case MapNodeType.Storm:
+                case MapNodeType.Asteroids:
+                case MapNodeType.BlackHole:
+                    prefab = this.systemMapSettings.emptyNodePrefab;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            return prefab;
+        }
+
+        private Color GetNodeColor(MapNode node)
+        {
+            Color color;
+            if (node == CurrentNode)
+            {
+                color = systemMapSettings.currentNodeColor;
+            } else if (node == _selectedNode)
+            {
+                color = systemMapSettings.selectedNodeColor;
+            }
+            else
+            {
+                color = node.Variant switch
+                {
+                    MapNodeVariant.Normal => systemMapSettings.emptyNodeColor,
+                    MapNodeVariant.End => systemMapSettings.enemyNodeColor,
+                    _ => throw new ArgumentOutOfRangeException()
+                };
+            }
+
+            return color;
         }
 
         private void DrawConnections(Vector2 position, MapNode node)
@@ -154,7 +256,7 @@ namespace SpaceRogue.Map
                 _drawnConnections.Add(pair);
             }
         }
-        
+
         private Vector2 TranslatePointOnMapToScreenSize(Vector2 point)
         {
             return new Vector2(Screen.width, Screen.height) / this.systemMapSettings.mapSize * point;
