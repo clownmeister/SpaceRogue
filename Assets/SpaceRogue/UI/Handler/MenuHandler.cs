@@ -28,18 +28,18 @@ namespace SpaceRogue.UI.Handler
 
         private void RegisterButtons()
         {
-            var mainButtons = this.root.Query<Button>(className: ButtonClass);
+            UQueryBuilder<Button> mainButtons = this.root.Query<Button>(className: ButtonClass);
             mainButtons.ForEach(button => { button.RegisterCallback<ClickEvent>(OnClickPageButton); });
         }
 
         private void InitPages()
         {
             this.menuPages = new Dictionary<string, VisualElement>();
-            var pages = this.root.Query<VisualElement>(className: PageClass);
+            UQueryBuilder<VisualElement> pages = this.root.Query<VisualElement>(className: PageClass);
             pages.ForEach(page =>
             {
                 string target = null;
-                var classes = page.GetClasses();
+                IEnumerable<string> classes = page.GetClasses();
                 foreach (string className in classes)
                     if (className.StartsWith(PageDataClassPrefix))
                         target = className.Replace(PageDataClassPrefix, "");

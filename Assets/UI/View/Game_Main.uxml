@@ -1,30 +1,28 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements"
-         xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements"
-         noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:Template name="Game_PauseMenu"
-                 src="project://database/Assets/UI/View/Game_PauseMenu.uxml?fileID=9197481963319205126&amp;guid=92caa5ed3cc09ce4390852e5ca970c42&amp;type=3#Game_PauseMenu"/>
-    <ui:Template name="MainMenu__Settings"
-                 src="project://database/Assets/UI/View/MainMenu__Settings.uxml?fileID=9197481963319205126&amp;guid=4aaa42777270e27448e4523b1fab30bb&amp;type=3#MainMenu__Settings"/>
-    <Style src="project://database/Assets/UI/Styles/Dist/Main.uss?fileID=7433441132597879392&amp;guid=c02a89fdb5ad97d4a89a3a9622974b47&amp;type=3#Main"/>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="Game_PauseMenu" src="project://database/Assets/UI/View/Game_PauseMenu.uxml?fileID=9197481963319205126&amp;guid=92caa5ed3cc09ce4390852e5ca970c42&amp;type=3#Game_PauseMenu" />
+    <ui:Template name="MainMenu__Settings" src="project://database/Assets/UI/View/MainMenu__Settings.uxml?fileID=9197481963319205126&amp;guid=4aaa42777270e27448e4523b1fab30bb&amp;type=3#MainMenu__Settings" />
+    <Style src="project://database/Assets/UI/Styles/Dist/Main.uss?fileID=7433441132597879392&amp;guid=c02a89fdb5ad97d4a89a3a9622974b47&amp;type=3#Main" />
     <ui:VisualElement name="Page" class="page game">
-        <ui:VisualElement name="Header" class="game__header"/>
-        <ui:VisualElement name="Content" class="game__content"/>
-        <ui:VisualElement name="Footer" class="game__footer">
-            <ui:VisualElement name="FooterContent" class="game__footer-content"/>
-            <ui:VisualElement name="TurnControls" class="game__turn-controls">
-                <SpaceRogue.UI.Element.ButtonElement name="EndTurnButton" enable-rich-text="true"
-                                                     class="btn btn--primary-textured btn--squared btn--clock">
-                    <ui:VisualElement name="Icon" class="i"/>
+        <ui:VisualElement name="Header" class="game__header">
+            <ui:VisualElement name="HeaderControls" class="game__header-controls">
+                <SpaceRogue.UI.Element.ButtonElement name="SettingsButton" enable-rich-text="true" data="game-settings" class="btn btn--primary-textured btn--squared btn--settings">
+                    <ui:VisualElement name="Icon" class="i" />
                 </SpaceRogue.UI.Element.ButtonElement>
-                <SpaceRogue.UI.Element.ButtonElement name="ChangeScreenButton" enable-rich-text="true"
-                                                     class="btn btn--primary-textured btn--squared btn--attack">
-                    <ui:VisualElement name="Icon" class="i"/>
+            </ui:VisualElement>
+            <ui:VisualElement name="HeaderContent" class="game__header-content" />
+        </ui:VisualElement>
+        <ui:VisualElement name="Content" class="game__content" />
+        <ui:VisualElement name="Footer" class="game__footer">
+            <ui:VisualElement name="FooterContent" class="game__footer-content" />
+            <ui:VisualElement name="TurnControls" class="game__turn-controls">
+                <SpaceRogue.UI.Element.ButtonElement name="MapButton" enable-rich-text="true" data="go-map" class="btn btn--primary-textured btn--squared btn--map -btn-target-map">
+                    <ui:VisualElement name="Icon" class="i" />
                 </SpaceRogue.UI.Element.ButtonElement>
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="ModalWrapper" class="modal__wrapper" style="display: none;">
-            <ui:Instance template="Game_PauseMenu" name="Game_PauseMenu" style="display: none;"/>
-            <ui:Instance template="MainMenu__Settings" name="MainMenu__Settings"/>
+            <ui:Instance template="Game_PauseMenu" name="Game_PauseMenu" style="display: none;" />
+            <ui:Instance template="MainMenu__Settings" name="MainMenu__Settings" style="display: none;" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

@@ -281,6 +281,12 @@
 .btn--clock > .i {
   background-image: resource("Sprites/Icons/clock");
 }
+.btn--map > .i {
+  background-image: resource("Sprites/Icons/zoom");
+}
+.btn--settings > .i {
+  background-image: resource("Sprites/Icons/settings");
+}
 
 .page {
   width: 100%;
@@ -480,7 +486,19 @@
 }
 .game__header {
   width: 100%;
+  flex-direction: row;
   flex: 0 0 auto;
+}
+.game__header-controls {
+  flex: 0 0 auto;
+  align-self: flex-end;
+  flex-direction: row;
+}
+.game__header-controls > .btn, .game__header-controls > .btn > .i {
+  margin-left: 20px;
+}
+.game__header-content {
+  flex: 1 1 auto;
 }
 .game__content {
   width: 100%;
@@ -496,7 +514,7 @@
 }
 .game__turn-controls {
   flex: 0 0 auto;
-  align-self: flex-end;
+  align-self: flex-start;
   flex-direction: row;
 }
 .game__turn-controls > .btn, .game__turn-controls > .btn > .i {

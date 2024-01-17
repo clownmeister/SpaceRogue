@@ -65,4 +65,10 @@
   &--clock > .i {
     background-image: resource("Sprites/Icons/clock");
   }
+  &--map > .i {
+    background-image: resource("Sprites/Icons/zoom");
+  }
+  &--settings > .i {
+    background-image: resource("Sprites/Icons/settings");
+  }
 }
