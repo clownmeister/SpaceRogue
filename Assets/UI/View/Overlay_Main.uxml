@@ -6,20 +6,20 @@
     <Style src="project://database/Assets/UI/Styles/Dist/Main.uss?fileID=7433441132597879392&amp;guid=c02a89fdb5ad97d4a89a3a9622974b47&amp;type=3#Main" />
     <ui:VisualElement name="Page" class="page game">
         <ui:VisualElement name="Header" class="game__header">
-            <ui:VisualElement name="HeaderControls" class="game__header-controls" />
-            <ui:VisualElement name="HeaderContent" class="game__header-content" />
-        </ui:VisualElement>
-        <ui:VisualElement name="Content" class="game__content" />
-        <ui:VisualElement name="Footer" class="game__footer">
-            <ui:VisualElement name="FooterContent" class="game__footer-content" />
-            <ui:VisualElement name="TurnControls" class="game__turn-controls">
-                <SpaceRogue.UI.Element.ButtonElement name="MapButton" enable-rich-text="true" data="go-map" class="btn btn--primary-textured btn--squared btn--map -btn-target-map">
+            <ui:VisualElement name="HeaderControls" class="game__header-controls">
+                <SpaceRogue.UI.Element.ButtonElement name="SettingsButton" enable-rich-text="true" data="game-settings" class="btn btn--primary-textured btn--squared btn--settings">
                     <ui:VisualElement name="Icon" class="i" />
                 </SpaceRogue.UI.Element.ButtonElement>
             </ui:VisualElement>
+            <ui:VisualElement name="HeaderContent" class="game__header-content" />
+        </ui:VisualElement>
+        <ui:VisualElement name="Content" class="game__content" style="position: relative;" />
+        <ui:VisualElement name="Footer" class="game__footer">
+            <ui:VisualElement name="FooterContent" class="game__footer-content" />
+            <ui:VisualElement name="TurnControls" class="game__turn-controls" />
         </ui:VisualElement>
         <ui:VisualElement name="ModalWrapper" class="modal__wrapper" style="display: none;">
-            <ui:Instance template="Game_PauseMenu" name="Game_PauseMenu" style="display: none;" />
+            <ui:Instance template="Game_PauseMenu" name="Game_PauseMenu" style="display: flex;" />
             <ui:Instance template="MainMenu__Settings" name="MainMenu__Settings" style="display: none;" />
         </ui:VisualElement>
     </ui:VisualElement>

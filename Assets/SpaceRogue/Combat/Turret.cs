@@ -1,5 +1,5 @@
-using SpaceRogue.Utility;
 using System;
+using SpaceRogue.Utility;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -7,6 +7,7 @@ namespace SpaceRogue.Combat
 {
     public class Turret : MonoBehaviour
     {
+        public const string PROJECTILE_PARENT_NAME = "Projectiles";
         public GameObject projectilePrefab;
         public float maxRange = 10;
         public float projectileSpeed = 10f;
@@ -23,10 +24,26 @@ namespace SpaceRogue.Combat
 
         private TargetingUnit _targetingUnit;
         private Quaternion _targetRotation;
+        private Transform _projectileParent;
 
         private void Start()
         {
             _targetingUnit = GetComponent<TargetingUnit>();
+            _projectileParent = GetProjectileParent();
+        }
+
+        private static Transform GetProjectileParent()
+        {
+            GameObject parent = GameObject.Find(PROJECTILE_PARENT_NAME);
+            if (parent == null)
+            {
+                parent = new GameObject(PROJECTILE_PARENT_NAME);
+            }
+
+            // ToggleOnSceneChange toggleComponent = parent.AddComponent<ToggleOnSceneChange>();
+            // toggleComponent.TargetSceneState = SceneState.Game;
+
+            return parent.transform;
         }
 
         private void Update()
@@ -81,7 +98,7 @@ namespace SpaceRogue.Combat
         private void Shoot()
         {
             Quaternion projectileRotation = ApplyAccuracy(transform.rotation);
-            GameObject projectile = Instantiate(projectilePrefab, transform.position, projectileRotation);
+            GameObject projectile = Instantiate(projectilePrefab, transform.position, projectileRotation, _projectileParent);
             projectile.layer = gameObject.layer;
             projectile.GetComponent<Rigidbody2D>().velocity = projectileRotation * Vector2.right * projectileSpeed;
             Destroy(projectile, maxRange / projectileSpeed);

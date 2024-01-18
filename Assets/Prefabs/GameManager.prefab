@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7119769337457190430}
   - component: {fileID: 2700730682714777992}
   - component: {fileID: 2877178643402158606}
+  - component: {fileID: 8311174717496372615}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -68,3 +69,17 @@ MonoBehaviour:
     m_Bits: 32
   drawGizmos: 1
   boundariesColor: {r: 0, g: 1, b: 1, a: 1}
+--- !u!114 &8311174717496372615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3707305561093751121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cbca725d3f4415d982433122b68b03f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameToggleObjects: []
+  mapToggleObjects: []

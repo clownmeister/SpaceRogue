@@ -1,9 +1,9 @@
 {
     "m_SelectedDeviceId": "60466ee7",
     "m_SelectedPackage": {
-        "deviceId": "60466ee7",
-        "name": "com.DefaultCompany.com.unity.template.mobile2D",
-        "processId": 30653,
+        "deviceId": "",
+        "name": "",
+        "processId": 0,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -11,169 +11,31 @@
         {
             "deviceId": "60466ee7",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 20797,
-            "exited": true
-        },
-        {
-            "deviceId": "60466ee7",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 13869,
-            "exited": true
-        },
-        {
-            "deviceId": "60466ee7",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 15627,
-            "exited": true
-        },
-        {
-            "deviceId": "60466ee7",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 28681,
-            "exited": true
-        },
-        {
-            "deviceId": "60466ee7",
-            "name": "com.miui.home",
-            "processId": 29293,
-            "exited": false
-        },
-        {
-            "deviceId": "60466ee7",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 5072,
-            "exited": false
-        },
-        {
-            "deviceId": "60466ee7",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 6647,
-            "exited": false
-        },
-        {
-            "deviceId": "60466ee7",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 7277,
-            "exited": false
-        },
-        {
-            "deviceId": "60466ee7",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 7697,
-            "exited": false
-        },
-        {
-            "deviceId": "60466ee7",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 8530,
-            "exited": false
-        },
-        {
-            "deviceId": "60466ee7",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 10710,
-            "exited": false
-        },
-        {
-            "deviceId": "60466ee7",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 19203,
-            "exited": false
-        },
-        {
-            "deviceId": "60466ee7",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 5569,
-            "exited": false
-        },
-        {
-            "deviceId": "60466ee7",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 11820,
-            "exited": false
-        },
-        {
-            "deviceId": "60466ee7",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 18758,
-            "exited": false
-        },
-        {
-            "deviceId": "60466ee7",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 19285,
-            "exited": false
-        },
-        {
-            "deviceId": "60466ee7",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 19754,
-            "exited": false
-        },
-        {
-            "deviceId": "60466ee7",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 20178,
-            "exited": false
-        },
-        {
-            "deviceId": "60466ee7",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 20522,
-            "exited": false
-        },
-        {
-            "deviceId": "60466ee7",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 20867,
-            "exited": false
-        },
-        {
-            "deviceId": "60466ee7",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 21135,
-            "exited": false
-        },
-        {
-            "deviceId": "60466ee7",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 21507,
-            "exited": false
-        },
-        {
-            "deviceId": "60466ee7",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 21914,
-            "exited": false
-        },
-        {
-            "deviceId": "60466ee7",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 22239,
-            "exited": false
-        },
-        {
-            "deviceId": "60466ee7",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 23018,
-            "exited": false
-        },
-        {
-            "deviceId": "60466ee7",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 23421,
-            "exited": false
-        },
-        {
-            "deviceId": "60466ee7",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
             "processId": 29294,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "60466ee7",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
             "processId": 30653,
+            "exited": true
+        },
+        {
+            "deviceId": "60466ee7",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 945,
+            "exited": true
+        },
+        {
+            "deviceId": "60466ee7",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 20755,
+            "exited": true
+        },
+        {
+            "deviceId": "60466ee7",
+            "name": "com.miui.home",
+            "processId": 3064,
             "exited": false
         }
     ],

@@ -9,14 +9,17 @@ EditorBuildSettings:
     path: Assets/Scenes/Main.unity
     guid: 3fc8acdd13e6c734bafef6554d6fdbcd
   - enabled: 0
-    path: Assets/Scenes/Game.unity
+    path: Assets/Scenes/Travel.unity
     guid: 37a7bacdf2467d145886994c54f1f83d
-  - enabled: 0
-    path: Assets/Scenes/GameCombat.unity
+  - enabled: 1
+    path: Assets/Scenes/Game.unity
     guid: c2d79b1ea7eceae4c8fc4f3b8d382af2
   - enabled: 1
     path: Assets/Scenes/Map.unity
     guid: 68de2f457cd69584eb4d61c37dc2d298
+  - enabled: 1
+    path: Assets/Scenes/Overlay.unity
+    guid: 27b265ee3f491b643a7e79b4492fd7d7
   m_configObjects:
     com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000, guid: 1dd4658255c518142bbf5ea315655852, type: 2}
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 80b4daa1f3935f843b74a210974bfb13, type: 2}

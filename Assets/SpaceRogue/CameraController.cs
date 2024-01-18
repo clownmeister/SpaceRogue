@@ -52,35 +52,35 @@ namespace SpaceRogue
 
             if (Input.GetKey("w"))
             {
-                pos.y += speed * Time.deltaTime;
+                pos.y += speed * Time.unscaledDeltaTime;
             }
 
             if (Input.GetKey("s"))
             {
-                pos.y -= speed * Time.deltaTime;
+                pos.y -= speed * Time.unscaledDeltaTime;
             }
 
             if (Input.GetKey("d"))
             {
-                pos.x += speed * Time.deltaTime;
+                pos.x += speed * Time.unscaledDeltaTime;
             }
 
             if (Input.GetKey("a"))
             {
-                pos.x -= speed * Time.deltaTime;
+                pos.x -= speed * Time.unscaledDeltaTime;
             }
         }
 
         private void HandleZoom(ref Vector3 pos)
         {
             float zoom = Input.GetAxis("Mouse ScrollWheel");
-            _cam.orthographicSize -= zoom * cameraSettings.zoomSpeed * Time.deltaTime;
+            _cam.orthographicSize -= zoom * cameraSettings.zoomSpeed * Time.unscaledDeltaTime;
 
             // Smooth zooming for mobile
             if (Application.isMobilePlatform)
             {
                 float targetZoom = Mathf.Clamp(_cam.orthographicSize, minZoom, maxZoom);
-                _cam.orthographicSize = Mathf.Lerp(_cam.orthographicSize, targetZoom, Time.deltaTime * cameraSettings.mobileZoomSpeed);
+                _cam.orthographicSize = Mathf.Lerp(_cam.orthographicSize, targetZoom, Time.unscaledDeltaTime * cameraSettings.mobileZoomSpeed);
             }
             else
             {
@@ -95,11 +95,11 @@ namespace SpaceRogue
             {
                 Touch touch = Input.GetTouch(0);
                 Vector2 touchDelta = touch.deltaPosition;
-                pos.x -= touchDelta.x * _currentMoveSpeed * Time.deltaTime;
-                pos.y -= touchDelta.y * _currentMoveSpeed * Time.deltaTime;
+                pos.x -= touchDelta.x * _currentMoveSpeed * Time.unscaledDeltaTime;
+                pos.y -= touchDelta.y * _currentMoveSpeed * Time.unscaledDeltaTime;
 
                 // Update inertia velocity using new settings
-                _inertiaVelocity = Vector2.ClampMagnitude(-touchDelta / (Time.deltaTime * cameraSettings.inertiaDuration) * cameraSettings.inertiaVelocityModifier, cameraSettings.inertiaLimit);
+                _inertiaVelocity = Vector2.ClampMagnitude(-touchDelta / (Time.unscaledDeltaTime * cameraSettings.inertiaDuration) * cameraSettings.inertiaVelocityModifier, cameraSettings.inertiaLimit);
                 Debug.Log("velocity: " + _inertiaVelocity.magnitude);
             }
             else if (Input.touchCount == 2)
@@ -116,7 +116,7 @@ namespace SpaceRogue
 
                 float difference = currentMagnitude - prevMagnitude;
 
-                _cam.orthographicSize -= difference * cameraSettings.mobileZoomSpeed * Time.deltaTime;
+                _cam.orthographicSize -= difference * cameraSettings.mobileZoomSpeed * Time.unscaledDeltaTime;
                 _cam.orthographicSize = Mathf.Clamp(_cam.orthographicSize, minZoom, maxZoom);
             }
             else
@@ -124,9 +124,9 @@ namespace SpaceRogue
                 // Apply inertia using new settings
                 if (_inertiaVelocity.magnitude > cameraSettings.minInertiaSpeed)
                 {
-                    pos.x += _inertiaVelocity.x * Time.deltaTime;
-                    pos.y += _inertiaVelocity.y * Time.deltaTime;
-                    _inertiaVelocity = Vector2.Lerp(_inertiaVelocity, Vector2.zero, Time.deltaTime / cameraSettings.inertiaDuration);
+                    pos.x += _inertiaVelocity.x * Time.unscaledDeltaTime;
+                    pos.y += _inertiaVelocity.y * Time.unscaledDeltaTime;
+                    _inertiaVelocity = Vector2.Lerp(_inertiaVelocity, Vector2.zero, Time.unscaledDeltaTime / cameraSettings.inertiaDuration);
                 }
             }
         }

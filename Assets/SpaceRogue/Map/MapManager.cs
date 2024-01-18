@@ -1,6 +1,6 @@
-using SpaceRogue.Map.Settings;
 using System;
 using System.Collections.Generic;
+using SpaceRogue.Map.Settings;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -33,10 +33,12 @@ namespace SpaceRogue.Map
         private float _lastTapTime = 0f;
         private const float DOUBLE_TAP_INTERVAL = 0.3f;
 
+        private int _mapLayer;
+
         private void OnDrawGizmos()
         {
-            if (!this.drawGizmos) return;
-            Gizmos.color = this.boundariesColor;
+            if (!drawGizmos) return;
+            Gizmos.color = boundariesColor;
             Gizmos.DrawWireCube(Vector3.zero, new Vector3(systemMapSettings.mapSize.x * 2, systemMapSettings.mapSize.y * 2, 0));
         }
 
@@ -50,15 +52,18 @@ namespace SpaceRogue.Map
 
             Instance = this;
             DontDestroyOnLoad(gameObject);
+
+            _mapLayer = LayerMask.NameToLayer("Map");
         }
 
         private void Start()
         {
             GameObject mapNodes = new GameObject("MapNodes");
+            mapNodes.layer = _mapLayer;
             _systemMapParent = mapNodes.transform;
 
-            this._systemMap = new SystemMap(this.systemMapSettings);
-            RegenerateMap(this.seed);
+            _systemMap = new SystemMap(systemMapSettings);
+            RegenerateMap(seed);
         }
 
         private void RegenerateMap(int seed)
@@ -66,7 +71,7 @@ namespace SpaceRogue.Map
             ClearMap();
 
             this.seed = seed;
-            this._systemMap.Generate(this.seed);
+            _systemMap.Generate(this.seed);
             InitCurrentNode();
 
             DrawSystemMap();
@@ -79,7 +84,7 @@ namespace SpaceRogue.Map
 
         private void ClearMap()
         {
-            DestroyAllChildren(this._systemMapParent);
+            DestroyAllChildren(_systemMapParent);
             _drawnConnections.Clear();
         }
 
@@ -100,7 +105,7 @@ namespace SpaceRogue.Map
 
             if (Input.GetKeyDown(KeyCode.H))
             {
-                RegenerateMap(this.seed);
+                RegenerateMap(seed);
             }
 
             // Detect double-tap on mobile
@@ -163,7 +168,7 @@ namespace SpaceRogue.Map
 
         private void DrawSystemMap()
         {
-            foreach (KeyValuePair<Vector2, MapNode> item in this._systemMap.Nodes)
+            foreach (KeyValuePair<Vector2, MapNode> item in _systemMap.Nodes)
             {
                 MapNode node = item.Value;
                 Vector2 position = item.Key;
@@ -177,7 +182,8 @@ namespace SpaceRogue.Map
         private void CreateNodeGameObject(MapNode node, Vector2 position)
         {
             // Create node + apply color
-            GameObject nodeGameObject = Instantiate(GetNodePrefab(node), new Vector3(position.x, position.y, nodeZ), Quaternion.identity, this._systemMapParent);
+            GameObject nodeGameObject = Instantiate(GetNodePrefab(node), new Vector3(position.x, position.y, nodeZ), Quaternion.identity, _systemMapParent);
+            nodeGameObject.layer = _mapLayer;
             SetNodeColor(nodeGameObject, GetNodeColor(node));
 
             //Link
@@ -198,7 +204,7 @@ namespace SpaceRogue.Map
                 case MapNodeType.Storm:
                 case MapNodeType.Asteroids:
                 case MapNodeType.BlackHole:
-                    prefab = this.systemMapSettings.emptyNodePrefab;
+                    prefab = systemMapSettings.emptyNodePrefab;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -242,7 +248,8 @@ namespace SpaceRogue.Map
                     continue;
                 }
 
-                GameObject lineObj = Instantiate(lineRendererPrefab, this._systemMapParent);
+                GameObject lineObj = Instantiate(lineRendererPrefab, _systemMapParent);
+                lineObj.layer = _mapLayer;
                 LineRenderer lineRenderer = lineObj.GetComponent<LineRenderer>();
 
                 Vector3 startPosition = new Vector3(position.x, position.y, lineZ); // Adjust Z axis if needed
@@ -259,7 +266,7 @@ namespace SpaceRogue.Map
 
         private Vector2 TranslatePointOnMapToScreenSize(Vector2 point)
         {
-            return new Vector2(Screen.width, Screen.height) / this.systemMapSettings.mapSize * point;
+            return new Vector2(Screen.width, Screen.height) / systemMapSettings.mapSize * point;
         }
     }
 }

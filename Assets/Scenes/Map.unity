@@ -136,7 +136,8 @@ GameObject:
   - component: {fileID: 4369975}
   - component: {fileID: 4369978}
   - component: {fileID: 4369979}
-  m_Layer: 0
+  - component: {fileID: 4369980}
+  m_Layer: 10
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -190,7 +191,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 1024
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -277,6 +278,67 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!114 &4369980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4369974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc9ef3689a7a4cf1a23cf6de43ae7da4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetSceneState: 2
+--- !u!1 &16716682
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 16716683}
+  - component: {fileID: 16716684}
+  m_Layer: 10
+  m_Name: UIDocument
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &16716683
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 16716682}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -90}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1389829474}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &16716684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 16716682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PanelSettings: {fileID: 11400000, guid: 2a41f938f9a31e4429e5322912324d79, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 0}
+  m_SortingOrder: 0
 --- !u!1 &57715808
 GameObject:
   m_ObjectHideFlags: 0
@@ -287,7 +349,7 @@ GameObject:
   m_Component:
   - component: {fileID: 57715809}
   - component: {fileID: 57715810}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: DustGreen (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -370,7 +432,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 681166944}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BackgroundAmbience
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -407,7 +469,7 @@ GameObject:
   - component: {fileID: 771267220}
   - component: {fileID: 771267222}
   - component: {fileID: 771267221}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Stars
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -482,7 +544,7 @@ GameObject:
   - component: {fileID: 854652609}
   - component: {fileID: 854652611}
   - component: {fileID: 854652610}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Background Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -556,7 +618,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1156273356}
   - component: {fileID: 1156273357}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dust2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -642,7 +704,7 @@ GameObject:
   - component: {fileID: 1389829477}
   - component: {fileID: 1389829476}
   - component: {fileID: 1389829475}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -663,6 +725,7 @@ RectTransform:
   m_Children:
   - {fileID: 854652609}
   - {fileID: 771267220}
+  - {fileID: 16716683}
   m_Father: {fileID: 1714357741}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -742,7 +805,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1714357741}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -775,7 +838,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1752891690}
   - component: {fileID: 1752891691}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dust
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -859,7 +922,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1988423677}
   - component: {fileID: 1988423678}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: DustGreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -984,6 +1047,10 @@ PrefabInstance:
     - target: {fileID: 7119769337457190430, guid: 34747f0d680336549832af5f354c8d66, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8311174717496372615, guid: 34747f0d680336549832af5f354c8d66, type: 3}
+      propertyPath: _currentState
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

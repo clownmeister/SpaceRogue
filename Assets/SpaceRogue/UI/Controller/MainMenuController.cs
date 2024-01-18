@@ -1,6 +1,5 @@
 using SpaceRogue.UI.Handler;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 namespace SpaceRogue.UI.Controller
@@ -25,18 +24,17 @@ namespace SpaceRogue.UI.Controller
             RegisterNewGameButton(root);
         }
 
-        private void RegisterExitButton(VisualElement root)
+        private static void RegisterExitButton(VisualElement root)
         {
             root.Q(className: EXIT_BUTTON_CLASS_NAME).RegisterCallback<ClickEvent>(clickEvent =>
             {
-                // if (clickEvent.currentTarget is not ButtonElement button) throw new NullReferenceException("Could not find button in event");
                 Application.Quit();
             });
         }
 
-        private void RegisterNewGameButton(VisualElement root)
+        private static void RegisterNewGameButton(VisualElement root)
         {
-            root.Q(className: NEW_GAME_BUTTON_CLASS_NAME).RegisterCallback<ClickEvent>(clickEvent => { SceneManager.LoadScene("Map"); });
+            root.Q(className: NEW_GAME_BUTTON_CLASS_NAME).RegisterCallback<ClickEvent>(clickEvent => { ActiveSceneManager.Instance.SwitchScene(SceneState.Game); });
         }
     }
 }
