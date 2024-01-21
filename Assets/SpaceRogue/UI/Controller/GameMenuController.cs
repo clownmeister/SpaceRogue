@@ -9,7 +9,7 @@ namespace SpaceRogue.UI.Controller
 
         public UIDocument document;
 
-        private void Start()
+        private void OnEnable()
         {
             VisualElement root = document.rootVisualElement;
 

@@ -1,0 +1,25 @@
+﻿.node-detail {
+  max-width: rem(400px);
+  align-self: flex-end;
+  margin-bottom: rem(10px);
+  &__map-wrapper {
+    margin-bottom: rem(10px);
+  }
+  &__footer {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    & > * {
+      flex: 1 1 auto;
+    }
+    .btn {
+      height: rem(45px);
+    }
+  }
+  &__local-map {
+    flex: 0 0 auto;
+    width: rem(300px);
+    height: rem(300px);
+    background-image: resource("Images/grid_bg");
+  }
+}

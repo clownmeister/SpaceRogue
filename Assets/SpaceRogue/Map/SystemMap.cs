@@ -1,7 +1,7 @@
-﻿using SpaceRogue.Map.Settings;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using SpaceRogue.Map.Settings;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -20,13 +20,13 @@ namespace SpaceRogue.Map
 
         public SystemMap(SystemMapSettings settings)
         {
-            this._settings = settings;
+            _settings = settings;
         }
 
         public void Generate(int seed)
         {
-            this._currentSeed = seed;
-            Nodes = GenerateNodes(this._currentSeed);
+            _currentSeed = seed;
+            Nodes = GenerateNodes(_currentSeed);
             DetermineNeighbours();
             EnsureNoIsolatedNodes();
             ConnectIsolatedGroups();
@@ -191,9 +191,9 @@ namespace SpaceRogue.Map
             Random.InitState(seed);
             Dictionary<Vector2, MapNode> result = new Dictionary<Vector2, MapNode>();
 
-            this._finalAmount = _settings.nodeAmount + Random.Range(-_settings.nodeAmountVariation, _settings.nodeAmountVariation + 1);
+            _finalAmount = _settings.nodeAmount + Random.Range(-_settings.nodeAmountVariation, _settings.nodeAmountVariation + 1);
             int attempts = 0;
-            for (int i = 0; i < this._finalAmount; i++)
+            for (int i = 0; i < _finalAmount; i++)
             {
                 Vector2 boundaryX = GetMapAxisBoundaries(_settings.mapSize.x, _settings.mapPadding.x);
                 Vector2 boundaryY = GetMapAxisBoundaries(_settings.mapSize.y, _settings.mapPadding.y);
@@ -201,9 +201,9 @@ namespace SpaceRogue.Map
                 if (!ValidPosition(result, _settings, position))
                 {
                     attempts++;
-                    if (attempts > this._settings.maxAttemptsNodePlacement)
+                    if (attempts > _settings.maxAttemptsNodePlacement)
                     {
-                        Debug.LogWarning($"Exceeded max attempts on node placement. Not enough space! Created {result.Count} out of {this._finalAmount} desired nodes.");
+                        Debug.LogWarning($"Exceeded max attempts on node placement. Not enough space! Created {result.Count} out of {_finalAmount} desired nodes.");
                         return result;
                     }
 
@@ -222,7 +222,7 @@ namespace SpaceRogue.Map
 
         private void DetermineNeighbours()
         {
-            foreach (KeyValuePair<Vector2, MapNode> item in this.Nodes)
+            foreach (KeyValuePair<Vector2, MapNode> item in Nodes)
             {
                 // Determine random number of neighbours (between 1 and maxNodeConnection)
                 int numOfNeighbours = Random.Range(_settings.minNodeConnections, _settings.maxNodeConnection + 1);

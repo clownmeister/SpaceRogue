@@ -35,6 +35,8 @@ namespace SpaceRogue.Map
 
         private int _mapLayer;
 
+        private const string NODE_PARENT_NAME = "MapNodes";
+
         private void OnDrawGizmos()
         {
             if (!drawGizmos) return;
@@ -54,24 +56,27 @@ namespace SpaceRogue.Map
             DontDestroyOnLoad(gameObject);
 
             _mapLayer = LayerMask.NameToLayer("Map");
+            _systemMap = new SystemMap(systemMapSettings);
         }
 
-        private void Start()
+        private void InitNodeParent()
         {
-            GameObject mapNodes = new GameObject("MapNodes");
+            GameObject parent = GameObject.Find(NODE_PARENT_NAME);
+            if (parent)
+            {
+                _systemMapParent = parent.transform;
+                return;
+            };
+            GameObject mapNodes = new GameObject(NODE_PARENT_NAME);
             mapNodes.layer = _mapLayer;
             _systemMapParent = mapNodes.transform;
-
-            _systemMap = new SystemMap(systemMapSettings);
-            RegenerateMap(seed);
         }
 
-        private void RegenerateMap(int seed)
+        public void RegenerateMap(int? seed = null)
         {
+            InitNodeParent();
             ClearMap();
-
-            this.seed = seed;
-            _systemMap.Generate(this.seed);
+            _systemMap.Generate(seed ?? this.seed);
             InitCurrentNode();
 
             DrawSystemMap();

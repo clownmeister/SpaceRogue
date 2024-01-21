@@ -62,6 +62,7 @@ namespace SpaceRogue
                     StartCoroutine(LoadMainMenu());
                     return;
                 case SceneState.Map:
+                    SceneManager.SetActiveScene(SceneManager.GetSceneByName("Map"));
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
@@ -88,15 +89,19 @@ namespace SpaceRogue
 
         private static IEnumerator LoadGameScene()
         {
-            yield return SceneManager.LoadSceneAsync("Game", LoadSceneMode.Single);
-            yield return SceneManager.LoadSceneAsync("Map", LoadSceneMode.Additive);
-            yield return SceneManager.LoadSceneAsync("Overlay", LoadSceneMode.Additive);
+            if (!SceneManager.GetSceneByName("Game").isLoaded)
+            {
+                yield return SceneManager.LoadSceneAsync("Game", LoadSceneMode.Single);
+                yield return SceneManager.LoadSceneAsync("Map", LoadSceneMode.Additive);
+            }
+            // yield return SceneManager.LoadSceneAsync("Overlay", LoadSceneMode.Additive);
+            SceneManager.SetActiveScene(SceneManager.GetSceneByName("Game"));
         }
 
-        private IEnumerator LoadMainMenu()
+        private static IEnumerator LoadMainMenu()
         {
             yield return SceneManager.LoadSceneAsync("Main", LoadSceneMode.Single);
-            CurrentState = SceneState.MainMenu;
+            SceneManager.SetActiveScene(SceneManager.GetSceneByName("Main"));
         }
 
         private void ToggleSceneObjects(SceneState state, bool enable)

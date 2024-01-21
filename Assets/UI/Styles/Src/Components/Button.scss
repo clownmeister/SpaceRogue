@@ -33,6 +33,28 @@
     }
   }
 
+  &--success {
+    background-color: $bg-success;
+    color: $text-primary;
+    border-width: 0;
+    border-radius: rem(10px);
+    &:hover{
+      background-color: $bg-success-hover;
+      color: $text-primary-hover;
+    }
+  }
+
+  &--danger {
+    background-color: $bg-danger;
+    color: $text-primary;
+    border-width: 0;
+    border-radius: rem(10px);
+    &:hover{
+      background-color: $bg-danger-hover;
+      color: $text-primary-hover;
+    }
+  }
+
   &--primary-textured {
     background-image: resource("Sprites/UI/Button11");
     color: $text-primary;
@@ -45,9 +67,33 @@
     }
   }
 
+  &--success-textured {
+    background-image: resource("Sprites/UI/Button14");
+    color: $text-primary;
+    &:hover{
+      background-color: $bg-primary-hover;
+      color: $text-primary-hover;
+    }
+    &.btn--squared {
+      background-image: resource("Sprites/UI/Button06");
+    }
+  }
+
+  &--danger-textured {
+    background-image: resource("Sprites/UI/Button13");
+    color: $text-primary;
+    &:hover{
+      background-color: $bg-primary-hover;
+      color: $text-primary-hover;
+    }
+    &.btn--squared {
+      background-image: resource("Sprites/UI/Button05");
+    }
+  }
+
   &--squared {
-    $size: rem(75px);
-    padding: rem(15px);
+    $size: rem(70px);
+    padding: rem(10px);
     width: $size;
     min-width: $size;
     max-width: $size;
@@ -56,8 +102,32 @@
     max-height: $size;
   }
 
+  &--squared-sm {
+    $size: rem(30px);
+    padding: rem(5px);
+    width: $size;
+    min-width: $size;
+    max-width: $size;
+    height: $size;
+    min-height: $size;
+    max-height: $size;
+  }
+
+  &--flex {
+    min-width: auto;
+  }
+
+  &--top-right {
+    position: absolute;
+    top: rem(20px);
+    right: rem(15px);
+  }
+
   &--attack > .i {
     background-image: resource("Sprites/Icons/sword");
+  }
+  &--close > .i {
+    background-image: resource("Sprites/Icons/close_w");
   }
   &--defend > .i {
     background-image: resource("Sprites/Icons/shield");
@@ -66,9 +136,12 @@
     background-image: resource("Sprites/Icons/clock");
   }
   &--map > .i {
-    background-image: resource("Sprites/Icons/zoom");
+    background-image: resource("Sprites/Icons/star_w");
+  }
+  &--game > .i {
+    background-image: resource("Sprites/Icons/minimize_w");
   }
   &--settings > .i {
-    background-image: resource("Sprites/Icons/settings");
+    background-image: resource("Sprites/Icons/settings_w");
   }
 }

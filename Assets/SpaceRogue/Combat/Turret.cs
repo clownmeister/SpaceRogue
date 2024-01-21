@@ -1,6 +1,7 @@
 using System;
 using SpaceRogue.Utility;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 namespace SpaceRogue.Combat
@@ -69,7 +70,8 @@ namespace SpaceRogue.Combat
 
         private void OnDrawGizmos()
         {
-            if (!this.drawGizmos) return;
+            if (SceneManager.GetActiveScene().name != "Game") return;
+            if (!drawGizmos) return;
             Gizmo.DrawCircle(transform.position, this.maxRange, this._rangeColor);
         }
 

@@ -13,7 +13,7 @@
             </ui:VisualElement>
             <ui:VisualElement name="HeaderContent" class="game__header-content" />
         </ui:VisualElement>
-        <ui:VisualElement name="Content" class="game__content" style="position: relative;" />
+        <ui:VisualElement name="Content" class="game__content" />
         <ui:VisualElement name="Footer" class="game__footer">
             <ui:VisualElement name="FooterContent" class="game__footer-content" />
             <ui:VisualElement name="TurnControls" class="game__turn-controls" />

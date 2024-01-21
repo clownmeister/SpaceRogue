@@ -5,9 +5,22 @@
     color: #000;
     border-radius: 7px;
 
-    &__header {}
-    &__body {}
-    &__footer {}
+    &__header {
+        width: 100%;
+        margin-bottom: rem(20px);
+        -unity-text-align: middle-center;
+    }
+    &__body {
+        flex: 1 1 auto;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+    }
+    &__footer {
+        width: 100%;
+        margin-top: rem(10px);
+    }
     
     &--primary {
         background-color: rgba(0,36,57,.7);
@@ -16,7 +29,7 @@
 
     &--primary-textured {
         //second number is scrollbar width
-        padding: rem(20px) rem(8px) rem(10px) rem(15px);
+        padding: rem(20px) rem(8px) rem(15px);
         background-image: resource("Sprites/UI/MainPanel03");
         //stretch-to-fill | scale-and-crop | scale-to-fit
         -unity-background-scale-mode: stretch-to-fill;

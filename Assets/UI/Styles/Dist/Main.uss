@@ -252,6 +252,26 @@
   background-color: #0d191e;
   color: #fff;
 }
+.btn--success {
+  background-color: #3faa33;
+  color: #e4eff0;
+  border-width: 0;
+  border-radius: 20px;
+}
+.btn--success:hover {
+  background-color: #308127;
+  color: #fff;
+}
+.btn--danger {
+  background-color: #aa3333;
+  color: #e4eff0;
+  border-width: 0;
+  border-radius: 20px;
+}
+.btn--danger:hover {
+  background-color: #621e1e;
+  color: #fff;
+}
 .btn--primary-textured {
   background-image: resource("Sprites/UI/Button11");
   color: #e4eff0;
@@ -263,17 +283,59 @@
 .btn--primary-textured.btn--squared {
   background-image: resource("Sprites/UI/Button03");
 }
+.btn--success-textured {
+  background-image: resource("Sprites/UI/Button14");
+  color: #e4eff0;
+}
+.btn--success-textured:hover {
+  background-color: #0d191e;
+  color: #fff;
+}
+.btn--success-textured.btn--squared {
+  background-image: resource("Sprites/UI/Button06");
+}
+.btn--danger-textured {
+  background-image: resource("Sprites/UI/Button13");
+  color: #e4eff0;
+}
+.btn--danger-textured:hover {
+  background-color: #0d191e;
+  color: #fff;
+}
+.btn--danger-textured.btn--squared {
+  background-image: resource("Sprites/UI/Button05");
+}
 .btn--squared {
-  padding: 30px;
-  width: 150px;
-  min-width: 150px;
-  max-width: 150px;
-  height: 150px;
-  min-height: 150px;
-  max-height: 150px;
+  padding: 20px;
+  width: 140px;
+  min-width: 140px;
+  max-width: 140px;
+  height: 140px;
+  min-height: 140px;
+  max-height: 140px;
+}
+.btn--squared-sm {
+  padding: 10px;
+  width: 60px;
+  min-width: 60px;
+  max-width: 60px;
+  height: 60px;
+  min-height: 60px;
+  max-height: 60px;
+}
+.btn--flex {
+  min-width: auto;
+}
+.btn--top-right {
+  position: absolute;
+  top: 40px;
+  right: 30px;
 }
 .btn--attack > .i {
   background-image: resource("Sprites/Icons/sword");
+}
+.btn--close > .i {
+  background-image: resource("Sprites/Icons/close_w");
 }
 .btn--defend > .i {
   background-image: resource("Sprites/Icons/shield");
@@ -282,10 +344,13 @@
   background-image: resource("Sprites/Icons/clock");
 }
 .btn--map > .i {
-  background-image: resource("Sprites/Icons/zoom");
+  background-image: resource("Sprites/Icons/star_w");
+}
+.btn--game > .i {
+  background-image: resource("Sprites/Icons/minimize_w");
 }
 .btn--settings > .i {
-  background-image: resource("Sprites/Icons/settings");
+  background-image: resource("Sprites/Icons/settings_w");
 }
 
 .page {
@@ -325,12 +390,28 @@
   color: #000;
   border-radius: 7px;
 }
+.portlet__header {
+  width: 100%;
+  margin-bottom: 40px;
+  -unity-text-align: middle-center;
+}
+.portlet__body {
+  flex: 1 1 auto;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+.portlet__footer {
+  width: 100%;
+  margin-top: 20px;
+}
 .portlet--primary {
   background-color: rgba(0, 36, 57, 0.7);
   color: #e4eff0;
 }
 .portlet--primary-textured {
-  padding: 40px 16px 20px 30px;
+  padding: 40px 16px 30px;
   background-image: resource("Sprites/UI/MainPanel03");
   -unity-background-scale-mode: stretch-to-fill;
   background-color: transparent;
@@ -399,6 +480,19 @@
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+
+.window__wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
   align-items: center;
   justify-content: center;
   align-content: center;
@@ -479,6 +573,32 @@
   flex-direction: row;
   justify-content: center;
   margin-top: 15px;
+}
+
+.node-detail {
+  max-width: 800px;
+  align-self: flex-end;
+  margin-bottom: 20px;
+}
+.node-detail__map-wrapper {
+  margin-bottom: 20px;
+}
+.node-detail__footer {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+.node-detail__footer > * {
+  flex: 1 1 auto;
+}
+.node-detail__footer .btn {
+  height: 90px;
+}
+.node-detail__local-map {
+  flex: 0 0 auto;
+  width: 600px;
+  height: 600px;
+  background-image: resource("Images/grid_bg");
 }
 
 .game {

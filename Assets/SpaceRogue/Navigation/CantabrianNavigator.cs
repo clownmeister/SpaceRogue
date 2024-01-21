@@ -1,5 +1,6 @@
 ﻿using SpaceRogue.Utility;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace SpaceRogue.Navigation
 {
@@ -60,22 +61,24 @@ namespace SpaceRogue.Navigation
 
         private void OnDrawGizmos()
         {
+            if (SceneManager.GetActiveScene().name != "Game") return;
             if (targetShip == null) return;
 
-            if (!this.drawGizmos) return;
+            if (!drawGizmos) return;
             // Draw orbit circle
-            Gizmo.DrawCircle(this.targetShip.transform.position, this.radius, this._orbitColor);
+            Vector3 position = targetShip.transform.position;
+            Gizmo.DrawCircle(position, radius, _orbitColor);
 
             // Draw tolerance circles
-            Gizmo.DrawCircle(this.targetShip.transform.position, this.radius - this.orbitDistanceTolerance, this._toleranceColor);
-            Gizmo.DrawCircle(this.targetShip.transform.position, this.radius + this.orbitDistanceTolerance, this._toleranceColor);
+            Gizmo.DrawCircle(position, radius - orbitDistanceTolerance, _toleranceColor);
+            Gizmo.DrawCircle(position, radius + orbitDistanceTolerance, _toleranceColor);
 
             if (_navigationPoint == null) return;
             // Draw navigation point
-            Gizmos.color = this._waypointColor;
+            Gizmos.color = _waypointColor;
             Gizmos.DrawSphere((Vector3)_navigationPoint, 0.2f);
-            if (this.currentState == State.Idle) return;
-            Gizmos.color = this._tangentColor;
+            if (currentState == State.Idle) return;
+            Gizmos.color = _tangentColor;
             Gizmos.DrawLine(transform.position, (Vector3)_navigationPoint);
         }
 
