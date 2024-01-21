@@ -9,6 +9,8 @@ namespace SpaceRogue.Map
     public class MapManager : MonoBehaviour
     {
         public static MapManager Instance;
+        public delegate void NodeSelectedEventHandler(MapNode selectedNode);
+        public event NodeSelectedEventHandler OnNodeSelected;
 
         public MapNode CurrentNode { get; set; }
 
@@ -71,6 +73,7 @@ namespace SpaceRogue.Map
             mapNodes.layer = _mapLayer;
             _systemMapParent = mapNodes.transform;
         }
+
 
         public void RegenerateMap(int? seed = null)
         {
@@ -145,6 +148,7 @@ namespace SpaceRogue.Map
 
         public void HandleNodeSelection(MapNode selectedNode)
         {
+            OnNodeSelected?.Invoke(selectedNode);
             if (selectedNode == _selectedNode) return;
             if (_selectedNode != null)
             {

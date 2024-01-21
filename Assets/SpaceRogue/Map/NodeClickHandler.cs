@@ -8,6 +8,7 @@ namespace SpaceRogue.Map
         private void OnMouseDown()
         {
             //TODO: figure out how to handle click properly
+            // also why does this work?
             Debug.Log("Click");
             MapManager.Instance.HandleNodeSelection(MapNodeData);
         }

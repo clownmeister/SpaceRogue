@@ -2,18 +2,18 @@
          engine="UnityEngine.UIElements" editor="UnityEditor.UIElements"
          noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/Styles/Dist/Main.uss?fileID=7433441132597879392&amp;guid=c02a89fdb5ad97d4a89a3a9622974b47&amp;type=3#Main" />
-    <ui:VisualElement name="NodeDetail" class="node-detail">
+    <ui:VisualElement name="NodeDetail" class="node-detail -target-detail-element">
         <ui:VisualElement name="Main" class="portlet portlet--primary-textured node-detail__main">
-            <ui:VisualElement name="CloseBtn" class="btn btn--close btn--squared-sm btn--top-right" style="flex-grow: 1;">
+            <SpaceRogue.UI.Element.ButtonElement name="CloseBtnn" class="btn -btn-target-info btn--squared-sm btn--top-right btn--close -btn-target-detail-close">
                 <ui:VisualElement name="Icon" class="i" style="flex-grow: 1;" />
-            </ui:VisualElement>
-            <ui:Label tabindex="-1" text="Node name" display-tooltip-when-elided="true" name="NodeDetailLabel" class="h1 portlet__header" />
+            </SpaceRogue.UI.Element.ButtonElement>
+            <ui:Label tabindex="-1" text="Node name" display-tooltip-when-elided="true" name="NodeDetailLabel" class="h1 portlet__header -btn-target-detail-label" />
             <ui:VisualElement name="PortletContent" class="portlet__body node-detail__map-wrapper" style="flex-grow: 1;">
                 <ui:VisualElement name="NodeLocalMap" class="node-detail__local-map" />
             </ui:VisualElement>
             <ui:VisualElement name="Footer" class="node-detail__footer portlet__footer" style="flex-grow: 1;">
-                <SpaceRogue.UI.Element.ButtonElement name="Info" text="Info" class="btn--primary-textured btn btn--flex" />
-                <SpaceRogue.UI.Element.ButtonElement name="Jump" text="Jump" class="btn btn--flex btn--success-textured" />
+                <SpaceRogue.UI.Element.ButtonElement name="Info" text="Info" class="btn--primary-textured btn btn--flex -btn-target-info" />
+                <SpaceRogue.UI.Element.ButtonElement name="Jump" text="Jump" class="btn btn--flex btn--success-textured -btn-target-jump" />
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>

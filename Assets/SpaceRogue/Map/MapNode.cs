@@ -23,8 +23,9 @@ namespace SpaceRogue.Map
 
     public class MapNode
     {
+        public string Name { get; private set; }
         public Vector2 Position;
-        public MapNodeType Type;
+        public readonly MapNodeType Type;
         public MapNodeVariant Variant;
         public NodeEvent Event;
         public MapNode[] Neighbours;
@@ -36,7 +37,8 @@ namespace SpaceRogue.Map
             Position = position;
             Type = nodeType;
             Event = new NodeEvent(eventType);
-            this.Neighbours = Array.Empty<MapNode>();
+            Neighbours = Array.Empty<MapNode>();
+            Name = MapNodeNameGenerator.GenerateName(Type);
         }
 
 
