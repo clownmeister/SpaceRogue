@@ -71,15 +71,15 @@ namespace SpaceRogue.UI.Controller
             Debug.Log(node.Name);
             Debug.Log(node.Type);
             Debug.Log(node.Variant);
-            _mapDetailElement.SetEnabled(true);
+            _mapDetailElement.style.display = DisplayStyle.Flex;
             _mapDetailLabel.text = node.Name;
-            _mapDetailBtnJump.SetEnabled(false);
+            _mapDetailBtnJump.style.visibility = Visibility.Hidden;
         }
 
         private void CloseDetailAction(ClickEvent evt)
         {
             Debug.Log("CLOSE ACTION");
-            _mapDetailElement.SetEnabled(false);
+            _mapDetailElement.style.display = DisplayStyle.None;
         }
     }
 }
