@@ -1,11 +1,9 @@
-﻿using System;
+﻿using UnityEngine;
 
 namespace SpaceRogue.Map
 {
     public static class MapNodeNameGenerator
     {
-        private static readonly Random Random = new Random();
-
         private static readonly string[] EmptyZonePrefixes =
         {
             "Silent", "Void", "Null", "Desolate", "Barren",
@@ -72,10 +70,10 @@ namespace SpaceRogue.Map
         {
             return nodeType switch
             {
-                MapNodeType.Planet => $"{PlanetPrefixes[Random.Next(PlanetPrefixes.Length)]} {PlanetSuffixes[Random.Next(PlanetSuffixes.Length)]}",
-                MapNodeType.Asteroids => $"{AsteroidPrefixes[Random.Next(AsteroidPrefixes.Length)]} {AsteroidSuffixes[Random.Next(AsteroidSuffixes.Length)]}",
-                MapNodeType.BlackHole => BlackHoleNames[Random.Next(BlackHoleNames.Length)],
-                MapNodeType.Empty => $"{EmptyZonePrefixes[Random.Next(EmptyZonePrefixes.Length)]} {EmptyZoneSuffixes[Random.Next(EmptyZoneSuffixes.Length)]}",
+                MapNodeType.Planet => $"{PlanetPrefixes[Random.Range(0, PlanetPrefixes.Length)]} {PlanetSuffixes[Random.Range(0, PlanetSuffixes.Length)]}",
+                MapNodeType.Asteroids => $"{AsteroidPrefixes[Random.Range(0, AsteroidPrefixes.Length)]} {AsteroidSuffixes[Random.Range(0, AsteroidSuffixes.Length)]}",
+                MapNodeType.BlackHole => BlackHoleNames[Random.Range(0, BlackHoleNames.Length)],
+                MapNodeType.Empty => $"{EmptyZonePrefixes[Random.Range(0, EmptyZonePrefixes.Length)]} {EmptyZoneSuffixes[Random.Range(0, EmptyZoneSuffixes.Length)]}",
                 _ => "Unknown"
             };
         }

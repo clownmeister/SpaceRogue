@@ -20,7 +20,9 @@ namespace SpaceRogue.Map.Settings
         public int maxNodeConnectionDistance = 5;
         public int shopChance;
 
+        [Header("Render Settings")]
         [Header("Prefabs")]
+        public GameObject lineRendererPrefab;
         public GameObject emptyNodePrefab;
 
         [Header("Colors")]
@@ -29,5 +31,9 @@ namespace SpaceRogue.Map.Settings
         public Color friendlyNodeColor;
         public Color selectedNodeColor;
         public Color currentNodeColor;
+
+        [Header("Order")]
+        public float nodeZ = -2f;
+        public float lineZ = -1.5f;
     }
 }

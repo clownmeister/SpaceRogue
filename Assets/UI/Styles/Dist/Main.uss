@@ -328,7 +328,7 @@
 }
 .btn--top-right {
   position: absolute;
-  top: 40px;
+  top: 35px;
   right: 30px;
 }
 .btn--attack > .i {

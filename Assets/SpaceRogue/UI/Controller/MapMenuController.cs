@@ -45,6 +45,11 @@ namespace SpaceRogue.UI.Controller
             _mapDetailBtnJump = SetupUIComponent<Button>(root, MAP_DETAIL_BTN_JUMP_CLASS_NAME);
             _mapDetailBtnInfo = SetupUIComponent<Button>(root, MAP_DETAIL_BTN_INFO_CLASS_NAME);
             _mapDetailBtnClose = SetupUIComponent<Button>(root, MAP_DETAIL_BTN_CLOSE_CLASS_NAME);
+            Debug.Log(_mapDetailElement);
+            Debug.Log(_mapDetailLabel);
+            Debug.Log(_mapDetailBtnJump);
+            Debug.Log(_mapDetailBtnInfo);
+            Debug.Log(_mapDetailBtnClose);
         }
 
         private T SetupUIComponent<T>(VisualElement root, string className) where T : VisualElement

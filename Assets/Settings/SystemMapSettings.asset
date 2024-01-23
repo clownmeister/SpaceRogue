@@ -23,9 +23,12 @@ MonoBehaviour:
   maxNodeConnection: 3
   maxNodeConnectionDistance: 8
   shopChance: 0
+  lineRendererPrefab: {fileID: 2191142724566192548, guid: f40c88f642332534a8d07bd1ab95387e, type: 3}
   emptyNodePrefab: {fileID: 4446239489586240477, guid: 3af6805d849552743b9d1b3011862289, type: 3}
   emptyNodeColor: {r: 1, g: 0.82991487, b: 0.34509802, a: 1}
   enemyNodeColor: {r: 0.5660378, g: 0.08986389, b: 0.040049836, a: 1}
   friendlyNodeColor: {r: 0.07863116, g: 0.52909255, b: 0.8773585, a: 1}
   selectedNodeColor: {r: 1, g: 1, b: 1, a: 1}
   currentNodeColor: {r: 1, g: 1, b: 1, a: 1}
+  nodeZ: -2
+  lineZ: -1.5
