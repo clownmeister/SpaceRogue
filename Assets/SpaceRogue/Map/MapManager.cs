@@ -7,13 +7,9 @@ namespace SpaceRogue.Map
     [RequireComponent(typeof(MapRenderer))]
     public class MapManager : MonoBehaviour
     {
-        public static MapManager Instance;
         public delegate void NodeSelectedEventHandler(MapNode selectedNode);
-        public event NodeSelectedEventHandler OnNodeSelected;
-
-        public MapNode CurrentNode { get; set; }
-
-        public MapNode SelectedNode { get; private set; }
+        private const float DOUBLE_TAP_INTERVAL = 0.3f;
+        public static MapManager Instance;
 
         public int seed;
         public SystemMapSettings systemMapSettings;
@@ -23,18 +19,19 @@ namespace SpaceRogue.Map
         public bool drawGizmos;
         public Color boundariesColor = Color.cyan;
 
-        private SystemMap _systemMap;
+        // Double tap
+        private float _lastTapTime;
         private MapRenderer _renderer;
 
-        // Double tap
-        private float _lastTapTime = 0f;
-        private const float DOUBLE_TAP_INTERVAL = 0.3f;
+        private SystemMap _systemMap;
 
-        private void OnDrawGizmos()
+        public MapNode CurrentNode { get; set; }
+
+        public MapNode SelectedNode { get; private set; }
+
+        public bool IsConnectedToSelected(MapNode potentialNeighbour)
         {
-            if (!drawGizmos) return;
-            Gizmos.color = boundariesColor;
-            Gizmos.DrawWireCube(Vector3.zero, new Vector3(systemMapSettings.mapSize.x * 2, systemMapSettings.mapSize.y * 2, 0));
+            return SelectedNode.IsConnected(potentialNeighbour);
         }
 
         private void Awake()
@@ -50,19 +47,6 @@ namespace SpaceRogue.Map
 
             _systemMap = new SystemMap(systemMapSettings);
             _renderer = GetComponent<MapRenderer>();
-        }
-
-        public void RegenerateMap(int? seed = null)
-        {
-            _systemMap.Generate(seed ?? this.seed);
-            InitCurrentNode();
-
-            _renderer.Render(_systemMap);
-        }
-
-        private void InitCurrentNode()
-        {
-            CurrentNode = _systemMap.StartNode;
         }
 
         private void Update()
@@ -91,6 +75,27 @@ namespace SpaceRogue.Map
                     _lastTapTime = Time.time;
                 }
             }
+        }
+
+        private void OnDrawGizmos()
+        {
+            if (!drawGizmos) return;
+            Gizmos.color = boundariesColor;
+            Gizmos.DrawWireCube(Vector3.zero, new Vector3(systemMapSettings.mapSize.x * 2, systemMapSettings.mapSize.y * 2, 0));
+        }
+        public event NodeSelectedEventHandler OnNodeSelected;
+
+        public void RegenerateMap(int? seed = null)
+        {
+            _systemMap.Generate(seed ?? this.seed);
+            InitCurrentNode();
+
+            _renderer.Render(_systemMap);
+        }
+
+        private void InitCurrentNode()
+        {
+            CurrentNode = _systemMap.StartNode;
         }
 
         public void HandleNodeSelection(MapNode selectedNode)

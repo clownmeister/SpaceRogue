@@ -64,8 +64,6 @@ namespace SpaceRogue.Map
             }
         }
 
-
-
         private static void SetNodeColor(GameObject nodeGameObject, Color color)
         {
             SpriteRenderer[] renderers = nodeGameObject.GetComponentsInChildren<SpriteRenderer>();

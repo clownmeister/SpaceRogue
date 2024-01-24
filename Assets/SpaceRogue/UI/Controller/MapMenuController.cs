@@ -31,8 +31,7 @@ namespace SpaceRogue.UI.Controller
         private void OnDisable()
         {
             MapManager.Instance.OnNodeSelected -= DetailAction;
-            if (_mapDetailBtnClose == null) return;
-            _mapDetailBtnClose.UnregisterCallback<ClickEvent>(CloseDetailAction);
+            _mapDetailBtnClose?.UnregisterCallback<ClickEvent>(CloseDetailAction);
         }
 
         private void InitializeUI()
@@ -63,7 +62,7 @@ namespace SpaceRogue.UI.Controller
             gameButton.RegisterCallback<ClickEvent>(GameAction);
         }
 
-        private void GameAction(ClickEvent clickEvent)
+        private static void GameAction(ClickEvent clickEvent)
         {
             Time.timeScale = 1;
             Debug.Log("GAME ACTION");

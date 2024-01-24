@@ -41,6 +41,10 @@ namespace SpaceRogue.Map
             Name = MapNodeNameGenerator.GenerateName(Type);
         }
 
+        public bool IsConnected(MapNode potentialNeighbour)
+        {
+            return Neighbours.Contains(potentialNeighbour) || potentialNeighbour.Neighbours.Contains(this);
+        }
 
         public void AddNeighbour(MapNode neighbour)
         {
