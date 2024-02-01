@@ -22,9 +22,17 @@ MonoBehaviour:
   minNodeConnections: 1
   maxNodeConnection: 3
   maxNodeConnectionDistance: 8
-  shopChance: 0
+  emptyRatio: 100
+  planetRatio: 30
+  blackHoleRatio: 3
+  nebulaRatio: 5
+  asteroidRatio: 5
   lineRendererPrefab: {fileID: 2191142724566192548, guid: f40c88f642332534a8d07bd1ab95387e, type: 3}
   emptyNodePrefab: {fileID: 4446239489586240477, guid: 3af6805d849552743b9d1b3011862289, type: 3}
+  planetNodePrefab: {fileID: 3612296415530190958, guid: bf1cadbef08943c4da976be6c92b0a88, type: 3}
+  blackHoleNodePrefab: {fileID: 3612296415530190958, guid: 4f80dbad91523634ba7d5706b8565a2b, type: 3}
+  nebulaNodePrefab: {fileID: 3612296415530190958, guid: 98402229b2f030a499734821324e9ab9, type: 3}
+  asteroidFieldNodePrefab: {fileID: 3612296415530190958, guid: b5c7d77dde1041b4e8b5ea021039bbf2, type: 3}
   emptyNodeColor: {r: 1, g: 0.82991487, b: 0.34509802, a: 1}
   enemyNodeColor: {r: 0.5660378, g: 0.08986389, b: 0.040049836, a: 1}
   friendlyNodeColor: {r: 0.07863116, g: 0.52909255, b: 0.8773585, a: 1}

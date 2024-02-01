@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2700730682714777992}
   - component: {fileID: 2877178643402158606}
   - component: {fileID: 8311174717496372615}
+  - component: {fileID: 3170127666228576010}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -60,13 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   seed: 730873
-  lineRendererPrefab: {fileID: 2191142724566192548, guid: f40c88f642332534a8d07bd1ab95387e, type: 3}
-  systemMapSettings: {fileID: 11400000, guid: 3e8891263099fac4da4c52bc268dda80, type: 2}
-  nodeZ: -2
-  lineZ: -1.5
-  clickLayerMask:
-    serializedVersion: 2
-    m_Bits: 32
+  systemMapSettings: {fileID: 11400000, guid: 0fe5b2fc72d77be48aa6115bc7d043e5, type: 2}
   drawGizmos: 1
   boundariesColor: {r: 0, g: 1, b: 1, a: 1}
 --- !u!114 &8311174717496372615
@@ -81,5 +76,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cbca725d3f4415d982433122b68b03f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameToggleObjects: []
-  mapToggleObjects: []
+  _currentState: 0
+--- !u!114 &3170127666228576010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3707305561093751121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 086dd679337c4565abf3b5f45febf98c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

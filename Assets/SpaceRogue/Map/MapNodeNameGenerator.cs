@@ -71,7 +71,7 @@ namespace SpaceRogue.Map
             return nodeType switch
             {
                 MapNodeType.Planet => $"{PlanetPrefixes[Random.Range(0, PlanetPrefixes.Length)]} {PlanetSuffixes[Random.Range(0, PlanetSuffixes.Length)]}",
-                MapNodeType.Asteroids => $"{AsteroidPrefixes[Random.Range(0, AsteroidPrefixes.Length)]} {AsteroidSuffixes[Random.Range(0, AsteroidSuffixes.Length)]}",
+                MapNodeType.AsteroidField => $"{AsteroidPrefixes[Random.Range(0, AsteroidPrefixes.Length)]} {AsteroidSuffixes[Random.Range(0, AsteroidSuffixes.Length)]}",
                 MapNodeType.BlackHole => BlackHoleNames[Random.Range(0, BlackHoleNames.Length)],
                 MapNodeType.Empty => $"{EmptyZonePrefixes[Random.Range(0, EmptyZonePrefixes.Length)]} {EmptyZoneSuffixes[Random.Range(0, EmptyZoneSuffixes.Length)]}",
                 _ => "Unknown"

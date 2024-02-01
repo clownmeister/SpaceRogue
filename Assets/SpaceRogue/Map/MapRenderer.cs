@@ -48,17 +48,17 @@ namespace SpaceRogue.Map
             _systemMapParent = mapNodes.transform;
         }
 
-        public void Render(SystemMap systemMap)
+        public void Render(Map map)
         {
             InitNodeParent();
             Clear();
-            foreach ((Vector2 position, MapNode node) in systemMap.Nodes)
+            foreach ((Vector2 position, MapNode node) in map.Nodes)
             {
                 // TODO: Do we need translation?
                 // Vector2 position = TranslatePointOnMapToScreenSize(node.Key);
                 Debug.Log("test123");
-                Debug.Log(position);
-                Debug.Log(node);
+                Debug.Log("POS" +position);
+                Debug.Log("name "  + node.Name);
                 CreateNodeGameObject(node, position);
                 DrawConnections(node, position);
             }
@@ -99,11 +99,19 @@ namespace SpaceRogue.Map
             switch (node.Type)
             {
                 case MapNodeType.Empty:
-                case MapNodeType.Planet:
-                case MapNodeType.Storm:
-                case MapNodeType.Asteroids:
-                case MapNodeType.BlackHole:
                     prefab = _settings.emptyNodePrefab;
+                    break;
+                case MapNodeType.Planet:
+                    prefab = _settings.planetNodePrefab;
+                    break;
+                case MapNodeType.Nebula:
+                    prefab = _settings.nebulaNodePrefab;
+                    break;
+                case MapNodeType.AsteroidField:
+                    prefab = _settings.asteroidFieldNodePrefab;
+                    break;
+                case MapNodeType.BlackHole:
+                    prefab = _settings.blackHoleNodePrefab;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

@@ -6,6 +6,7 @@ namespace SpaceRogue.Map.Settings
     [CreateAssetMenu(fileName = "New System Map Settings", menuName = "Map/SystemMap", order = 100)]
     public class SystemMapSettings : AbstractMapSettings
     {
+        [Header("Map settings")]
         public Vector2 mapSize;
         public Vector2 mapPadding;
         [Range(1, 100)]
@@ -18,12 +19,22 @@ namespace SpaceRogue.Map.Settings
         public int minNodeConnections = 1;
         public int maxNodeConnection = 3;
         public int maxNodeConnectionDistance = 5;
-        public int shopChance;
+
+        [Header("Node type distribution")]
+        public float emptyRatio;
+        public float planetRatio;
+        public float blackHoleRatio;
+        public float nebulaRatio;
+        public float asteroidRatio;
 
         [Header("Render Settings")]
         [Header("Prefabs")]
         public GameObject lineRendererPrefab;
         public GameObject emptyNodePrefab;
+        public GameObject planetNodePrefab;
+        public GameObject blackHoleNodePrefab;
+        public GameObject nebulaNodePrefab;
+        public GameObject asteroidFieldNodePrefab;
 
         [Header("Colors")]
         public Color emptyNodeColor;
@@ -32,7 +43,7 @@ namespace SpaceRogue.Map.Settings
         public Color selectedNodeColor;
         public Color currentNodeColor;
 
-        [Header("Order")]
+        [Header("Render Order")]
         public float nodeZ = -2f;
         public float lineZ = -1.5f;
     }

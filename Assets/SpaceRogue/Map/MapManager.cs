@@ -23,7 +23,7 @@ namespace SpaceRogue.Map
         private float _lastTapTime;
         private MapRenderer _renderer;
 
-        private SystemMap _systemMap;
+        private Map _map;
 
         public MapNode CurrentNode { get; set; }
 
@@ -45,7 +45,7 @@ namespace SpaceRogue.Map
             Instance = this;
             DontDestroyOnLoad(gameObject);
 
-            _systemMap = new SystemMap(systemMapSettings);
+            _map = new Map(systemMapSettings);
             _renderer = GetComponent<MapRenderer>();
         }
 
@@ -87,15 +87,15 @@ namespace SpaceRogue.Map
 
         public void RegenerateMap(int? seed = null)
         {
-            _systemMap.Generate(seed ?? this.seed);
+            _map.Generate(seed ?? this.seed);
             InitCurrentNode();
 
-            _renderer.Render(_systemMap);
+            _renderer.Render(_map);
         }
 
         private void InitCurrentNode()
         {
-            CurrentNode = _systemMap.StartNode;
+            CurrentNode = _map.StartNode;
         }
 
         public void HandleNodeSelection(MapNode selectedNode)

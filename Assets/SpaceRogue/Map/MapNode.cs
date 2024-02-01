@@ -9,8 +9,8 @@ namespace SpaceRogue.Map
     {
         Empty,
         Planet,
-        Storm,
-        Asteroids,
+        Nebula,
+        AsteroidField,
         BlackHole,
     }
 

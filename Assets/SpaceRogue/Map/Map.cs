@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 
 namespace SpaceRogue.Map
 {
-    public class SystemMap
+    public class Map
     {
         public Dictionary<Vector2, MapNode> Nodes { get; private set; }
 
@@ -18,7 +18,7 @@ namespace SpaceRogue.Map
         private int _currentSeed;
         private readonly SystemMapSettings _settings;
 
-        public SystemMap(SystemMapSettings settings)
+        public Map(SystemMapSettings settings)
         {
             _settings = settings;
         }
@@ -208,16 +208,42 @@ namespace SpaceRogue.Map
                     }
 
                     i--;
-                    // Debug.Log("Not enough space for node placement. Invalid position resetting");
                     continue;
                 }
 
                 attempts = 0;
+                // MapNodeType nodeType = DetermineNodeType();
+                // result.Add(position, new MapNode(position, nodeType));
                 result.Add(position, new MapNode(position));
-                // Debug.Log(position);
             }
 
             return result;
+        }
+
+        private MapNodeType DetermineNodeType()
+        {
+            List<(MapNodeType type, float chance)> nodeRatios = new List<(MapNodeType type, float chance)>
+            {
+                (MapNodeType.Empty, _settings.emptyRatio),
+                (MapNodeType.Planet, _settings.planetRatio),
+                (MapNodeType.BlackHole, _settings.blackHoleRatio),
+                (MapNodeType.Nebula, _settings.nebulaRatio),
+                (MapNodeType.AsteroidField, _settings.asteroidRatio)
+            };
+
+            float randomValue = Random.Range(0, nodeRatios.Sum(item => item.chance));
+            float cumulative = 0;
+
+            foreach ((MapNodeType type, float chance) in nodeRatios)
+            {
+                cumulative += chance;
+                if (randomValue <= cumulative)
+                {
+                    return type;
+                }
+            }
+
+            return MapNodeType.Empty;
         }
 
         private void DetermineNeighbours()
