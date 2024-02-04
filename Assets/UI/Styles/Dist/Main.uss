@@ -598,7 +598,7 @@
   flex: 0 0 auto;
   width: 600px;
   height: 600px;
-  background-image: resource("Images/grid_bg");
+  background-image: resource("Images/grid_map_bg");
 }
 
 .game {

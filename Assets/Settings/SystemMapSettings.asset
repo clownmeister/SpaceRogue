@@ -26,7 +26,7 @@ MonoBehaviour:
   planetRatio: 30
   blackHoleRatio: 3
   nebulaRatio: 10
-  asteroidRatio: 10
+  asteroidRatio: 15
   lineRendererPrefab: {fileID: 2191142724566192548, guid: f40c88f642332534a8d07bd1ab95387e, type: 3}
   emptyNodePrefab: {fileID: 4446239489586240477, guid: 3af6805d849552743b9d1b3011862289, type: 3}
   planetNodePrefab: {fileID: 3612296415530190958, guid: bf1cadbef08943c4da976be6c92b0a88, type: 3}

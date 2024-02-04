@@ -8,12 +8,13 @@ namespace SpaceRogue.Map
     public class MapManager : MonoBehaviour
     {
         public delegate void NodeSelectedEventHandler(MapNode selectedNode);
+        public event NodeSelectedEventHandler OnNodeSelected;
+
         private const float DOUBLE_TAP_INTERVAL = 0.3f;
         public static MapManager Instance;
 
         public int seed;
         public SystemMapSettings systemMapSettings;
-
 
         [Header("Gizmo settings")]
         public bool drawGizmos;
@@ -36,12 +37,7 @@ namespace SpaceRogue.Map
                 return false;
             }
 
-            if (potentialNeighbour == SelectedNode)
-            {
-                return false;
-            }
-
-            return CurrentNode.IsConnected(potentialNeighbour);
+            return potentialNeighbour != CurrentNode && CurrentNode.IsConnected(potentialNeighbour);
         }
 
         private void Awake()
@@ -93,7 +89,23 @@ namespace SpaceRogue.Map
             Gizmos.color = boundariesColor;
             Gizmos.DrawWireCube(Vector3.zero, new Vector3(systemMapSettings.mapSize.x * 2, systemMapSettings.mapSize.y * 2, 0));
         }
-        public event NodeSelectedEventHandler OnNodeSelected;
+
+        public void Jump()
+        {
+            Debug.Log(CurrentNode);
+            Debug.Log(SelectedNode);
+            if (!IsConnectedToCurrent(SelectedNode))
+            {
+                Debug.LogWarning("Tried to jump to not connected node.");
+                return;
+            }
+
+            MapNode oldNode = CurrentNode;
+            CurrentNode = SelectedNode;
+
+            _renderer.UpdateNodeColor(oldNode);
+            _renderer.UpdateNodeColor(CurrentNode);
+        }
 
         public void RegenerateMap(int? seed = null)
         {

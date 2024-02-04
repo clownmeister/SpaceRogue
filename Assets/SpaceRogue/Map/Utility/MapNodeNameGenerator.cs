@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace SpaceRogue.Map
+namespace SpaceRogue.Map.Utility
 {
     public static class MapNodeNameGenerator
     {
@@ -19,6 +19,7 @@ namespace SpaceRogue.Map
             "Nexus", "Domain", "Rift", "Nebula", "Gulf",
             "Space", "Depths", "Haven", "Abyss", "Oasis"
         };
+
         private static readonly string[] PlanetPrefixes =
         {
             "Terra", "Neo", "Zeta", "Aqua", "Pyro",
@@ -26,7 +27,6 @@ namespace SpaceRogue.Map
             "Artemis", "Dione", "Janus", "Luna", "Nova",
             "Orion", "Pegasus", "Quasar", "Rhea", "Selene"
         };
-
         private static readonly string[] PlanetSuffixes =
         {
             "Prime", "Secundus", "III", "IV", "V",
@@ -58,6 +58,18 @@ namespace SpaceRogue.Map
             "Eternity", "Whisper", "Nightfall", "Horizon", "Gravity's End"
         };
 
+        private static readonly string[] ElectricIonStormPrefixes =
+        {
+            "Ion", "Plasma", "Spark", "Volt", "Surge",
+            "Electron", "Circuit", "Flux", "Charge", "Static"
+        };
+
+        private static readonly string[] ElectricIonStormSuffixes =
+        {
+            "Expanse", "Rift", "Sector", "Zone", "Nexus",
+            "Field", "Realm", "Basin", "Domain", "Haven"
+        };
+
         private static string[] _starNames =
         {
             "Sol", "Proxima", "Vega", "Sirius", "Rigel",
@@ -70,10 +82,11 @@ namespace SpaceRogue.Map
         {
             return nodeType switch
             {
+                MapNodeType.Empty => $"{EmptyZonePrefixes[Random.Range(0, EmptyZonePrefixes.Length)]} {EmptyZoneSuffixes[Random.Range(0, EmptyZoneSuffixes.Length)]}",
                 MapNodeType.Planet => $"{PlanetPrefixes[Random.Range(0, PlanetPrefixes.Length)]} {PlanetSuffixes[Random.Range(0, PlanetSuffixes.Length)]}",
                 MapNodeType.AsteroidField => $"{AsteroidPrefixes[Random.Range(0, AsteroidPrefixes.Length)]} {AsteroidSuffixes[Random.Range(0, AsteroidSuffixes.Length)]}",
+                MapNodeType.Nebula => $"{ElectricIonStormPrefixes[Random.Range(0, ElectricIonStormPrefixes.Length)]} {ElectricIonStormSuffixes[Random.Range(0, ElectricIonStormSuffixes.Length)]}",
                 MapNodeType.BlackHole => BlackHoleNames[Random.Range(0, BlackHoleNames.Length)],
-                MapNodeType.Empty => $"{EmptyZonePrefixes[Random.Range(0, EmptyZonePrefixes.Length)]} {EmptyZoneSuffixes[Random.Range(0, EmptyZoneSuffixes.Length)]}",
                 _ => "Unknown"
             };
         }

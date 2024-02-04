@@ -15,6 +15,7 @@ namespace SpaceRogue.UI.Controller
 
         private VisualElement _mapDetailElement;
         private Label _mapDetailLabel;
+        private Button _mapGameButton;
         private Button _mapDetailBtnJump;
         private Button _mapDetailBtnInfo;
         private Button _mapDetailBtnClose;
@@ -38,28 +39,20 @@ namespace SpaceRogue.UI.Controller
         {
             VisualElement root = document.rootVisualElement;
 
-            RegisterNewGameButton(root);
+            _mapGameButton = SetupUIComponent<Button>(root, GAME_BUTTON_CLASS_NAME);
             _mapDetailElement = SetupUIComponent<VisualElement>(root, MAP_DETAIL_ELEMENT_CLASS_NAME);
             _mapDetailLabel = SetupUIComponent<Label>(root, MAP_DETAIL_LABEL_CLASS_NAME);
             _mapDetailBtnJump = SetupUIComponent<Button>(root, MAP_DETAIL_BTN_JUMP_CLASS_NAME);
             _mapDetailBtnInfo = SetupUIComponent<Button>(root, MAP_DETAIL_BTN_INFO_CLASS_NAME);
             _mapDetailBtnClose = SetupUIComponent<Button>(root, MAP_DETAIL_BTN_CLOSE_CLASS_NAME);
-            Debug.Log(_mapDetailElement);
-            Debug.Log(_mapDetailLabel);
-            Debug.Log(_mapDetailBtnJump);
-            Debug.Log(_mapDetailBtnInfo);
-            Debug.Log(_mapDetailBtnClose);
+
+            _mapGameButton.RegisterCallback<ClickEvent>(GameAction);
+            _mapDetailBtnJump.RegisterCallback<ClickEvent>(JumpAction);
         }
 
-        private T SetupUIComponent<T>(VisualElement root, string className) where T : VisualElement
+        private static T SetupUIComponent<T>(VisualElement root, string className) where T : VisualElement
         {
             return root.Q<T>(className: className);
-        }
-
-        private void RegisterNewGameButton(VisualElement root)
-        {
-            Button gameButton = SetupUIComponent<Button>(root, GAME_BUTTON_CLASS_NAME);
-            gameButton.RegisterCallback<ClickEvent>(GameAction);
         }
 
         private static void GameAction(ClickEvent clickEvent)
@@ -72,19 +65,27 @@ namespace SpaceRogue.UI.Controller
         private void DetailAction(MapNode node)
         {
             Debug.Log("DETAIL ACTION");
-            Debug.Log(node.Name);
-            Debug.Log(node.Type);
-            Debug.Log(node.Variant);
             _mapDetailElement.style.display = DisplayStyle.Flex;
             _mapDetailLabel.text = node.Name;
 
             _mapDetailBtnJump.style.visibility = MapManager.Instance.IsConnectedToCurrent(node) ? Visibility.Visible : Visibility.Hidden;
         }
 
-        private void CloseDetailAction(ClickEvent evt)
+        private void CloseDetailAction(ClickEvent @event)
         {
             Debug.Log("CLOSE ACTION");
             _mapDetailElement.style.display = DisplayStyle.None;
+        }
+
+        private void JumpAction(ClickEvent evt)
+        {
+            Debug.Log("JUMP ACTION");
+            MapManager.Instance.Jump();
+
+            if (MapManager.Instance.CurrentNode == MapManager.Instance.SelectedNode)
+            {
+                _mapDetailBtnJump.style.visibility = Visibility.Hidden;
+            }
         }
     }
 }

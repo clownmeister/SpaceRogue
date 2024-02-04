@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using SpaceRogue.Map.Utility;
 using UnityEngine;
 
 namespace SpaceRogue.Map
