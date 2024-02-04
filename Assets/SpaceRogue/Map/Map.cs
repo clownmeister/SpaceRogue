@@ -38,8 +38,11 @@ namespace SpaceRogue.Map
         {
             // We are cheating since BFS was a pain
             // Find the leftmost 5 and rightmost 5 nodes
-            List<MapNode> leftMostNodes = Nodes.OrderBy(node => node.Key.x).Take(5).Select(node => node.Value).ToList();
-            List<MapNode> rightMostNodes = Nodes.OrderByDescending(node => node.Key.x).Take(5).Select(node => node.Value).ToList();
+            List<MapNode> leftMostNodes = Nodes.OrderBy(node => node.Key.x)
+                .Select(node => node.Value)
+                .Where(node => node.Type == MapNodeType.Empty)
+                .Take(5).ToList();
+            List<MapNode> rightMostNodes = Nodes.OrderByDescending(node => node.Key.x).Select(node => node.Value).Take(5).ToList();
 
             // Randomly pick one from each
             StartNode = leftMostNodes[Random.Range(0, leftMostNodes.Count)];
@@ -212,9 +215,9 @@ namespace SpaceRogue.Map
                 }
 
                 attempts = 0;
-                // MapNodeType nodeType = DetermineNodeType();
-                // result.Add(position, new MapNode(position, nodeType));
-                result.Add(position, new MapNode(position));
+                MapNodeType nodeType = DetermineNodeType();
+                result.Add(position, new MapNode(position, nodeType));
+                // result.Add(position, new MapNode(position));
             }
 
             return result;

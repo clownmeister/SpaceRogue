@@ -77,7 +77,8 @@ namespace SpaceRogue.UI.Controller
             Debug.Log(node.Variant);
             _mapDetailElement.style.display = DisplayStyle.Flex;
             _mapDetailLabel.text = node.Name;
-            _mapDetailBtnJump.style.visibility = Visibility.Hidden;
+
+            _mapDetailBtnJump.style.visibility = MapManager.Instance.IsConnectedToCurrent(node) ? Visibility.Visible : Visibility.Hidden;
         }
 
         private void CloseDetailAction(ClickEvent evt)

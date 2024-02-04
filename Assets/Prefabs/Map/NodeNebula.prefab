@@ -14,15 +14,15 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: f3377bbfd514a4d449c04bbb179f5332, type: 3}
     - target: {fileID: 2758387289266060888, guid: 3af6805d849552743b9d1b3011862289, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.48
+      value: 1.21
       objectReference: {fileID: 0}
     - target: {fileID: 2758387289266060888, guid: 3af6805d849552743b9d1b3011862289, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.48
+      value: 1.21
       objectReference: {fileID: 0}
     - target: {fileID: 2758387289266060888, guid: 3af6805d849552743b9d1b3011862289, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.48
+      value: 1.21
       objectReference: {fileID: 0}
     - target: {fileID: 2758387289266060888, guid: 3af6805d849552743b9d1b3011862289, type: 3}
       propertyPath: m_LocalPosition.x
@@ -30,7 +30,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2758387289266060888, guid: 3af6805d849552743b9d1b3011862289, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.08
+      value: 4.45
       objectReference: {fileID: 0}
     - target: {fileID: 2758387289266060888, guid: 3af6805d849552743b9d1b3011862289, type: 3}
       propertyPath: m_LocalRotation.w
@@ -46,7 +46,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4446239489586240477, guid: 3af6805d849552743b9d1b3011862289, type: 3}
       propertyPath: m_Name
-      value: NodeBlackHole 1
+      value: NodeNebula
       objectReference: {fileID: 0}
     - target: {fileID: 5475297621690757326, guid: 3af6805d849552743b9d1b3011862289, type: 3}
       propertyPath: m_LocalPosition.x

@@ -15,7 +15,7 @@ namespace SpaceRogue.Map
         private HashSet<NodePair> _drawnConnections = new HashSet<NodePair>();
         private int _mapLayer;
 
-        private void Awake()
+        private void Start()
         {
             _mapLayer = LayerMask.NameToLayer("Map");
             _settings = MapManager.Instance.systemMapSettings;
@@ -56,9 +56,6 @@ namespace SpaceRogue.Map
             {
                 // TODO: Do we need translation?
                 // Vector2 position = TranslatePointOnMapToScreenSize(node.Key);
-                Debug.Log("test123");
-                Debug.Log("POS" +position);
-                Debug.Log("name "  + node.Name);
                 CreateNodeGameObject(node, position);
                 DrawConnections(node, position);
             }
@@ -73,7 +70,7 @@ namespace SpaceRogue.Map
             }
         }
 
-        public void SetNodeColor(MapNode node)
+        public void UpdateNodeColor(MapNode node)
         {
             SetNodeColor(node.GameObject, GetNodeColor(node));
         }

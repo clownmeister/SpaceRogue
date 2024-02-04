@@ -43,6 +43,11 @@ namespace SpaceRogue.Map
 
         public bool IsConnected(MapNode potentialNeighbour)
         {
+            if (Neighbours == null)
+            {
+                return false;
+            }
+            Debug.Log(Neighbours);
             return Neighbours.Contains(potentialNeighbour) || potentialNeighbour.Neighbours.Contains(this);
         }
 

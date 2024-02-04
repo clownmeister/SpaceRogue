@@ -29,9 +29,19 @@ namespace SpaceRogue.Map
 
         public MapNode SelectedNode { get; private set; }
 
-        public bool IsConnectedToSelected(MapNode potentialNeighbour)
+        public bool IsConnectedToCurrent(MapNode potentialNeighbour)
         {
-            return SelectedNode.IsConnected(potentialNeighbour);
+            if (CurrentNode == null)
+            {
+                return false;
+            }
+
+            if (potentialNeighbour == SelectedNode)
+            {
+                return false;
+            }
+
+            return CurrentNode.IsConnected(potentialNeighbour);
         }
 
         private void Awake()
@@ -87,6 +97,7 @@ namespace SpaceRogue.Map
 
         public void RegenerateMap(int? seed = null)
         {
+            SelectedNode = null;
             _map.Generate(seed ?? this.seed);
             InitCurrentNode();
 
@@ -111,11 +122,11 @@ namespace SpaceRogue.Map
             {
                 MapNode oldNode = SelectedNode;
                 SelectedNode = null;
-                _renderer.SetNodeColor(oldNode);
+                _renderer.UpdateNodeColor(oldNode);
             }
 
             SelectedNode = selectedNode;
-            _renderer.SetNodeColor(selectedNode);
+            _renderer.UpdateNodeColor(selectedNode);
         }
     }
 }
