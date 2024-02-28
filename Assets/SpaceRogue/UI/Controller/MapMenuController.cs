@@ -55,11 +55,12 @@ namespace SpaceRogue.UI.Controller
             return root.Q<T>(className: className);
         }
 
-        private static void GameAction(ClickEvent clickEvent)
+        private static void GameAction(ClickEvent @event)
         {
             Time.timeScale = 1;
             Debug.Log("GAME ACTION");
             ActiveSceneManager.Instance.SwitchScene(SceneState.Game);
+            @event.StopImmediatePropagation();
         }
 
         private void DetailAction(MapNode node)
@@ -75,9 +76,10 @@ namespace SpaceRogue.UI.Controller
         {
             Debug.Log("CLOSE ACTION");
             _mapDetailElement.style.display = DisplayStyle.None;
+            @event.StopImmediatePropagation();
         }
 
-        private void JumpAction(ClickEvent evt)
+        private void JumpAction(ClickEvent @event)
         {
             Debug.Log("JUMP ACTION");
             MapManager.Instance.Jump();
@@ -86,6 +88,7 @@ namespace SpaceRogue.UI.Controller
             {
                 _mapDetailBtnJump.style.visibility = Visibility.Hidden;
             }
+            @event.StopImmediatePropagation();
         }
     }
 }

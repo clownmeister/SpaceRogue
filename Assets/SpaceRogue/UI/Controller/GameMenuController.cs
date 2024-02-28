@@ -21,11 +21,12 @@ namespace SpaceRogue.UI.Controller
             root.Q(className: MAP_BUTTON_CLASS_NAME).RegisterCallback<ClickEvent>(MapAction);
         }
 
-        private void MapAction(ClickEvent clickEvent)
+        private void MapAction(ClickEvent @event)
         {
             Time.timeScale = 0;
             Debug.Log("test click map");
             ActiveSceneManager.Instance.SwitchScene(SceneState.Map);
+            @event.StopImmediatePropagation();
         }
     }
 }

@@ -9,7 +9,7 @@ namespace SpaceRogue.Map
         {
             //TODO: figure out how to handle click properly
             // also why does this work?
-            Debug.Log("Click");
+            Debug.Log("Click Node");
             MapManager.Instance.HandleNodeSelection(MapNodeData);
         }
     }

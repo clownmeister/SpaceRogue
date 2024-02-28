@@ -8,7 +8,7 @@
             <ui:VisualElement name="HeaderControls" class="game__header-controls" />
             <ui:VisualElement name="HeaderContent" class="game__header-content" />
         </ui:VisualElement>
-        <ui:VisualElement name="Content" class="game__content" style="position: relative;">
+        <ui:VisualElement name="Content" class="game__content" style="position: relative; display: flex;">
             <ui:Instance template="Map_Node_Detail" name="Map_Node_Detail" class="-target-detail-element" style="display: none;" />
         </ui:VisualElement>
         <ui:VisualElement name="Footer" class="game__footer">
